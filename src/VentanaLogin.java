@@ -76,7 +76,7 @@ public class VentanaLogin {
 			
 		// Codigo correspondiente al de entrar mas o menos Usuario jesus o pedro y contraseña 1234a para los dos 
 			// Codigo sucio hay que mejorarlo 
-			DatosUsuario d =new DatosUsuario();
+			DatosUsuario d =new DatosUsuario(); 
 		if (d.Existe(user.getText(), pass.getText())==1) {
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.frame.setVisible(true);
