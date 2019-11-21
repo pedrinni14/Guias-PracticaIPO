@@ -60,7 +60,7 @@ public class VentanaLogin {
 		lblContrasea.setBounds(149, 248, 174, 16);
 		Login.getContentPane().add(lblContrasea);
 		
-		JButton btnNewButton = new JButton("Entrtar ");
+		JButton btnNewButton = new JButton("Entrar ");
 		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 	
 	
@@ -78,6 +78,8 @@ public class VentanaLogin {
 			// Codigo sucio hay que mejorarlo 
 			DatosUsuario d =new DatosUsuario(); 
 		if (d.Existe(user.getText(), pass.getText())==1) {
+			
+			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.frame.setVisible(true);
 			
