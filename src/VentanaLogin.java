@@ -85,7 +85,11 @@ public class VentanaLogin {
 			
 			Login.dispose();//
 		}else {
-			JOptionPane.showMessageDialog(null, "DATOS INCORRECTOS");
+			if (d.Existe(user.getText(), pass.getText())==-1) {
+			JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
+			}else {
+				JOptionPane.showMessageDialog(null, "USUARIO INCORRECTO");
+			}
 		}
 			
 		}
