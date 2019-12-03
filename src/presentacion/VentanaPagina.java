@@ -1,6 +1,8 @@
+package presentacion;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import java.awt.Toolkit;
 
 public class VentanaPagina {
 
@@ -34,6 +36,7 @@ public class VentanaPagina {
 	 */
 	private void initialize() {
 		frame = new JFrame();
+		frame.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
 		frame.setBounds(100, 100, 1044, 551);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}

@@ -1,14 +1,22 @@
+package presentacion;
 import java.awt.EventQueue;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Toolkit;
 
 public class VentanaLogin {
 
 	public  JFrame Login;
 	private JTextField user;
 	private JTextField pass;
+	private JMenuBar menuBar;
+	private JMenu mnOpciones;
+	private JMenu mnAyuda;
+	private JMenuItem mntmLetra;
+	private JMenuItem mntmFuente;
+	private JMenuItem mntmAcercaDe;
 
 	/**
 	 * Launch the application.
@@ -38,6 +46,7 @@ public class VentanaLogin {
 	 */
 	private void initialize() {
 		Login = new JFrame();
+		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png")));
 		Login.setBounds(100, 100, 1012, 590);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Login.getContentPane().setLayout(null);
@@ -56,16 +65,34 @@ public class VentanaLogin {
 		lblUsuario.setBounds(149, 177, 174, 16);
 		Login.getContentPane().add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("Contraseña ");
+		JLabel lblContrasea = new JLabel("CONTRASEÑA");
 		lblContrasea.setBounds(149, 248, 174, 16);
 		Login.getContentPane().add(lblContrasea);
 		
-		JButton btnNewButton = new JButton("Entrar ");
+		JButton btnNewButton = new JButton("ENTRAR");
 		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 	
 	
 		btnNewButton.setBounds(409, 330, 126, 49);
 		Login.getContentPane().add(btnNewButton);
+		
+		menuBar = new JMenuBar();
+		Login.setJMenuBar(menuBar);
+		
+		mnOpciones = new JMenu("Opciones");
+		menuBar.add(mnOpciones);
+		
+		mntmLetra = new JMenuItem("Letra");
+		mnOpciones.add(mntmLetra);
+		
+		mntmFuente = new JMenuItem("Fuente");
+		mnOpciones.add(mntmFuente);
+		
+		mnAyuda = new JMenu("Ayuda");
+		menuBar.add(mnAyuda);
+		
+		mntmAcercaDe = new JMenuItem("Acerca de ");
+		mnAyuda.add(mntmAcercaDe);
 	}
 	
 		
