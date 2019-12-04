@@ -6,6 +6,8 @@ import javax.swing.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
 
 public class VentanaLogin {
 
@@ -15,15 +17,21 @@ public class VentanaLogin {
 	private JMenuBar menuBar;
 	private JMenu mnOpciones;
 	private JMenu mnAyuda;
-	private JMenuItem mntmLetra;
 	private JMenuItem mntmAcercaDe;
 	private JPanel pnlBotones;
 	private JButton btnLimpiar;
 	private JMenu mnTamañoFuente;
-	private JRadioButtonMenuItem rdbtnmntmGrande;
 	private JRadioButtonMenuItem rdbtnmntmMediana;
 	private JRadioButtonMenuItem rdbtnmntmPequeña;
+	private JLabel lblUsuario;
+	private JLabel lblContraseña;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
+	private JRadioButtonMenuItem rdbtnmntmGrande;
+	private JMenu mnFuente;
+	private JRadioButtonMenuItem rdbtnmntmArial;
+	private JRadioButtonMenuItem rdbtnmntmCalibri;
+	private JRadioButtonMenuItem rdbtnmntmTimesNewRoman;
+	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -68,17 +76,18 @@ public class VentanaLogin {
 		Login.getContentPane().add(pass);
 		pass.setColumns(10);
 		
-		JLabel lblUsuario = new JLabel("USUARIO ");
+		JLabel lblUsuario = new JLabel("USUARIO");
 		lblUsuario.setBounds(149, 177, 174, 16);
 		Login.getContentPane().add(lblUsuario);
 		
-		JLabel lblContrasea = new JLabel("CONTRASEÑA");
-		lblContrasea.setBounds(149, 248, 174, 16);
-		Login.getContentPane().add(lblContrasea);
+		JLabel lblContraseña = new JLabel("CONTRASEÑA");
+		lblContraseña.setBounds(149, 248, 174, 16);
+		Login.getContentPane().add(lblContraseña);
 		
 		pnlBotones = new JPanel();
 		pnlBotones.setBounds(0, 417, 986, 102);
 		Login.getContentPane().add(pnlBotones);
+		pnlBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton btnNewButton = new JButton("ENTRAR");
 		pnlBotones.add(btnNewButton);
@@ -100,23 +109,84 @@ public class VentanaLogin {
 		mnOpciones.setMnemonic('O');
 		menuBar.add(mnOpciones);
 		
-		mntmLetra = new JMenuItem("Letra");
-		mnOpciones.add(mntmLetra);
-		
 		mnTamañoFuente = new JMenu("Tamaño de Fuente");
 		mnOpciones.add(mnTamañoFuente);
 		
 		rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
+		rdbtnmntmGrande.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font(null, Font.PLAIN, 16));
+				lblContraseña.setFont(new Font(null, Font.PLAIN, 16));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, 16));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, 16));
+			}
+		});
 		buttonGroup.add(rdbtnmntmGrande);
 		mnTamañoFuente.add(rdbtnmntmGrande);
 		
 		rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
+		rdbtnmntmMediana.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font(null, Font.PLAIN, 12));
+				lblContraseña.setFont(new Font(null, Font.PLAIN, 12));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, 12));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, 12));
+				
+			}
+		});
 		buttonGroup.add(rdbtnmntmMediana);
 		mnTamañoFuente.add(rdbtnmntmMediana);
 		
 		rdbtnmntmPequeña = new JRadioButtonMenuItem("Pequeña");
+		rdbtnmntmPequeña.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font(null, Font.PLAIN, 10));
+				lblContraseña.setFont(new Font(null, Font.PLAIN, 10));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, 10));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, 10));
+			}
+		});
 		buttonGroup.add(rdbtnmntmPequeña);
 		mnTamañoFuente.add(rdbtnmntmPequeña);
+		
+		mnFuente = new JMenu("Tipo de fuente");
+		mnOpciones.add(mnFuente);
+		
+		rdbtnmntmArial = new JRadioButtonMenuItem("Arial");
+		rdbtnmntmArial.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font("Arial", Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font("Arial", Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font("Arial", Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font("Arial", Font.PLAIN, btnLimpiar.getFont().getSize()));
+			}
+		});
+		buttonGroup_1.add(rdbtnmntmArial);
+		mnFuente.add(rdbtnmntmArial);
+		
+		rdbtnmntmCalibri = new JRadioButtonMenuItem("Calibri");
+		rdbtnmntmCalibri.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font("Calibri", Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font("Calibri", Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font("Calibri", Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font("Calibri", Font.PLAIN, btnLimpiar.getFont().getSize()));
+			}
+		});
+		buttonGroup_1.add(rdbtnmntmCalibri);
+		mnFuente.add(rdbtnmntmCalibri);
+		
+		rdbtnmntmTimesNewRoman = new JRadioButtonMenuItem("Times New Roman");
+		rdbtnmntmTimesNewRoman.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				lblUsuario.setFont(new Font("Times New Roman", Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font("Times New Roman", Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font("Times New Roman", Font.PLAIN, btnLimpiar.getFont().getSize()));
+			}
+		});
+		buttonGroup_1.add(rdbtnmntmTimesNewRoman);
+		mnFuente.add(rdbtnmntmTimesNewRoman);
 		
 		mnAyuda = new JMenu("Ayuda");
 		mnAyuda.setMnemonic('A');
