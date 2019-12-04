@@ -1,5 +1,6 @@
 package presentacion;
 import java.awt.EventQueue;
+import java.awt.Font;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
@@ -15,8 +16,14 @@ public class VentanaLogin {
 	private JMenu mnOpciones;
 	private JMenu mnAyuda;
 	private JMenuItem mntmLetra;
-	private JMenuItem mntmFuente;
 	private JMenuItem mntmAcercaDe;
+	private JPanel pnlBotones;
+	private JButton btnLimpiar;
+	private JMenu mnTamañoFuente;
+	private JRadioButtonMenuItem rdbtnmntmGrande;
+	private JRadioButtonMenuItem rdbtnmntmMediana;
+	private JRadioButtonMenuItem rdbtnmntmPequeña;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -69,26 +76,50 @@ public class VentanaLogin {
 		lblContrasea.setBounds(149, 248, 174, 16);
 		Login.getContentPane().add(lblContrasea);
 		
+		pnlBotones = new JPanel();
+		pnlBotones.setBounds(0, 417, 986, 102);
+		Login.getContentPane().add(pnlBotones);
+		
 		JButton btnNewButton = new JButton("ENTRAR");
+		pnlBotones.add(btnNewButton);
+		
+		btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				user.setText("");
+				pass.setText("");
+			}
+		});
+		pnlBotones.add(btnLimpiar);
 		btnNewButton.addActionListener(new BtnNewButtonActionListener());
-	
-	
-		btnNewButton.setBounds(409, 330, 126, 49);
-		Login.getContentPane().add(btnNewButton);
 		
 		menuBar = new JMenuBar();
 		Login.setJMenuBar(menuBar);
 		
 		mnOpciones = new JMenu("Opciones");
+		mnOpciones.setMnemonic('O');
 		menuBar.add(mnOpciones);
 		
 		mntmLetra = new JMenuItem("Letra");
 		mnOpciones.add(mntmLetra);
 		
-		mntmFuente = new JMenuItem("Fuente");
-		mnOpciones.add(mntmFuente);
+		mnTamañoFuente = new JMenu("Tamaño de Fuente");
+		mnOpciones.add(mnTamañoFuente);
+		
+		rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
+		buttonGroup.add(rdbtnmntmGrande);
+		mnTamañoFuente.add(rdbtnmntmGrande);
+		
+		rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
+		buttonGroup.add(rdbtnmntmMediana);
+		mnTamañoFuente.add(rdbtnmntmMediana);
+		
+		rdbtnmntmPequeña = new JRadioButtonMenuItem("Pequeña");
+		buttonGroup.add(rdbtnmntmPequeña);
+		mnTamañoFuente.add(rdbtnmntmPequeña);
 		
 		mnAyuda = new JMenu("Ayuda");
+		mnAyuda.setMnemonic('A');
 		menuBar.add(mnAyuda);
 		
 		mntmAcercaDe = new JMenuItem("Acerca de ");
@@ -121,4 +152,6 @@ public class VentanaLogin {
 			
 		}
 	}
+	
+
 }
