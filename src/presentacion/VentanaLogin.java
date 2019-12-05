@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Cursor;
+import java.awt.Frame;
 
 public class VentanaLogin {
 
@@ -32,6 +34,9 @@ public class VentanaLogin {
 	private JRadioButtonMenuItem rdbtnmntmCalibri;
 	private JRadioButtonMenuItem rdbtnmntmTimesNewRoman;
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
+	private String letra;
+	private int tamanio=12;
+	private JButton btnNewButton;
 
 	/**
 	 * Launch the application.
@@ -61,6 +66,9 @@ public class VentanaLogin {
 	 */
 	private void initialize() {
 		Login = new JFrame();
+		Login.setTitle("LOGIN");
+		Login.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+		Login.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png")));
 		Login.setBounds(100, 100, 1012, 590);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -89,7 +97,7 @@ public class VentanaLogin {
 		Login.getContentPane().add(pnlBotones);
 		pnlBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
-		JButton btnNewButton = new JButton("ENTRAR");
+		btnNewButton = new JButton("ENTRAR");
 		pnlBotones.add(btnNewButton);
 		
 		btnLimpiar = new JButton("LIMPIAR");
@@ -115,10 +123,15 @@ public class VentanaLogin {
 		rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
 		rdbtnmntmGrande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font(null, Font.PLAIN, 16));
-				lblContraseña.setFont(new Font(null, Font.PLAIN, 16));
-				btnNewButton.setFont(new Font(null, Font.PLAIN, 16));
-				btnLimpiar.setFont(new Font(null, Font.PLAIN, 16));
+			tamanio=16;
+			lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+			lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+			lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+			lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
 		buttonGroup.add(rdbtnmntmGrande);
@@ -127,11 +140,15 @@ public class VentanaLogin {
 		rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
 		rdbtnmntmMediana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font(null, Font.PLAIN, 12));
-				lblContraseña.setFont(new Font(null, Font.PLAIN, 12));
-				btnNewButton.setFont(new Font(null, Font.PLAIN, 12));
-				btnLimpiar.setFont(new Font(null, Font.PLAIN, 12));
-				
+				tamanio=12;
+				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
 		buttonGroup.add(rdbtnmntmMediana);
@@ -140,10 +157,16 @@ public class VentanaLogin {
 		rdbtnmntmPequeña = new JRadioButtonMenuItem("Pequeña");
 		rdbtnmntmPequeña.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font(null, Font.PLAIN, 10));
-				lblContraseña.setFont(new Font(null, Font.PLAIN, 10));
-				btnNewButton.setFont(new Font(null, Font.PLAIN, 10));
-				btnLimpiar.setFont(new Font(null, Font.PLAIN, 10));
+				tamanio=10;
+				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+			
 			}
 		});
 		buttonGroup.add(rdbtnmntmPequeña);
@@ -155,10 +178,15 @@ public class VentanaLogin {
 		rdbtnmntmArial = new JRadioButtonMenuItem("Arial");
 		rdbtnmntmArial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font("Arial", Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font("Arial", Font.PLAIN, lblContraseña.getFont().getSize()));
-				btnNewButton.setFont(new Font("Arial", Font.PLAIN, btnNewButton.getFont().getSize()));
-				btnLimpiar.setFont(new Font("Arial", Font.PLAIN, btnLimpiar.getFont().getSize()));
+			letra="Arial";
+			lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+			lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+			lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+			lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
 		buttonGroup_1.add(rdbtnmntmArial);
@@ -167,10 +195,15 @@ public class VentanaLogin {
 		rdbtnmntmCalibri = new JRadioButtonMenuItem("Calibri");
 		rdbtnmntmCalibri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font("Calibri", Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font("Calibri", Font.PLAIN, lblContraseña.getFont().getSize()));
-				btnNewButton.setFont(new Font("Calibri", Font.PLAIN, btnNewButton.getFont().getSize()));
-				btnLimpiar.setFont(new Font("Calibri", Font.PLAIN, btnLimpiar.getFont().getSize()));
+				letra="Calibri";
+				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
 		buttonGroup_1.add(rdbtnmntmCalibri);
@@ -179,12 +212,18 @@ public class VentanaLogin {
 		rdbtnmntmTimesNewRoman = new JRadioButtonMenuItem("Times New Roman");
 		rdbtnmntmTimesNewRoman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				lblUsuario.setFont(new Font("Times New Roman", Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font("Times New Roman", Font.PLAIN, lblContraseña.getFont().getSize()));
-				btnNewButton.setFont(new Font("Times New Roman", Font.PLAIN, btnNewButton.getFont().getSize()));
-				btnLimpiar.setFont(new Font("Times New Roman", Font.PLAIN, btnLimpiar.getFont().getSize()));
+				letra="Times New Roman";
+				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
+				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
+				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
+	
 		buttonGroup_1.add(rdbtnmntmTimesNewRoman);
 		mnFuente.add(rdbtnmntmTimesNewRoman);
 		
@@ -196,8 +235,7 @@ public class VentanaLogin {
 		mnAyuda.add(mntmAcercaDe);
 	}
 	
-		
-	
+
 	
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
