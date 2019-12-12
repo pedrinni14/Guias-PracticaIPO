@@ -1,0 +1,6 @@
+Juan,03456734D,23,Varon
+Pepe,090909090J,29,Varon
+Lola,909999987X,32,Mujer
+Carmen,87878787F,22,Mujer
+Lorena,87748478K,35,Mujer
+Raul,787878888P,43,Varon
