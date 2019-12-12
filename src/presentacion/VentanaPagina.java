@@ -50,7 +50,6 @@ public class VentanaPagina {
 	private JPanel pnlGuiasTuristicos;
 	private JPanel pnlCreaTuRuta;
 	private Button button;
-	private JButton btnNewButton;
 	
 
 	/**
@@ -135,13 +134,10 @@ public class VentanaPagina {
 		pnlHistorial = new JPanel();
 		tabbedPane.addTab("Historial", null, pnlHistorial, null);
 		
-		btnNewButton = new JButton("New button");
-		pnlHistorial.add(btnNewButton);
-		
 		pnlCircuitosDisponibles = new JPanel();
 		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
 		
-		pnlGuiasTuristicos = new PanelAñdirGuias();
+		pnlGuiasTuristicos = new JPanel();
 		tabbedPane.addTab("Guias Turisticos", null, pnlGuiasTuristicos, null);
 		pnlGuiasTuristicos.setLayout(new BorderLayout(0, 0));
 		
