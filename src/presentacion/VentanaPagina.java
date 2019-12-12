@@ -27,7 +27,7 @@ import javax.swing.AbstractListModel;
 
 
 public class VentanaPagina {
-	private static ArrayList<Guia> listaGuia = Guia.generarGuia();
+	
 	public JFrame frmAplicacion;
 	private JMenuBar menuBar;
 	private JMenu menu;
@@ -51,8 +51,6 @@ public class VentanaPagina {
 	private JPanel pnlCreaTuRuta;
 	private Button button;
 	private JButton btnNewButton;
-	private JPanel panel_2;
-	private JList list;
 	
 
 	/**
@@ -143,25 +141,9 @@ public class VentanaPagina {
 		pnlCircuitosDisponibles = new JPanel();
 		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
 		
-		pnlGuiasTuristicos = new JPanel();
+		pnlGuiasTuristicos = new PanelAñdirGuias();
 		tabbedPane.addTab("Guias Turisticos", null, pnlGuiasTuristicos, null);
 		pnlGuiasTuristicos.setLayout(new BorderLayout(0, 0));
-		
-		panel_2 = new JPanel();
-		pnlGuiasTuristicos.add(panel_2, BorderLayout.WEST);
-		panel_2.setLayout(new BorderLayout(0, 0));
-		
-		list = new JList();
-		list.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Pedrito  Millan", "Jesusito Gamero Tello"};
-			public int getSize() {
-				return values.length;
-			}
-			public Object getElementAt(int index) {
-				return values[index];
-			}
-		});
-		panel_2.add(list, BorderLayout.CENTER);
 		
 		pnlCreaTuRuta = new JPanel();
 		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
