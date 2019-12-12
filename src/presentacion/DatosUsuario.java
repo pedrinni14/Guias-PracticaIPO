@@ -3,6 +3,7 @@ package presentacion;
 public class DatosUsuario {
 
 	// Clase para manejar datos de el Login, por ahora es un basico ejemplo 
+	public String usuario ="perico";
 	
 	public int  Existe(String nombre, String Contraseña) {
 		
@@ -14,5 +15,16 @@ public class DatosUsuario {
 		}else return 0 ;
 	
 	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario2(String usuario) {
+		this.usuario = usuario;
+	}
+
+	
+	
 
 }

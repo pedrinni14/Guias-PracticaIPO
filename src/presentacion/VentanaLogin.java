@@ -10,17 +10,18 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
 import java.awt.Frame;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 public class VentanaLogin {
 
 	public  JFrame Login;
 	private JTextField user;
-	private JTextField pass;
 	private JMenuBar menuBar;
 	private JMenu mnOpciones;
 	private JMenu mnAyuda;
 	private JMenuItem mntmAcercaDe;
-	private JPanel pnlBotones;
 	private JButton btnLimpiar;
 	private JMenu mnTamañoFuente;
 	private JRadioButtonMenuItem rdbtnmntmMediana;
@@ -37,6 +38,8 @@ public class VentanaLogin {
 	private String letra;
 	private int tamanio=12;
 	private JButton btnNewButton;
+	private JPasswordField pass;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -72,43 +75,76 @@ public class VentanaLogin {
 		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png")));
 		Login.setBounds(100, 100, 1012, 590);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Login.getContentPane().setLayout(null);
+		GridBagLayout gridBagLayout = new GridBagLayout();
+		gridBagLayout.columnWidths = new int[]{323, 0, 282, 0, 187, 182, 0};
+		gridBagLayout.rowHeights = new int[]{25, 152, 30, 39, 30, 141, 102, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		Login.getContentPane().setLayout(gridBagLayout);
+		
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"}));
+		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.anchor = GridBagConstraints.NORTHWEST;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.gridx = 4;
+		gbc_comboBox.gridy = 0;
+		Login.getContentPane().add(comboBox, gbc_comboBox);
+		
+		JLabel lblUsuario_1 = new JLabel("USUARIO");
+		GridBagConstraints gbc_lblUsuario_1 = new GridBagConstraints();
+		gbc_lblUsuario_1.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblUsuario_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblUsuario_1.gridx = 0;
+		gbc_lblUsuario_1.gridy = 2;
+		Login.getContentPane().add(lblUsuario_1, gbc_lblUsuario_1);
 		
 		user = new JTextField();
-		user.setBounds(335, 177, 282, 30);
-		Login.getContentPane().add(user);
+		GridBagConstraints gbc_user = new GridBagConstraints();
+		gbc_user.fill = GridBagConstraints.BOTH;
+		gbc_user.insets = new Insets(0, 0, 5, 5);
+		gbc_user.gridx = 2;
+		gbc_user.gridy = 2;
+		Login.getContentPane().add(user, gbc_user);
 		user.setColumns(10);
 		
-		pass = new JTextField();
-		pass.setBounds(335, 248, 282, 26);
-		Login.getContentPane().add(pass);
-		pass.setColumns(10);
+		JLabel lblContraseña_1 = new JLabel("CONTRASEÑA");
+		GridBagConstraints gbc_lblContraseña_1 = new GridBagConstraints();
+		gbc_lblContraseña_1.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblContraseña_1.insets = new Insets(0, 0, 5, 5);
+		gbc_lblContraseña_1.gridx = 0;
+		gbc_lblContraseña_1.gridy = 4;
+		Login.getContentPane().add(lblContraseña_1, gbc_lblContraseña_1);
 		
-		JLabel lblUsuario = new JLabel("USUARIO");
-		lblUsuario.setBounds(149, 177, 174, 16);
-		Login.getContentPane().add(lblUsuario);
-		
-		JLabel lblContraseña = new JLabel("CONTRASEÑA");
-		lblContraseña.setBounds(149, 248, 174, 16);
-		Login.getContentPane().add(lblContraseña);
-		
-		pnlBotones = new JPanel();
-		pnlBotones.setBounds(0, 417, 986, 102);
-		Login.getContentPane().add(pnlBotones);
-		pnlBotones.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		pass = new JPasswordField();
+		GridBagConstraints gbc_pass = new GridBagConstraints();
+		gbc_pass.fill = GridBagConstraints.BOTH;
+		gbc_pass.insets = new Insets(0, 0, 5, 5);
+		gbc_pass.gridx = 2;
+		gbc_pass.gridy = 4;
+		Login.getContentPane().add(pass, gbc_pass);
 		
 		btnNewButton = new JButton("ENTRAR");
-		pnlBotones.add(btnNewButton);
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 5;
+		Login.getContentPane().add(btnNewButton, gbc_btnNewButton);
+		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 		
 		btnLimpiar = new JButton("LIMPIAR");
+		GridBagConstraints gbc_btnLimpiar = new GridBagConstraints();
+		gbc_btnLimpiar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnLimpiar.gridx = 3;
+		gbc_btnLimpiar.gridy = 5;
+		Login.getContentPane().add(btnLimpiar, gbc_btnLimpiar);
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				user.setText("");
 				pass.setText("");
 			}
 		});
-		pnlBotones.add(btnLimpiar);
-		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 		
 		menuBar = new JMenuBar();
 		Login.setJMenuBar(menuBar);
@@ -124,12 +160,12 @@ public class VentanaLogin {
 		rdbtnmntmGrande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			tamanio=16;
-			lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-			lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-			lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-			lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
@@ -141,12 +177,12 @@ public class VentanaLogin {
 		rdbtnmntmMediana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tamanio=12;
-				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
@@ -158,12 +194,12 @@ public class VentanaLogin {
 		rdbtnmntmPequeña.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tamanio=10;
-				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			
@@ -179,12 +215,12 @@ public class VentanaLogin {
 		rdbtnmntmArial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			letra="Arial";
-			lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-			lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-			lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-			lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
@@ -196,12 +232,12 @@ public class VentanaLogin {
 		rdbtnmntmCalibri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				letra="Calibri";
-				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
@@ -213,12 +249,12 @@ public class VentanaLogin {
 		rdbtnmntmTimesNewRoman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				letra="Times New Roman";
-				lblUsuario.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
+				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
-				lblUsuario.setFont(new Font(letra, Font.PLAIN, lblUsuario.getFont().getSize()));
-				lblContraseña.setFont(new Font(letra, Font.PLAIN, lblContraseña.getFont().getSize()));
+				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
+				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
@@ -244,10 +280,12 @@ public class VentanaLogin {
 			// Codigo sucio hay que mejorarlo 
 			DatosUsuario d =new DatosUsuario(); 
 		if (d.Existe(user.getText(), pass.getText())==1) {
+			String nombre=user.getText();
 			
+			d.usuario=nombre;
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
-			Vp.frame.setVisible(true);
+			Vp.frmAplicacion.setVisible(true);
 			
 			Login.dispose();//
 		}else {
@@ -260,6 +298,4 @@ public class VentanaLogin {
 			
 		}
 	}
-	
-
 }
