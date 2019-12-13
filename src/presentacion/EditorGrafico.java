@@ -79,25 +79,25 @@ public class EditorGrafico extends JPanel {
 			}
 			{
 				btnDestino = new JButton("");
-				btnDestino.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/nubesYClaros.png")));
+				btnDestino.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/location-pin.png")));
 				btnDestino.addActionListener(new BtnDestinoActionListener());
 				tbBarraDibujo.add(btnDestino);
 			}
 			{
 				btnOrigen = new JButton("");
-				btnOrigen.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/soleado.png")));
+				btnOrigen.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/capitol-building.png")));
 				btnOrigen.addActionListener(new BtnOrigenActionListener());
 				tbBarraDibujo.add(btnOrigen);
 			}
 			{
 				btnRectangulo = new JButton("");
-				btnRectangulo.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/rectangulo.png")));
+				btnRectangulo.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/restaurant.png")));
 				btnRectangulo.addActionListener(new BtnRectanguloActionListener());
 				tbBarraDibujo.add(btnRectangulo);
 			}
 			{
 				btnAnotacion = new JButton("");
-				btnAnotacion.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/aniadirAnotacion.png")));
+				btnAnotacion.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/speech-bubble.png")));
 				btnAnotacion.addActionListener(new BtnAnotacionActionListener());
 				tbBarraDibujo.add(btnAnotacion);
 			}
@@ -114,12 +114,12 @@ public class EditorGrafico extends JPanel {
 		scrollPane.setViewportView(miAreaDibujo);
 		
 		//Creación de imágenes y cursores
-		imagDestino = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/nubesYClaros.png"));
-		imagOrigen = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/soleado.png"));
-		imagRectangulo = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/rectangulo.png"));
-		imagTexto = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/aniadirAnotacion.png"));
-		imagCursorDestino = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/nubesYClaros.png"));
-		imagCursorOrigen = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/soleado.png"));
+		imagDestino = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/location-pin.png"));
+		imagOrigen = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/capitol-building.png"));
+		imagRectangulo = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/restaurant.png"));
+		imagTexto = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/speech-bubble.png"));
+		imagCursorDestino = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/location-pin.png"));
+		imagCursorOrigen = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/capitol-building.png"));
 		// Creación de los cursores
 		cursorRectangulo = Toolkit.getDefaultToolkit().createCustomCursor(imagRectangulo, new Point(0, 0), "CURSOR_RECTANGULO");
 		cursorTexto = Toolkit.getDefaultToolkit().createCustomCursor(imagTexto, new Point(0, 0), "CURSOR_TEXTO");
