@@ -134,14 +134,14 @@ public class VentanaPagina {
 		pnlHistorial = new JPanel();
 		tabbedPane.addTab("Historial", null, pnlHistorial, null);
 		
-		pnlCircuitosDisponibles = new JPanel();
+		pnlCircuitosDisponibles = new PanelCircuitos();
 		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
 		
 		pnlGuiasTuristicos = new JPanel();
 		tabbedPane.addTab("Guias Turisticos", null, pnlGuiasTuristicos, null);
 		pnlGuiasTuristicos.setLayout(new BorderLayout(0, 0));
 		
-		pnlCreaTuRuta = new JPanel();
+		pnlCreaTuRuta = new EditorGrafico();
 		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
 		
 		panel_1 = new JPanel();
