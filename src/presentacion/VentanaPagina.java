@@ -50,6 +50,7 @@ public class VentanaPagina {
 	private JPanel pnlGuiasTuristicos;
 	private JPanel pnlCreaTuRuta;
 	private Button button;
+	private JPanel pnlGuias;
 	
 
 	/**
@@ -82,7 +83,7 @@ public class VentanaPagina {
 		frmAplicacion = new JFrame();
 		frmAplicacion.setTitle("Aplicacion");
 		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
-		frmAplicacion.setBounds(100, 100, 1044, 551);
+		frmAplicacion.setBounds(100, 100, 982, 809);
 		frmAplicacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
@@ -137,12 +138,13 @@ public class VentanaPagina {
 		pnlCircuitosDisponibles = new JPanel();
 		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
 		
-		pnlGuiasTuristicos = new JPanel();
-		tabbedPane.addTab("Guias Turisticos", null, pnlGuiasTuristicos, null);
-		pnlGuiasTuristicos.setLayout(new BorderLayout(0, 0));
 		
+	
 		pnlCreaTuRuta = new JPanel();
 		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
+		
+		pnlGuias = new PanelGuias();
+		tabbedPane.addTab("Guias Turisticos", null, pnlGuias, null);
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
