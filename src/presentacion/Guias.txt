@@ -4,3 +4,5 @@ Lola,909999987X,32,Mujer
 Carmen,87878787F,22,Mujer
 Lorena,87748478K,35,Mujer
 Raul,787878888P,43,Varon
+pedro,0898989f,23,Varon 
+Jesus,4567890d,22,Varon 
