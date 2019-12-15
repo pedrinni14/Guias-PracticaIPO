@@ -110,6 +110,7 @@ public class EditorGrafico extends JPanel {
 		miAreaDibujo = new MiAreaDibujo();
 		//miAreaDibujo.addMouseMotionListener(new MiAreaDibujoMouseMotionListener());
 		miAreaDibujo.addMouseListener(new MiAreaDibujoMouseListener());
+		imagen = new ImageIcon(EditorGrafico.class.getResource("/presentacion/mapa-ciudad-real.jpg"));
 		miAreaDibujo.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/mapa-ciudad-real.jpg")));
 		scrollPane.setViewportView(miAreaDibujo);
 		
