@@ -41,7 +41,7 @@ public class EditorGrafico extends JPanel {
 	int modo = -1;
 	private final int DESTINO = 1;
 	private final int ORIGEN = 2;
-	private final int RECTANGULO = 3;
+	private final int COMIDA = 3;
 	private final int TEXTO = 4;
 	
 	//Cursores e imagenes
@@ -108,10 +108,11 @@ public class EditorGrafico extends JPanel {
 		}
 		//Creación del área de dibujo personalizada
 		miAreaDibujo = new MiAreaDibujo();
-		miAreaDibujo.addMouseMotionListener(new MiAreaDibujoMouseMotionListener());
+		//miAreaDibujo.addMouseMotionListener(new MiAreaDibujoMouseMotionListener());
 		miAreaDibujo.addMouseListener(new MiAreaDibujoMouseListener());
-		miAreaDibujo.setIcon(null);
+		miAreaDibujo.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/mapa-ciudad-real.jpg")));
 		scrollPane.setViewportView(miAreaDibujo);
+		
 		
 		//Creación de imágenes y cursores
 		imagDestino = Toolkit.getDefaultToolkit().getImage(EditorGrafico.class.getResource("/presentacion/location-pin.png"));
@@ -125,8 +126,11 @@ public class EditorGrafico extends JPanel {
 		cursorTexto = Toolkit.getDefaultToolkit().createCustomCursor(imagTexto, new Point(0, 0), "CURSOR_TEXTO");
 		cursorDestino = Toolkit.getDefaultToolkit().createCustomCursor(imagCursorDestino, new Point(0, 0), "CURSOR_DESTINO");
 		cursorOrigen = Toolkit.getDefaultToolkit().createCustomCursor(imagCursorOrigen, new Point(0, 0), "CURSOR_ORIGEN");
+		
+		
 	}
-
+	
+	
 	private class BtnCargarMapaActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			JFileChooser fcAbrir = new JFileChooser();
@@ -139,6 +143,8 @@ public class EditorGrafico extends JPanel {
 
 		}
 	}
+
+	
 	private class BtnDestinoActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
 			modo = DESTINO;
@@ -153,7 +159,7 @@ public class EditorGrafico extends JPanel {
 	}
 	private class BtnRectanguloActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent arg0) {
-			modo = RECTANGULO;
+			modo = COMIDA;
 			miAreaDibujo.setCursor(cursorRectangulo);
 		}
 	}
@@ -181,8 +187,9 @@ public class EditorGrafico extends JPanel {
 			miAreaDibujo.addObjetoGrafico(new ImagenGrafico(x,y,imagOrigen));
 			miAreaDibujo.repaint();
 			break;
-			case RECTANGULO:
-				miAreaDibujo.addObjetoGrafico(new RectanguloGrafico(x,y,x,y,Color.RED));
+			case COMIDA:
+				miAreaDibujo.addObjetoGrafico(new ImagenGrafico(x,y,imagRectangulo));
+				miAreaDibujo.repaint();
 			break;
 
 			case TEXTO:
@@ -205,16 +212,16 @@ public class EditorGrafico extends JPanel {
 
 		}
 	}
-	private class MiAreaDibujoMouseMotionListener extends MouseMotionAdapter {
-		@Override
-		public void mouseDragged(MouseEvent arg0) {
-			if (modo == RECTANGULO && imagen!=null) {
-				((RectanguloGrafico)miAreaDibujo.getUltimoObjetoGrafico()).setX1(arg0.getX());
-				((RectanguloGrafico)miAreaDibujo.getUltimoObjetoGrafico()).setY1(arg0.getY());
-				miAreaDibujo.repaint();
-				}
-
-		}
-	}
+//	private class MiAreaDibujoMouseMotionListener extends MouseMotionAdapter {
+//		@Override
+//		public void mouseDragged(MouseEvent arg0) {
+//			if (modo == RECTANGULO && imagen!=null) {
+//				((RectanguloGrafico)miAreaDibujo.getUltimoObjetoGrafico()).setX1(arg0.getX());
+//				((RectanguloGrafico)miAreaDibujo.getUltimoObjetoGrafico()).setY1(arg0.getY());
+//				miAreaDibujo.repaint();
+//				}
+//
+//		}
+//	}
 	
 	}
