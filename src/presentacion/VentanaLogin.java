@@ -283,6 +283,7 @@ public class VentanaLogin {
 			String nombre=user.getText();
 			
 			d.usuario=nombre;
+			d.UsuarioConectado( nombre);
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.frmAplicacion.setVisible(true);

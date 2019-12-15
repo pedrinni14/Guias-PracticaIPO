@@ -3,6 +3,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.ArrayList;
 
 import javax.swing.JMenuBar;
@@ -156,12 +159,13 @@ public class VentanaPagina {
 		Nombre = new JLabel("(Nombre)");
 		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 37));
 		DatosUsuario d =new DatosUsuario();
-		Nombre.setText("Pedro Millan Alvarez");
+		//Nombre.setText("Pedro Millan Alvarez");
 		panel_1.add(Nombre, BorderLayout.WEST);
 		
 		lblFoto = new JLabel("");
 		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
 		panel_1.add(lblFoto, BorderLayout.EAST);
+		UserConectado();
 	}
 
 	public JFrame getFrame() {
@@ -171,4 +175,33 @@ public class VentanaPagina {
 	public void setFrame(JFrame frame) {
 		this.frmAplicacion = frame;
 	}
-}
+	public void UserConectado() {
+		  File archivo = null;
+	      FileReader fr = null;
+	      BufferedReader br = null;
+
+	      try {
+	         
+	         archivo = new File ("src/presentacion/Usuario.txt");
+	         fr = new FileReader (archivo);
+	         br = new BufferedReader(fr);
+	         String linea;
+	         while((linea=br.readLine())!=null)
+	        	 Nombre.setText(linea);
+	      }
+	      catch(Exception e){
+	         e.printStackTrace();
+	      }finally{
+	        
+	         try{                    
+	            if( null != fr ){   
+	               fr.close();     
+	            }                  
+	         }catch (Exception e2){ 
+	            e2.printStackTrace();
+	         }
+	      }
+	   }
+		
+	}
+

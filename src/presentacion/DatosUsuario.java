@@ -1,9 +1,12 @@
 package presentacion;
 
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 public class DatosUsuario {
 
-	// Clase para manejar datos de el Login, por ahora es un basico ejemplo 
-	public String usuario ="perico";
+	
+	public String usuario ="Pedro";
 	
 	public int  Existe(String nombre, String Contraseña) {
 		
@@ -14,6 +17,35 @@ public class DatosUsuario {
 				return -1;
 		}else return 0 ;
 	
+	}
+	public void UsuarioConectado(String nombre) {
+		{
+	        FileWriter fichero = null;
+	        PrintWriter pw = null;
+	        try
+	        {
+	            fichero = new FileWriter("src/presentacion/Usuario.txt");
+	            pw = new PrintWriter(fichero);
+
+	            if(nombre.equals("jesus") ) {
+	            	 pw.println("Jesús Gamero Tello");
+	            }
+	            if ( nombre.equals("pedro")) {
+	            	 pw.println("Pedro Millán Álvarez");
+	            }
+	               
+
+	        } catch (Exception e) {
+	            e.printStackTrace();
+	        } finally {
+	           try {
+	           if (null != fichero)
+	              fichero.close();
+	           } catch (Exception e2) {
+	              e2.printStackTrace();
+	           }
+	        }
+	    }
 	}
 
 	public String getUsuario() {
