@@ -56,6 +56,7 @@ public class VentanaPagina {
 	private JPanel pnlCreaTuRuta;
 
 	private JLabel lblFoto;
+	private JPanel pnlOfertas;
 
 	
 
@@ -151,6 +152,9 @@ public class VentanaPagina {
 		
 		pnlGuias = new PanelGuias();
 		tabbedPane.addTab("Guias Turisticos", null, pnlGuias, null);
+		
+		pnlOfertas = new PanelOfertas();
+		tabbedPane.addTab("Ofertas y Promociones", null, pnlOfertas, null);
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
