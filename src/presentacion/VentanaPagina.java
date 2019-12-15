@@ -24,6 +24,8 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Button;
 import javax.swing.AbstractListModel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 
 public class VentanaPagina {
@@ -49,8 +51,9 @@ public class VentanaPagina {
 	private JPanel pnlCircuitosDisponibles;
 	private JPanel pnlGuiasTuristicos;
 	private JPanel pnlCreaTuRuta;
-	private Button button;
-	private JPanel pnlGuias;
+
+	private JLabel lblFoto;
+
 	
 
 	/**
@@ -135,12 +138,12 @@ public class VentanaPagina {
 		pnlHistorial = new JPanel();
 		tabbedPane.addTab("Historial", null, pnlHistorial, null);
 		
-		pnlCircuitosDisponibles = new JPanel();
+		pnlCircuitosDisponibles = new PanelCircuitos();
 		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
 		
-		
-	
-		pnlCreaTuRuta = new JPanel();
+
+		pnlCreaTuRuta = new EditorGrafico();
+
 		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
 		
 		pnlGuias = new PanelGuias();
@@ -151,13 +154,14 @@ public class VentanaPagina {
 		panel_1.setLayout(new BorderLayout(0, 0));
 		
 		Nombre = new JLabel("(Nombre)");
+		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 37));
 		DatosUsuario d =new DatosUsuario();
-		System.out.println(d.getUsuario());
-		Nombre.setText(d.getUsuario());
+		Nombre.setText("Pedro Millan Alvarez");
 		panel_1.add(Nombre, BorderLayout.WEST);
 		
-		button = new Button("New button");
-		panel_1.add(button, BorderLayout.EAST);
+		lblFoto = new JLabel("");
+		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
+		panel_1.add(lblFoto, BorderLayout.EAST);
 	}
 
 	public JFrame getFrame() {
