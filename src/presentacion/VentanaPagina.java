@@ -49,7 +49,7 @@ public class VentanaPagina {
 	private JTabbedPane tabbedPane;
 	private JPanel pnlHistorial;
 	private JPanel pnlCircuitosDisponibles;
-	private JPanel pnlGuiasTuristicos;
+	private JPanel pnlGuias;
 	private JPanel pnlCreaTuRuta;
 
 	private JLabel lblFoto;
