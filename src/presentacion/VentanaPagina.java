@@ -29,6 +29,13 @@ import java.awt.Button;
 import javax.swing.AbstractListModel;
 import javax.swing.ImageIcon;
 import java.awt.Font;
+import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
+import java.awt.Insets;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerDateModel;
+import java.util.Date;
+import java.util.Calendar;
 
 
 public class VentanaPagina {
@@ -48,7 +55,6 @@ public class VentanaPagina {
 	private JMenuItem menuItem;
 	private JPanel panel;
 	private JPanel panel_1;
-	private JLabel Nombre;
 	private JTabbedPane tabbedPane;
 	private JPanel pnlHistorial;
 	private JPanel pnlCircuitosDisponibles;
@@ -57,6 +63,10 @@ public class VentanaPagina {
 
 	private JLabel lblFoto;
 	private JPanel pnlOfertas;
+	private JLabel Nombre;
+	private JButton btnCerrarSesion;
+	private JLabel lblUltimaConexion;
+	private JSpinner spinner;
 
 	
 
@@ -158,17 +168,54 @@ public class VentanaPagina {
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
-		panel_1.setLayout(new BorderLayout(0, 0));
-		
-		Nombre = new JLabel("(Nombre)");
-		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 37));
 		DatosUsuario d =new DatosUsuario();
-		//Nombre.setText("Pedro Millan Alvarez");
-		panel_1.add(Nombre, BorderLayout.WEST);
+		GridBagLayout gbl_panel_1 = new GridBagLayout();
+		gbl_panel_1.columnWidths = new int[]{156, 539, 0, 0, 64, 0, 0};
+		gbl_panel_1.rowHeights = new int[]{0, 64, 0, 0, 0, 0};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		panel_1.setLayout(gbl_panel_1);
 		
 		lblFoto = new JLabel("");
 		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
-		panel_1.add(lblFoto, BorderLayout.EAST);
+		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFoto.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblFoto.gridx = 2;
+		gbc_lblFoto.gridy = 1;
+		panel_1.add(lblFoto, gbc_lblFoto);
+		
+		Nombre = new JLabel("(nombre)");
+		GridBagConstraints gbc_Nombre = new GridBagConstraints();
+		gbc_Nombre.gridwidth = 2;
+		gbc_Nombre.insets = new Insets(0, 0, 5, 5);
+		gbc_Nombre.gridx = 3;
+		gbc_Nombre.gridy = 1;
+		panel_1.add(Nombre, gbc_Nombre);
+		
+		lblUltimaConexion = new JLabel("Ultima Conexion");
+		GridBagConstraints gbc_lblUltimaConexion = new GridBagConstraints();
+		gbc_lblUltimaConexion.insets = new Insets(0, 0, 5, 5);
+		gbc_lblUltimaConexion.gridx = 2;
+		gbc_lblUltimaConexion.gridy = 2;
+		panel_1.add(lblUltimaConexion, gbc_lblUltimaConexion);
+		
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerDateModel(new Date(1576450800000L), null, null, Calendar.DAY_OF_YEAR));
+		GridBagConstraints gbc_spinner = new GridBagConstraints();
+		gbc_spinner.gridwidth = 2;
+		gbc_spinner.insets = new Insets(0, 0, 5, 5);
+		gbc_spinner.gridx = 3;
+		gbc_spinner.gridy = 2;
+		panel_1.add(spinner, gbc_spinner);
+		
+		btnCerrarSesion = new JButton("Cerrar Sesion");
+		GridBagConstraints gbc_btnCerrarSesion = new GridBagConstraints();
+		gbc_btnCerrarSesion.gridwidth = 2;
+		gbc_btnCerrarSesion.insets = new Insets(0, 0, 0, 5);
+		gbc_btnCerrarSesion.gridx = 3;
+		gbc_btnCerrarSesion.gridy = 4;
+		panel_1.add(btnCerrarSesion, gbc_btnCerrarSesion);
 		UserConectado();
 	}
 
