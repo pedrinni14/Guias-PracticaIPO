@@ -149,7 +149,7 @@ public class VentanaPagina {
 		tabbedPane = new JTabbedPane(JTabbedPane.TOP);
 		panel.add(tabbedPane);
 		
-		pnlHistorial = new JPanel();
+		pnlHistorial = new PanelHistorial();
 		tabbedPane.addTab("Historial", null, pnlHistorial, null);
 		
 		pnlCircuitosDisponibles = new PanelCircuitos();
@@ -170,7 +170,7 @@ public class VentanaPagina {
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
 		DatosUsuario d =new DatosUsuario();
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{156, 539, 0, 0, 64, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{156, 427, 0, 0, 64, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 64, 0, 0, 0, 0};
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
