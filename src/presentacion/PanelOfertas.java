@@ -13,6 +13,7 @@ import java.awt.Dimension;
 import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import java.awt.TextField;
 
 public class PanelOfertas extends JPanel {
 	private JPanel pnlOfertas;
@@ -28,9 +29,9 @@ public class PanelOfertas extends JPanel {
 	private JButton btnAadir_1;
 	private JButton btnModificar_1;
 	private JButton btnBorrar_1;
-	private JTextField textNombre;
 	private JButton btnEnviar;
 	private JButton button;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -127,7 +128,7 @@ public class PanelOfertas extends JPanel {
 		panel_2 = new JPanel();
 		add(panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{69, 0, 0, 0, 0, 0};
+		gbl_panel_2.columnWidths = new int[]{69, 0, 0, 40, 0, 0};
 		gbl_panel_2.rowHeights = new int[]{31, 0, 0, 0, 0, 0};
 		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -141,18 +142,15 @@ public class PanelOfertas extends JPanel {
 		gbc_button.gridy = 1;
 		panel_2.add(button, gbc_button);
 		
-		textNombre = new JTextField();
-		textNombre.setText("");
-		textNombre.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textNombre.setEditable(false);
-		textNombre.setColumns(10);
-		GridBagConstraints gbc_textNombre = new GridBagConstraints();
-		gbc_textNombre.gridwidth = 3;
-		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textNombre.gridx = 1;
-		gbc_textNombre.gridy = 1;
-		panel_2.add(textNombre, gbc_textNombre);
+		textField = new JTextField();
+		GridBagConstraints gbc_textField = new GridBagConstraints();
+		gbc_textField.gridwidth = 3;
+		gbc_textField.insets = new Insets(0, 0, 5, 5);
+		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField.gridx = 1;
+		gbc_textField.gridy = 1;
+		panel_2.add(textField, gbc_textField);
+		textField.setColumns(10);
 		
 		btnEnviar = new JButton("Enviar");
 		GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
