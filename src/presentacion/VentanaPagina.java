@@ -36,6 +36,7 @@ import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
+import java.awt.Rectangle;
 
 
 public class VentanaPagina {
@@ -98,9 +99,11 @@ public class VentanaPagina {
 	 */
 	private void initialize() {
 		frmAplicacion = new JFrame();
+		frmAplicacion.setSize(new Dimension(700, 700));
+		frmAplicacion.setMinimumSize(new Dimension(900, 700));
 		frmAplicacion.setTitle("Aplicacion");
 		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
-		frmAplicacion.setBounds(100, 100, 982, 809);
+		frmAplicacion.setBounds(100, 100, 900, 700);
 		frmAplicacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
@@ -170,9 +173,9 @@ public class VentanaPagina {
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
 		DatosUsuario d =new DatosUsuario();
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
-		gbl_panel_1.columnWidths = new int[]{156, 427, 0, 0, 64, 0, 0};
+		gbl_panel_1.columnWidths = new int[]{156, 427, 0, 129, 64, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 64, 0, 0, 0, 0};
-		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
@@ -180,7 +183,7 @@ public class VentanaPagina {
 		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
 		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFoto.anchor = GridBagConstraints.NORTHWEST;
+		gbc_lblFoto.anchor = GridBagConstraints.NORTHEAST;
 		gbc_lblFoto.gridx = 2;
 		gbc_lblFoto.gridy = 1;
 		panel_1.add(lblFoto, gbc_lblFoto);
@@ -195,6 +198,7 @@ public class VentanaPagina {
 		
 		lblUltimaConexion = new JLabel("Ultima Conexion");
 		GridBagConstraints gbc_lblUltimaConexion = new GridBagConstraints();
+		gbc_lblUltimaConexion.anchor = GridBagConstraints.EAST;
 		gbc_lblUltimaConexion.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUltimaConexion.gridx = 2;
 		gbc_lblUltimaConexion.gridy = 2;
