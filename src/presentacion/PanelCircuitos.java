@@ -35,7 +35,6 @@ public class PanelCircuitos extends JPanel {
 	private JPanel pnlListaPedidos;
 	private JScrollPane scrollPane;
 	private JButton btnAadir;
-	private JButton btnModificar;
 	private JList list;
 	private JButton btnEliminar;
 	private JPanel panel;
@@ -56,18 +55,29 @@ public class PanelCircuitos extends JPanel {
 	private JRadioButton rdbtnNewRadioButton_1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblNewLabel;
-	private JSpinner spinner;
+	private JSpinner Apertura;
 	private JLabel lblNewLabel_1;
 	private JTextField textField_1;
-	private JButton btnNewButton;
-	private JButton button;
+	private JButton AñadirM;
+	private JButton EliminarM;
 	private JLabel lblNewLabel_2;
 	private JLabel lblNewLabel_3;
 	private JTextField textField_2;
 	private JTextField textField_3;
+	private JButton AñadirR;
+	private JButton ModificarR;
+	private JButton EliminarR;
+	private JButton ModificarM;
+	private JLabel lblNewLabel_4;
+	private JLabel lblNewLabel_5;
+	private JTextField textField_4;
+	private JTextField textField_5;
+	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
-	private JButton btnNewButton_3;
+	private JLabel lblNewLabel_6;
+	private JSpinner Cierre;
+
 
 	/**
 	 * Create the panel.
@@ -112,31 +122,23 @@ public class PanelCircuitos extends JPanel {
 		btnEliminar.addActionListener(new BtnEliminarActionListener());
 		GridBagConstraints gbc_btnEliminar = new GridBagConstraints();
 		gbc_btnEliminar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEliminar.gridx = 3;
+		gbc_btnEliminar.gridx = 4;
 		gbc_btnEliminar.gridy = 2;
 		pnlListaPedidos.add(btnEliminar, gbc_btnEliminar);
-		
-		btnModificar = new JButton("Modificar");
-		btnModificar.setMinimumSize(new Dimension(69, 23));
-		btnModificar.setMaximumSize(new Dimension(69, 23));
-		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
-		gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnModificar.gridx = 4;
-		gbc_btnModificar.gridy = 2;
-		pnlListaPedidos.add(btnModificar, gbc_btnModificar);
 		
 		panel = new JPanel();
 		add(panel, BorderLayout.CENTER);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[]{0, 215, 0, 0, 0};
-		gbl_panel.rowHeights = new int[]{0, 108, 0, 88, 0, 73, 0};
+		gbl_panel.rowHeights = new int[]{0, 135, 0, 126, 0, 124, 0, 0, 0};
 		gbl_panel.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel.setLayout(gbl_panel);
 		
 		scrollPane_1 = new JScrollPane();
 		scrollPane_1.addMouseListener(new MMouseListener());
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
+		gbc_scrollPane_1.gridheight = 2;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_1.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_1.gridx = 1;
@@ -148,7 +150,7 @@ public class PanelCircuitos extends JPanel {
 		M.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		M.addListSelectionListener(new List_1ListSelectionListener());
 		M.setModel(new AbstractListModel() {
-			String[] values = new String[] {"hola", "Adios"};
+			String[] values = new String[] {"Monumneto 1 ", "Monumento 2 "};
 			public int getSize() {
 				return values.length;
 			}
@@ -162,6 +164,7 @@ public class PanelCircuitos extends JPanel {
 		scrollPane_2 = new JScrollPane();
 		scrollPane_2.addMouseListener(new MMouseListener());
 		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
+		gbc_scrollPane_2.gridheight = 2;
 		gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_2.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_2.gridx = 1;
@@ -173,7 +176,7 @@ public class PanelCircuitos extends JPanel {
 		R.addListSelectionListener(new List_2ListSelectionListener());
 		
 		R.setModel(new AbstractListModel() {
-			String[] values = new String[] {"Adios", "444", "555", "555"};
+			String[] values = new String[] {"Restaurante 1 ", "Restaurante 2"};
 			public int getSize() {
 				return values.length;
 			}
@@ -187,13 +190,24 @@ public class PanelCircuitos extends JPanel {
 		scrollPane_3 = new JScrollPane();
 		scrollPane_3.addMouseListener(new MMouseListener());
 		GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
-		gbc_scrollPane_3.insets = new Insets(0, 0, 0, 5);
+		gbc_scrollPane_3.gridheight = 2;
+		gbc_scrollPane_3.insets = new Insets(0, 0, 5, 5);
 		gbc_scrollPane_3.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane_3.gridx = 1;
 		gbc_scrollPane_3.gridy = 5;
 		panel.add(scrollPane_3, gbc_scrollPane_3);
 		
 		T = new JList();
+		T.addListSelectionListener(new TListSelectionListener());
+		T.setModel(new AbstractListModel() {
+			String[] values = new String[] {"Tienda 1 ", "Tineda 2"};
+			public int getSize() {
+				return values.length;
+			}
+			public Object getElementAt(int index) {
+				return values[index];
+			}
+		});
 		T.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		T.setBorder(new TitledBorder(null, "Tiendas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_3.setViewportView(T);
@@ -207,9 +221,9 @@ public class PanelCircuitos extends JPanel {
 		Formulario.add(Monumento, "Monumentos");
 		GridBagLayout gbl_Monumento = new GridBagLayout();
 		gbl_Monumento.columnWidths = new int[]{97, 45, 55, 0, 0, 0, 0};
-		gbl_Monumento.rowHeights = new int[]{25, 0, 0, 0, 34, 27, 29, 479, 0};
+		gbl_Monumento.rowHeights = new int[]{25, 0, 0, 0, 34, 27, 0, 29, 53, 0, 0, 0, 0};
 		gbl_Monumento.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_Monumento.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, Double.MIN_VALUE};
+		gbl_Monumento.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		Monumento.setLayout(gbl_Monumento);
 		
 		lblNombre = new JLabel("Nombre ");
@@ -222,7 +236,7 @@ public class PanelCircuitos extends JPanel {
 		
 		textField = new JTextField();
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
+		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
@@ -256,7 +270,7 @@ public class PanelCircuitos extends JPanel {
 		gbc_rdbtnNewRadioButton_1.gridy = 2;
 		Monumento.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
 		
-		lblNewLabel = new JLabel("Horario ");
+		lblNewLabel = new JLabel("Apertura");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
@@ -264,48 +278,75 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblNewLabel.gridy = 4;
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 		
-		spinner = new JSpinner();
-		spinner.setModel(new SpinnerDateModel(new Date(1576450800000L), new Date(1576450800000L), null, Calendar.DAY_OF_YEAR));
-		GridBagConstraints gbc_spinner = new GridBagConstraints();
-		gbc_spinner.gridwidth = 2;
-		gbc_spinner.insets = new Insets(0, 0, 5, 5);
-		gbc_spinner.gridx = 1;
-		gbc_spinner.gridy = 4;
-		Monumento.add(spinner, gbc_spinner);
+		Apertura = new JSpinner();
+		Apertura.setModel(new SpinnerDateModel(new Date(1576450800000L), new Date(1576450800000L), null, Calendar.DAY_OF_YEAR));
+		GridBagConstraints gbc_Apertura = new GridBagConstraints();
+		gbc_Apertura.gridwidth = 3;
+		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
+		gbc_Apertura.gridx = 1;
+		gbc_Apertura.gridy = 4;
+		Monumento.add(Apertura, gbc_Apertura);
+		
+		AñadirM = new JButton("Añadir ");
+		AñadirM.addActionListener(new AñadirMActionListener());
+		
+		lblNewLabel_6 = new JLabel("Cierre");
+		GridBagConstraints gbc_lblNewLabel_6 = new GridBagConstraints();
+		gbc_lblNewLabel_6.anchor = GridBagConstraints.EAST;
+		gbc_lblNewLabel_6.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_6.gridx = 0;
+		gbc_lblNewLabel_6.gridy = 6;
+		Monumento.add(lblNewLabel_6, gbc_lblNewLabel_6);
+		
+		Cierre = new JSpinner();
+		Cierre.setModel(new SpinnerDateModel(new Date(1576623600000L), null, null, Calendar.HOUR));
+		GridBagConstraints gbc_Cierre = new GridBagConstraints();
+		gbc_Cierre.gridwidth = 3;
+		gbc_Cierre.insets = new Insets(0, 0, 5, 5);
+		gbc_Cierre.gridx = 1;
+		gbc_Cierre.gridy = 6;
+		Monumento.add(Cierre, gbc_Cierre);
 		
 		lblNewLabel_1 = new JLabel("Duración ");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.anchor = GridBagConstraints.EAST;
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
-		gbc_lblNewLabel_1.gridy = 6;
+		gbc_lblNewLabel_1.gridy = 8;
 		Monumento.add(lblNewLabel_1, gbc_lblNewLabel_1);
 		
 		textField_1 = new JTextField();
 		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 2;
+		gbc_textField_1.gridwidth = 3;
 		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
 		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 6;
+		gbc_textField_1.gridy = 8;
 		Monumento.add(textField_1, gbc_textField_1);
 		textField_1.setColumns(10);
+		GridBagConstraints gbc_AñadirM = new GridBagConstraints();
+		gbc_AñadirM.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_AñadirM.insets = new Insets(0, 0, 5, 5);
+		gbc_AñadirM.gridx = 1;
+		gbc_AñadirM.gridy = 10;
+		Monumento.add(AñadirM, gbc_AñadirM);
 		
-		btnNewButton = new JButton("New button");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 1;
-		gbc_btnNewButton.gridy = 7;
-		Monumento.add(btnNewButton, gbc_btnNewButton);
+		EliminarM = new JButton("Eliminar ");
+		GridBagConstraints gbc_EliminarM = new GridBagConstraints();
+		gbc_EliminarM.anchor = GridBagConstraints.SOUTHWEST;
+		gbc_EliminarM.insets = new Insets(0, 0, 5, 5);
+		gbc_EliminarM.gridx = 2;
+		gbc_EliminarM.gridy = 10;
+		Monumento.add(EliminarM, gbc_EliminarM);
 		
-		button = new JButton("New button");
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.anchor = GridBagConstraints.SOUTHWEST;
-		gbc_button.insets = new Insets(0, 0, 0, 5);
-		gbc_button.gridx = 2;
-		gbc_button.gridy = 7;
-		Monumento.add(button, gbc_button);
+		ModificarM = new JButton("Modificar ");
+		ModificarM.addActionListener(new ModificarMActionListener());
+		GridBagConstraints gbc_ModificarM = new GridBagConstraints();
+		gbc_ModificarM.anchor = GridBagConstraints.SOUTH;
+		gbc_ModificarM.insets = new Insets(0, 0, 5, 5);
+		gbc_ModificarM.gridx = 3;
+		gbc_ModificarM.gridy = 10;
+		Monumento.add(ModificarM, gbc_ModificarM);
 		
 		Restaurantes = new JPanel();
 		Formulario.add(Restaurantes, "Restaurantes");
@@ -350,35 +391,90 @@ public class PanelCircuitos extends JPanel {
 		Restaurantes.add(textField_3, gbc_textField_3);
 		textField_3.setColumns(10);
 		
-		btnNewButton_1 = new JButton("AÑADIR ");
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_1.gridx = 1;
-		gbc_btnNewButton_1.gridy = 5;
-		Restaurantes.add(btnNewButton_1, gbc_btnNewButton_1);
+		AñadirR = new JButton("AÑADIR ");
+		GridBagConstraints gbc_AñadirR = new GridBagConstraints();
+		gbc_AñadirR.insets = new Insets(0, 0, 0, 5);
+		gbc_AñadirR.gridx = 1;
+		gbc_AñadirR.gridy = 5;
+		Restaurantes.add(AñadirR, gbc_AñadirR);
 		
-		btnNewButton_2 = new JButton("MODIFICAR ");
-		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_2.gridx = 2;
-		gbc_btnNewButton_2.gridy = 5;
-		Restaurantes.add(btnNewButton_2, gbc_btnNewButton_2);
+		ModificarR = new JButton("MODIFICAR ");
+		GridBagConstraints gbc_ModificarR = new GridBagConstraints();
+		gbc_ModificarR.insets = new Insets(0, 0, 0, 5);
+		gbc_ModificarR.gridx = 2;
+		gbc_ModificarR.gridy = 5;
+		Restaurantes.add(ModificarR, gbc_ModificarR);
 		
-		btnNewButton_3 = new JButton("ELIMINAR ");
-		GridBagConstraints gbc_btnNewButton_3 = new GridBagConstraints();
-		gbc_btnNewButton_3.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_3.gridx = 3;
-		gbc_btnNewButton_3.gridy = 5;
-		Restaurantes.add(btnNewButton_3, gbc_btnNewButton_3);
+		EliminarR = new JButton("ELIMINAR ");
+		GridBagConstraints gbc_EliminarR = new GridBagConstraints();
+		gbc_EliminarR.insets = new Insets(0, 0, 0, 5);
+		gbc_EliminarR.gridx = 3;
+		gbc_EliminarR.gridy = 5;
+		Restaurantes.add(EliminarR, gbc_EliminarR);
 		
 		Tiendas = new JPanel();
 		Formulario.add(Tiendas, "Tiendas");
 		GridBagLayout gbl_Tiendas = new GridBagLayout();
-		gbl_Tiendas.columnWidths = new int[]{0, 0, 0, 0, 0};
-		gbl_Tiendas.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_Tiendas.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_Tiendas.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_Tiendas.columnWidths = new int[]{0, 138, 0, 0, 0, 0, 0};
+		gbl_Tiendas.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
+		gbl_Tiendas.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE};
+		gbl_Tiendas.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		Tiendas.setLayout(gbl_Tiendas);
+		
+		lblNewLabel_4 = new JLabel("Nombre ");
+		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
+		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_4.gridx = 1;
+		gbc_lblNewLabel_4.gridy = 0;
+		Tiendas.add(lblNewLabel_4, gbc_lblNewLabel_4);
+		
+		textField_4 = new JTextField();
+		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
+		gbc_textField_4.gridwidth = 4;
+		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_4.gridx = 2;
+		gbc_textField_4.gridy = 0;
+		Tiendas.add(textField_4, gbc_textField_4);
+		textField_4.setColumns(10);
+		
+		lblNewLabel_5 = new JLabel("Tipo de Tienda ");
+		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
+		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel_5.gridx = 1;
+		gbc_lblNewLabel_5.gridy = 2;
+		Tiendas.add(lblNewLabel_5, gbc_lblNewLabel_5);
+		
+		textField_5 = new JTextField();
+		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
+		gbc_textField_5.gridwidth = 4;
+		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
+		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textField_5.gridx = 2;
+		gbc_textField_5.gridy = 2;
+		Tiendas.add(textField_5, gbc_textField_5);
+		textField_5.setColumns(10);
+		
+		btnNewButton = new JButton("AÑADIR");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton.gridx = 2;
+		gbc_btnNewButton.gridy = 4;
+		Tiendas.add(btnNewButton, gbc_btnNewButton);
+		
+		btnNewButton_1 = new JButton("ELIMINAR ");
+		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
+		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_1.gridx = 3;
+		gbc_btnNewButton_1.gridy = 4;
+		Tiendas.add(btnNewButton_1, gbc_btnNewButton_1);
+		
+		btnNewButton_2 = new JButton("MODIFICAR ");
+		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
+		gbc_btnNewButton_2.insets = new Insets(0, 0, 0, 5);
+		gbc_btnNewButton_2.gridx = 4;
+		gbc_btnNewButton_2.gridy = 4;
+		Tiendas.add(btnNewButton_2, gbc_btnNewButton_2);
 
 	}
 
@@ -409,6 +505,20 @@ public class PanelCircuitos extends JPanel {
 		@Override
 		public void mouseExited(MouseEvent e) {
 	 
+		}
+	}
+	private class TListSelectionListener implements ListSelectionListener {
+		public void valueChanged(ListSelectionEvent e) {
+			CardLayout cl = (CardLayout)(Formulario.getLayout());
+			cl.show(Formulario, "Tiendas");
+		}
+	}
+	private class AñadirMActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	private class ModificarMActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
 		}
 	}
 	
