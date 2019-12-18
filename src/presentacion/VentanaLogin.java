@@ -13,10 +13,11 @@ import java.awt.Frame;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.Dimension;
 
 public class VentanaLogin {
 
-	public  JFrame Login;
+	public static  JFrame Login;
 	private JTextField user;
 	private JMenuBar menuBar;
 	private JMenu mnOpciones;
@@ -40,6 +41,8 @@ public class VentanaLogin {
 	private JButton btnNewButton;
 	private JPasswordField pass;
 	private JComboBox comboBox;
+	private JLabel lblNewLabel;
+	private JLabel lblNewLabel_1;
 
 	/**
 	 * Launch the application.
@@ -69,6 +72,7 @@ public class VentanaLogin {
 	 */
 	private void initialize() {
 		Login = new JFrame();
+		Login.setMinimumSize(new Dimension(1000, 600));
 		Login.setTitle("LOGIN");
 		Login.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		Login.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
@@ -76,9 +80,9 @@ public class VentanaLogin {
 		Login.setBounds(100, 100, 1012, 590);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{323, 0, 282, 0, 187, 182, 0};
-		gridBagLayout.rowHeights = new int[]{25, 152, 30, 39, 30, 141, 102, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[]{210, 59, 94, 64, 119, 156, 0, 0};
+		gridBagLayout.rowHeights = new int[]{25, 98, 30, 39, 30, 85, 102, 0};
+		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		Login.getContentPane().setLayout(gridBagLayout);
 		
@@ -86,47 +90,72 @@ public class VentanaLogin {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"}));
 		comboBox.setFont(new Font("Times New Roman", Font.PLAIN, 16));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
-		gbc_comboBox.anchor = GridBagConstraints.NORTHWEST;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
-		gbc_comboBox.gridx = 4;
+		gbc_comboBox.anchor = GridBagConstraints.NORTH;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox.gridx = 6;
 		gbc_comboBox.gridy = 0;
 		Login.getContentPane().add(comboBox, gbc_comboBox);
 		
+		lblNewLabel = new JLabel("INICIAR SESION");
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
+		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
+		gbc_lblNewLabel.gridwidth = 2;
+		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNewLabel.gridx = 0;
+		gbc_lblNewLabel.gridy = 1;
+		Login.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+		
+		lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon(VentanaLogin.class.getResource("/presentacion/imagenLogin.jpg")));
+		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
+		gbc_lblNewLabel_1.gridwidth = 3;
+		gbc_lblNewLabel_1.gridheight = 5;
+		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 0);
+		gbc_lblNewLabel_1.gridx = 4;
+		gbc_lblNewLabel_1.gridy = 1;
+		Login.getContentPane().add(lblNewLabel_1, gbc_lblNewLabel_1);
+		
 		JLabel lblUsuario_1 = new JLabel("USUARIO");
 		GridBagConstraints gbc_lblUsuario_1 = new GridBagConstraints();
-		gbc_lblUsuario_1.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblUsuario_1.anchor = GridBagConstraints.NORTH;
 		gbc_lblUsuario_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUsuario_1.gridx = 0;
 		gbc_lblUsuario_1.gridy = 2;
 		Login.getContentPane().add(lblUsuario_1, gbc_lblUsuario_1);
 		
 		user = new JTextField();
+		user.setToolTipText("NOMBRE DE USUARIO");
 		GridBagConstraints gbc_user = new GridBagConstraints();
+		gbc_user.gridwidth = 3;
 		gbc_user.fill = GridBagConstraints.BOTH;
 		gbc_user.insets = new Insets(0, 0, 5, 5);
-		gbc_user.gridx = 2;
+		gbc_user.gridx = 1;
 		gbc_user.gridy = 2;
 		Login.getContentPane().add(user, gbc_user);
 		user.setColumns(10);
 		
 		JLabel lblContraseña_1 = new JLabel("CONTRASEÑA");
 		GridBagConstraints gbc_lblContraseña_1 = new GridBagConstraints();
-		gbc_lblContraseña_1.anchor = GridBagConstraints.NORTHEAST;
+		gbc_lblContraseña_1.anchor = GridBagConstraints.NORTH;
 		gbc_lblContraseña_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblContraseña_1.gridx = 0;
 		gbc_lblContraseña_1.gridy = 4;
 		Login.getContentPane().add(lblContraseña_1, gbc_lblContraseña_1);
 		
 		pass = new JPasswordField();
+		pass.setToolTipText("CONTRASEÑA");
 		GridBagConstraints gbc_pass = new GridBagConstraints();
+		gbc_pass.gridwidth = 3;
 		gbc_pass.fill = GridBagConstraints.BOTH;
 		gbc_pass.insets = new Insets(0, 0, 5, 5);
-		gbc_pass.gridx = 2;
+		gbc_pass.gridx = 1;
 		gbc_pass.gridy = 4;
 		Login.getContentPane().add(pass, gbc_pass);
 		
 		btnNewButton = new JButton("ENTRAR");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.NORTHEAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 1;
 		gbc_btnNewButton.gridy = 5;
@@ -135,6 +164,7 @@ public class VentanaLogin {
 		
 		btnLimpiar = new JButton("LIMPIAR");
 		GridBagConstraints gbc_btnLimpiar = new GridBagConstraints();
+		gbc_btnLimpiar.anchor = GridBagConstraints.NORTH;
 		gbc_btnLimpiar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnLimpiar.gridx = 3;
 		gbc_btnLimpiar.gridy = 5;
@@ -298,5 +328,8 @@ public class VentanaLogin {
 		}
 			
 		}
+	}
+	public static JFrame getFrame() {
+		return Login;
 	}
 }

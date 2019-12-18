@@ -37,6 +37,8 @@ import javax.swing.SpinnerDateModel;
 import java.util.Date;
 import java.util.Calendar;
 import java.awt.Rectangle;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 
 public class VentanaPagina {
@@ -103,7 +105,7 @@ public class VentanaPagina {
 		frmAplicacion.setMinimumSize(new Dimension(900, 700));
 		frmAplicacion.setTitle("Aplicacion");
 		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
-		frmAplicacion.setBounds(100, 100, 900, 700);
+		frmAplicacion.setBounds(225, 0, 900, 700);
 		frmAplicacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
@@ -214,6 +216,13 @@ public class VentanaPagina {
 		panel_1.add(spinner, gbc_spinner);
 		
 		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				VentanaLogin frame = new VentanaLogin();
+				frame.Login.setVisible(true);
+				frmAplicacion.dispose();
+			}
+		});
 		GridBagConstraints gbc_btnCerrarSesion = new GridBagConstraints();
 		gbc_btnCerrarSesion.gridwidth = 2;
 		gbc_btnCerrarSesion.insets = new Insets(0, 0, 0, 5);
