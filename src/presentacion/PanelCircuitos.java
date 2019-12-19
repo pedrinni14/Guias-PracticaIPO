@@ -480,6 +480,8 @@ public class PanelCircuitos extends JPanel {
 
 	private class List_1ListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent e) {
+			R.clearSelection();
+			T.clearSelection();
 			CardLayout cl = (CardLayout)(Formulario.getLayout());
 			cl.show(Formulario, "Monumentos");
 		}

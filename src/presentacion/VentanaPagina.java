@@ -6,6 +6,8 @@ import java.awt.Toolkit;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.JMenuBar;
@@ -240,14 +242,14 @@ public class VentanaPagina {
 		this.frmAplicacion = frame;
 	}
 	public void UserConectado() {
-		  File archivo = null;
-	      FileReader fr = null;
+		  URL archivo = null;
+	      InputStreamReader fr = null;
 	      BufferedReader br = null;
 
 	      try {
 	         
-	         archivo = new File ("src/presentacion/Usuario.txt");
-	         fr = new FileReader (archivo);
+	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
+	         fr =  new InputStreamReader(archivo.openStream());
 	         br = new BufferedReader(fr);
 	         String linea;
 	         while((linea=br.readLine())!=null)

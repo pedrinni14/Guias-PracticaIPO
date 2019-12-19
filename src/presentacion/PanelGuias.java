@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.ListModel;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionListener;
@@ -218,8 +219,9 @@ public class PanelGuias extends JPanel {
 	
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+					
 			
-		}
+				}
 	}
 	private class BtnNewButton_2ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {

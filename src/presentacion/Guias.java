@@ -2,6 +2,8 @@ package presentacion;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.InputStreamReader;
+import java.net.URL;
 import java.util.ArrayList;
 
 public class Guias {
@@ -45,9 +47,9 @@ public class Guias {
 	
 	public static ArrayList<Guias> generarGuia() {
 		ArrayList<Guias> Guias= new ArrayList<Guias>();
-		  String fichero = "src/presentacion/Guias.txt";
+		  URL fichero = Guias.class.getResource("/presentacion/Guias.txt");
 		  try {
-		      FileReader fr = new FileReader(fichero);
+		      InputStreamReader fr =  new InputStreamReader(fichero.openStream());
 		      BufferedReader br = new BufferedReader(fr);
 		      int m =0 ; 
 		      String[][]guias = new String[m][4];
