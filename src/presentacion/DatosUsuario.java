@@ -3,6 +3,13 @@ package presentacion;
 import java.io.FileWriter;
 import java.io.PrintWriter;
 
+import javax.print.DocFlavor.URL;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.InputStreamReader;
+
+import java.util.ArrayList;
+
 public class DatosUsuario {
 
 	
@@ -20,10 +27,12 @@ public class DatosUsuario {
 	}
 	public void UsuarioConectado(String nombre) {
 		{
-	        FileWriter fichero = null;
-	        PrintWriter pw = null;
+			
+			FileWriter fichero =null;
+			PrintWriter pw=null;
 	        try
 	        {
+	        	//URL URL=DatosUsuario.class.getResource("/presentacion/Usuario.txt");
 	            fichero = new FileWriter("src/presentacion/Usuario.txt");
 	            pw = new PrintWriter(fichero);
 
