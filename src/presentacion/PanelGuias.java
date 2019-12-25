@@ -47,18 +47,21 @@ public class PanelGuias extends JPanel {
 	private JButton btnNewButton_2;
 	private JList listGuias;
 	DefaultListModel modelo = new DefaultListModel();
+	public int pos;
+
 	/**
 	 * Create the panel.
 	 */
 	public PanelGuias() {
-		
+
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[]{49, 90, 38, 221, 72, 57, 124, 97, 0};
-		gridBagLayout.rowHeights = new int[]{68, 32, 31, 17, 0, 0, 45, 102, 0, 0, 51, 25, 103, 70, 0};
-		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.columnWidths = new int[] { 49, 90, 38, 221, 72, 57, 124, 97, 0 };
+		gridBagLayout.rowHeights = new int[] { 68, 32, 31, 17, 0, 0, 45, 102, 0, 0, 51, 25, 103, 70, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+				Double.MIN_VALUE };
 		setLayout(gridBagLayout);
-		
+
 		lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
@@ -67,7 +70,7 @@ public class PanelGuias extends JPanel {
 		gbc_lblNombre.gridx = 1;
 		gbc_lblNombre.gridy = 1;
 		add(lblNombre, gbc_lblNombre);
-		
+
 		textNombre = new JTextField();
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
 		gbc_textNombre.anchor = GridBagConstraints.SOUTH;
@@ -77,7 +80,7 @@ public class PanelGuias extends JPanel {
 		gbc_textNombre.gridy = 1;
 		add(textNombre, gbc_textNombre);
 		textNombre.setColumns(10);
-		
+
 		lblNewLabel_2 = new JLabel("Edad");
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
@@ -86,7 +89,7 @@ public class PanelGuias extends JPanel {
 		gbc_lblNewLabel_2.gridx = 5;
 		gbc_lblNewLabel_2.gridy = 1;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
-		
+
 		textEdad = new JTextField();
 		textEdad.setColumns(10);
 		GridBagConstraints gbc_textEdad = new GridBagConstraints();
@@ -96,7 +99,7 @@ public class PanelGuias extends JPanel {
 		gbc_textEdad.gridx = 6;
 		gbc_textEdad.gridy = 1;
 		add(textEdad, gbc_textEdad);
-		
+
 		lblNewLabel = new JLabel("DNI");
 		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -105,7 +108,7 @@ public class PanelGuias extends JPanel {
 		gbc_lblNewLabel.gridx = 1;
 		gbc_lblNewLabel.gridy = 3;
 		add(lblNewLabel, gbc_lblNewLabel);
-		
+
 		textDNI = new JTextField();
 		textDNI.setColumns(10);
 		GridBagConstraints gbc_textDNI = new GridBagConstraints();
@@ -115,7 +118,7 @@ public class PanelGuias extends JPanel {
 		gbc_textDNI.gridx = 3;
 		gbc_textDNI.gridy = 3;
 		add(textDNI, gbc_textDNI);
-		
+
 		lblNewLabel_3 = new JLabel("Sexo");
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 26));
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
@@ -124,7 +127,7 @@ public class PanelGuias extends JPanel {
 		gbc_lblNewLabel_3.gridx = 5;
 		gbc_lblNewLabel_3.gridy = 3;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
-		
+
 		textSexo = new JTextField();
 		textSexo.setColumns(10);
 		GridBagConstraints gbc_textSexo = new GridBagConstraints();
@@ -134,7 +137,7 @@ public class PanelGuias extends JPanel {
 		gbc_textSexo.gridx = 6;
 		gbc_textSexo.gridy = 3;
 		add(textSexo, gbc_textSexo);
-		
+
 		listGuias = new JList();
 		listGuias.addListSelectionListener(new ListGuiasListSelectionListener());
 		GridBagConstraints gbc_listGuias = new GridBagConstraints();
@@ -145,13 +148,13 @@ public class PanelGuias extends JPanel {
 		gbc_listGuias.gridy = 6;
 		add(listGuias, gbc_listGuias);
 		crearLista();
-		
+
 		btnNewButton = new JButton("Eliminar ");
 		btnNewButton.addActionListener(new BtnNewButtonActionListener());
-		
+
 		btnNewButton_2 = new JButton("Modificar ");
 		btnNewButton_2.addActionListener(new BtnNewButton_2ActionListener());
-		
+
 		btnNewButton_1 = new JButton("Agregar ");
 		btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
@@ -174,83 +177,89 @@ public class PanelGuias extends JPanel {
 		gbc_btnNewButton.gridx = 5;
 		gbc_btnNewButton.gridy = 9;
 		add(btnNewButton, gbc_btnNewButton);
-		
-		
+
 		lblNewLabel_1 = new JLabel("DESCRIPCION ");
 		GridBagConstraints gbc_lblNewLabel_1 = new GridBagConstraints();
 		gbc_lblNewLabel_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_1.gridx = 0;
 		gbc_lblNewLabel_1.gridy = 2;
-		
-		
-		
-		
 
 	}
-	public 	void crearLista() {
-	
-			
-			for(int i = 0; i<=listaGuias.size()-1; i++){
-			        modelo.addElement(listaGuias.get(i).getNombre());
-			}
-			listGuias.setModel(modelo);
-		}
-	public 	void añadir (Guias g ) {
-		
-		DefaultListModel modelo = new DefaultListModel();
-	    listaGuias.add(g);
-		for(int i = 0; i<=listaGuias.size()-1; i++){
-		        modelo.addElement(listaGuias.get(i).getNombre());
+
+	public void crearLista() {
+
+		for (int i = 0; i <= listaGuias.size() - 1; i++) {
+			modelo.addElement(listaGuias.get(i).getNombre());
 		}
 		listGuias.setModel(modelo);
 	}
+
+	public void añadir(Guias g) {
+
+		DefaultListModel modelo = new DefaultListModel();
+		listaGuias.add(g);
+		for (int i = 0; i <= listaGuias.size() - 1; i++) {
+			modelo.addElement(listaGuias.get(i).getNombre());
+		}
+		listGuias.setModel(modelo);
+	}
+
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-	try {
-			Guias g =new Guias(textNombre.getText(),textDNI.getText(),textEdad.getText(),textSexo.getText());
-			
-			if (textNombre.getText().equals("") || textDNI.getText().equals("")|| textEdad.getText().equals("")|| textSexo.getText().equals("")) {
-				JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
-			
-			}else {
-			
-				añadir(g);
+			try {
+				Guias g = new Guias(textNombre.getText(), textDNI.getText(), textEdad.getText(), textSexo.getText());
+
+				if (textNombre.getText().equals("") || textDNI.getText().equals("") || textEdad.getText().equals("")
+						|| textSexo.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
+
+				} else {
+
+					añadir(g);
+				}
+
+			} catch (ArrayIndexOutOfBoundsException ex) {
+
 			}
-		
-		}catch(ArrayIndexOutOfBoundsException ex ) {
-			
-		
 		}
-	 }
 	}
+
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			try {
+				listaGuias.remove(listGuias.getSelectedIndex());
+				System.out.print(listaGuias.size());
+				DefaultListModel modelo2 = new DefaultListModel();
+				for (int i = 0; i <= listaGuias.size() - 1; i++) {
 
-			DefaultListModel modelo = new DefaultListModel();
-			modelo.remove(listGuias.getSelectedIndex());
-			listGuias.setModel(modelo);
-			
+					modelo2.addElement(listaGuias.get(i).getNombre());
 
-			
-				
 				}
+				listGuias.setModel(modelo2);
+			} catch (ArrayIndexOutOfBoundsException p) {
+
+			}
+		}
 	}
+
 	private class BtnNewButton_2ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			Guias g= listaGuias.get(listGuias.getSelectedIndex());
+			Guias g = listaGuias.get(listGuias.getSelectedIndex());
 			g.setNombre(textNombre.getText());
 			g.setDNI(textDNI.getText());
 			g.setEdad(textEdad.getText());
 			g.setSexo(textSexo.getText());
-			
-			}
+
+		}
 	}
+
 	private class ListGuiasListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent e) {
 			textNombre.setText(listaGuias.get(listGuias.getSelectedIndex()).getNombre());
 			textDNI.setText(listaGuias.get(listGuias.getSelectedIndex()).getDNI());
 			textEdad.setText(listaGuias.get(listGuias.getSelectedIndex()).getEdad());
 			textSexo.setText(listaGuias.get(listGuias.getSelectedIndex()).getSexo());
+			pos = listGuias.getSelectedIndex();
 		}
 	}
 }
