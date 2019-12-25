@@ -8,6 +8,7 @@ public class PanelCrearRuta extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelCrearRuta() {
+		
 
 	}
 
