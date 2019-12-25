@@ -259,7 +259,7 @@ public class PanelGuias extends JPanel {
 			textDNI.setText(listaGuias.get(listGuias.getSelectedIndex()).getDNI());
 			textEdad.setText(listaGuias.get(listGuias.getSelectedIndex()).getEdad());
 			textSexo.setText(listaGuias.get(listGuias.getSelectedIndex()).getSexo());
-			pos = listGuias.getSelectedIndex();
+			
 		}
 	}
 }
