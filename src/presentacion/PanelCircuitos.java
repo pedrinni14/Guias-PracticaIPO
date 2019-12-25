@@ -122,7 +122,7 @@ public class PanelCircuitos extends JPanel {
 				DefaultListModel modelo2 = new DefaultListModel();
 				DefaultListModel modelo3 = new DefaultListModel();
 				DefaultListModel modelo4 = new DefaultListModel();
-
+////
 
 				for (int i = 0; i <= monumentos.size() - 1; i++) {
 
