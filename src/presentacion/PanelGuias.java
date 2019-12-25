@@ -225,6 +225,12 @@ public class PanelGuias extends JPanel {
 	}
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+
+			DefaultListModel modelo = new DefaultListModel();
+			modelo.remove(listGuias.getSelectedIndex());
+			listGuias.setModel(modelo);
+			
+
 			
 				
 				}
