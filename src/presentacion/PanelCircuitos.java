@@ -119,6 +119,29 @@ public class PanelCircuitos extends JPanel {
 				monumentos=listaRutas.get(list.getSelectedIndex()).getM();
 				tiendas=listaRutas.get(list.getSelectedIndex()).getT();
 				restaurantes=listaRutas.get(list.getSelectedIndex()).getR();
+				DefaultListModel modelo2 = new DefaultListModel();
+				DefaultListModel modelo3 = new DefaultListModel();
+				DefaultListModel modelo4 = new DefaultListModel();
+
+
+				for (int i = 0; i <= monumentos.size() - 1; i++) {
+
+					modelo2.addElement(monumentos.get(i).getNombre());
+
+				}
+				M.setModel(modelo2);
+				for (int i = 0; i <= tiendas.size() - 1; i++) {
+
+					modelo3.addElement(tiendas.get(i).getNombre());
+
+				}
+				T.setModel(modelo3);
+				for (int i = 0; i <= restaurantes.size() - 1; i++) {
+
+					modelo4.addElement(restaurantes.get(i).getNombre());
+
+				}
+				R.setModel(modelo4);
 			}
 		});
 		scrollPane.setViewportView(list);
