@@ -1,14 +1,24 @@
 package presentacion;
 
 import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.print.DocFlavor.URL;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.InputStreamReader;
-
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
+import java.util.zip.Deflater;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class DatosUsuario {
 
@@ -25,36 +35,8 @@ public class DatosUsuario {
 		}else return 0 ;
 	
 	}
-	public void UsuarioConectado(String nombre) {
-		{
-			
-			FileWriter fichero =null;
-			PrintWriter pw=null;
-	        try
-	        {
-	        	//URL URL=DatosUsuario.class.getResource("/presentacion/Usuario.txt");
-	            fichero = new FileWriter("src/presentacion/Usuario.txt");
-	            pw = new PrintWriter(fichero);
-
-	            if(nombre.equals("jesus") ) {
-	            	 pw.println("Jesús Gamero Tello");
-	            }
-	            if ( nombre.equals("pedro")) {
-	            	 pw.println("Pedro Millán Álvarez");
-	            }
-	               
-
-	        } catch (Exception e) {
-	            e.printStackTrace();
-	        } finally {
-	           try {
-	           if (null != fichero)
-	              fichero.close();
-	           } catch (Exception e2) {
-	              e2.printStackTrace();
-	           }
-	        }
-	    }
+	public void UsuarioConectado(String nombre)  {
+	    
 	}
 
 	public String getUsuario() {
