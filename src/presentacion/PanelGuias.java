@@ -46,11 +46,12 @@ public class PanelGuias extends JPanel {
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
 	private JList listGuias;
-
+	DefaultListModel modelo = new DefaultListModel();
 	/**
 	 * Create the panel.
 	 */
 	public PanelGuias() {
+		
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{49, 90, 38, 221, 72, 57, 124, 97, 0};
 		gridBagLayout.rowHeights = new int[]{68, 32, 31, 17, 0, 0, 45, 102, 0, 0, 51, 25, 103, 70, 0};
@@ -188,7 +189,7 @@ public class PanelGuias extends JPanel {
 	}
 	public 	void crearLista() {
 	
-			DefaultListModel modelo = new DefaultListModel();
+			
 			for(int i = 0; i<=listaGuias.size()-1; i++){
 			        modelo.addElement(listaGuias.get(i).getNombre());
 			}
@@ -205,6 +206,7 @@ public class PanelGuias extends JPanel {
 	}
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+	try {
 			Guias g =new Guias(textNombre.getText(),textDNI.getText(),textEdad.getText(),textSexo.getText());
 			
 			if (textNombre.getText().equals("") || textDNI.getText().equals("")|| textEdad.getText().equals("")|| textSexo.getText().equals("")) {
@@ -214,13 +216,17 @@ public class PanelGuias extends JPanel {
 			
 				añadir(g);
 			}
+		
+		}catch(ArrayIndexOutOfBoundsException ex ) {
+			
+		
 		}
+	 }
 	}
-	
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-					
 			
+				
 				}
 	}
 	private class BtnNewButton_2ActionListener implements ActionListener {

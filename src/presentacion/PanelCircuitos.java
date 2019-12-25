@@ -30,6 +30,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import javax.swing.SpinnerListModel;
 
 public class PanelCircuitos extends JPanel {
 	private JPanel pnlListaPedidos;
@@ -279,7 +280,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 		
 		Apertura = new JSpinner();
-		Apertura.setModel(new SpinnerDateModel(new Date(1576450800000L), new Date(1576450800000L), null, Calendar.DAY_OF_YEAR));
+		Apertura.setModel(new SpinnerListModel(new String[] {"00:00"}));
 		GridBagConstraints gbc_Apertura = new GridBagConstraints();
 		gbc_Apertura.gridwidth = 3;
 		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
@@ -299,7 +300,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel_6, gbc_lblNewLabel_6);
 		
 		Cierre = new JSpinner();
-		Cierre.setModel(new SpinnerDateModel(new Date(1576623600000L), null, null, Calendar.HOUR));
+		Cierre.setModel(new SpinnerListModel(new String[] {"00:00"}));
 		GridBagConstraints gbc_Cierre = new GridBagConstraints();
 		gbc_Cierre.gridwidth = 3;
 		gbc_Cierre.insets = new Insets(0, 0, 5, 5);
