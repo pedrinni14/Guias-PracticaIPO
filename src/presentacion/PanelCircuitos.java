@@ -16,9 +16,12 @@ import javax.swing.JTextField;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.ButtonGroup;
+import javax.swing.DefaultListModel;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
 import java.util.Date;
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.swing.AbstractButton;
@@ -33,6 +36,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.SpinnerListModel;
 
 public class PanelCircuitos extends JPanel {
+	private static ArrayList<Ruta> listaRutas = Ruta.generarRutas();
 	private JPanel pnlListaPedidos;
 	private JScrollPane scrollPane;
 	private JButton btnAadir;
@@ -78,7 +82,7 @@ public class PanelCircuitos extends JPanel {
 	private JButton btnNewButton_2;
 	private JLabel lblNewLabel_6;
 	private JSpinner Cierre;
-
+	DefaultListModel modelo = new DefaultListModel();
 
 	/**
 	 * Create the panel.
@@ -106,6 +110,17 @@ public class PanelCircuitos extends JPanel {
 		pnlListaPedidos.add(scrollPane, gbc_scrollPane);
 		
 		list = new JList();
+		list.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				//listaGuias.get(listGuias.getSelectedIndex()).getNombre()
+				ArrayList<Monumento> monumentos;
+				ArrayList<Tienda> tiendas;
+				ArrayList<Restaurante> restaurantes;
+				monumentos=listaRutas.get(list.getSelectedIndex()).getM();
+				tiendas=listaRutas.get(list.getSelectedIndex()).getT();
+				restaurantes=listaRutas.get(list.getSelectedIndex()).getR();
+			}
+		});
 		scrollPane.setViewportView(list);
 		
 		btnAadir = new JButton("Añadir");
@@ -118,6 +133,7 @@ public class PanelCircuitos extends JPanel {
 		gbc_btnAadir.gridx = 2;
 		gbc_btnAadir.gridy = 2;
 		pnlListaPedidos.add(btnAadir, gbc_btnAadir);
+		crearLista();
 		
 		btnEliminar = new JButton("Eliminar");
 		btnEliminar.addActionListener(new BtnEliminarActionListener());
@@ -524,5 +540,17 @@ public class PanelCircuitos extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 		}
 	}
+	
+	public 	void crearLista() {
+		
+		
+		for(int i = 0; i<=listaRutas.size()-1; i++){
+		        modelo.addElement(listaRutas.get(i).getNombre());
+		}
+		list.setModel(modelo);
+		
+	}
+	
+	
 	
 }
