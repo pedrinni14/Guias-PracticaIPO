@@ -23,15 +23,15 @@ public class PanelOfertas extends JPanel {
 	private JList list;
 	private JScrollPane scrollPane_1;
 	private JList list_1;
-	private JButton btnAadir;
-	private JButton btnModificar;
-	private JButton btnBorrar;
 	private JButton btnAadir_1;
 	private JButton btnModificar_1;
 	private JButton btnBorrar_1;
 	private JButton btnEnviar;
 	private JButton button;
 	private JTextField textField;
+	private JButton btnAadir;
+	private JButton btnModificar;
+	private JButton btnBorrar;
 
 	/**
 	 * Create the panel.
@@ -42,7 +42,7 @@ public class PanelOfertas extends JPanel {
 		pnlOfertas = new JPanel();
 		add(pnlOfertas);
 		GridBagLayout gbl_pnlOfertas = new GridBagLayout();
-		gbl_pnlOfertas.columnWidths = new int[]{0, 70, 0, 0, 0, 0};
+		gbl_pnlOfertas.columnWidths = new int[]{0, 70, 69, 49, 0, 0};
 		gbl_pnlOfertas.rowHeights = new int[]{0, 0, 0, 0, 0, 0};
 		gbl_pnlOfertas.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_pnlOfertas.rowWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
@@ -63,6 +63,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnAadir = new JButton("Añadir");
 		GridBagConstraints gbc_btnAadir = new GridBagConstraints();
+		gbc_btnAadir.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAadir.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAadir.gridx = 1;
 		gbc_btnAadir.gridy = 2;
@@ -70,6 +71,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnModificar = new JButton("Modificar");
 		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
+		gbc_btnModificar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnModificar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnModificar.gridx = 2;
 		gbc_btnModificar.gridy = 2;
@@ -77,6 +79,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnBorrar = new JButton("Borrar");
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
+		gbc_btnBorrar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBorrar.gridx = 3;
 		gbc_btnBorrar.gridy = 2;
@@ -106,6 +109,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnAadir_1 = new JButton("Añadir");
 		GridBagConstraints gbc_btnAadir_1 = new GridBagConstraints();
+		gbc_btnAadir_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnAadir_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnAadir_1.gridx = 1;
 		gbc_btnAadir_1.gridy = 2;
@@ -113,6 +117,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnModificar_1 = new JButton("Modificar");
 		GridBagConstraints gbc_btnModificar_1 = new GridBagConstraints();
+		gbc_btnModificar_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnModificar_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnModificar_1.gridx = 2;
 		gbc_btnModificar_1.gridy = 2;
@@ -120,6 +125,7 @@ public class PanelOfertas extends JPanel {
 		
 		btnBorrar_1 = new JButton("Borrar");
 		GridBagConstraints gbc_btnBorrar_1 = new GridBagConstraints();
+		gbc_btnBorrar_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrar_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnBorrar_1.gridx = 3;
 		gbc_btnBorrar_1.gridy = 2;

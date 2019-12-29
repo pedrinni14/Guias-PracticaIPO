@@ -193,6 +193,7 @@ public class VentanaPagina {
 		panel_1.add(lblFoto, gbc_lblFoto);
 		
 		Nombre = new JLabel("(nombre)");
+		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_Nombre = new GridBagConstraints();
 		gbc_Nombre.gridwidth = 2;
 		gbc_Nombre.insets = new Insets(0, 0, 5, 5);
