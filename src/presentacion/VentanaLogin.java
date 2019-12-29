@@ -71,14 +71,15 @@ public class VentanaLogin {
 	 */
 	private void initialize() {
 		Login = new JFrame();
-		Login.getContentPane().setMaximumSize(new Dimension(700, 400));
-		Login.setMaximumSize(new Dimension(700, 400));
-		Login.setMinimumSize(new Dimension(700, 400));
+		Login.setResizable(false);
+		Login.getContentPane().setMaximumSize(new Dimension(600, 400));
+		Login.setMaximumSize(new Dimension(600, 400));
+		Login.setMinimumSize(new Dimension(600, 400));
 		Login.setTitle("LOGIN");
 		Login.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		Login.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png")));
-		Login.setBounds(100, 100, 700, 400);
+		Login.setBounds(100, 100, 600, 400);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{131, 59, 94, 64, 86, 74, 0, 0};
@@ -91,9 +92,9 @@ public class VentanaLogin {
 		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"}));
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.NORTH;
-		gbc_comboBox.insets = new Insets(0, 0, 5, 0);
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
 		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
-		gbc_comboBox.gridx = 6;
+		gbc_comboBox.gridx = 4;
 		gbc_comboBox.gridy = 0;
 		Login.getContentPane().add(comboBox, gbc_comboBox);
 		

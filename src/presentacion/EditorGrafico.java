@@ -72,7 +72,7 @@ public class EditorGrafico extends JPanel {
 			add(tbBarraDibujo, BorderLayout.NORTH);
 			{
 				btnCargarMapa = new JButton("");
-				btnCargarMapa.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/cargarMapa.png")));
+				btnCargarMapa.setIcon(new ImageIcon(EditorGrafico.class.getResource("/presentacion/loading.png")));
 				btnCargarMapa.addActionListener(new BtnCargarMapaActionListener());
 
 				tbBarraDibujo.add(btnCargarMapa);
