@@ -400,7 +400,7 @@ public class VentanaLogin {
 		
 	}
 	
-	
+
 	
 	
 	public String cambiar_usuario(String nombre) {
