@@ -34,6 +34,7 @@ import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.SpinnerListModel;
+import javax.swing.SpinnerModel;
 
 public class PanelCircuitos extends JPanel {
 	private static ArrayList<Ruta> listaRutas = Ruta.generarRutas();
@@ -54,15 +55,11 @@ public class PanelCircuitos extends JPanel {
 	private JPanel Restaurantes;
 	private JPanel Tiendas;
 	private JLabel lblNombre;
-	private JTextField textField;
 	private JLabel lblGratuito;
-	private JRadioButton rdbtnNewRadioButton;
-	private JRadioButton rdbtnNewRadioButton_1;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JLabel lblNewLabel;
 	private JSpinner Apertura;
 	private JLabel lblNewLabel_1;
-	private JTextField textField_1;
 	private JButton AñadirM;
 	private JButton EliminarM;
 	private JLabel lblNewLabel_2;
@@ -73,8 +70,6 @@ public class PanelCircuitos extends JPanel {
 	private JButton ModificarM;
 	private JLabel lblNewLabel_4;
 	private JLabel lblNewLabel_5;
-	private JTextField textField_4;
-	private JTextField textField_5;
 	private JButton btnNewButton;
 	private JButton btnNewButton_1;
 	private JButton btnNewButton_2;
@@ -87,6 +82,12 @@ public class PanelCircuitos extends JPanel {
 	private ArrayList<Monumento> monumentos;
 	private ArrayList<Tienda> tiendas;
 	private ArrayList<Restaurante> restaurantes;
+	private JTextField textNombreT;
+	private JTextField textTipoT;
+	private JTextField textNombreM;
+	private JRadioButton BtnSI;
+	private JRadioButton BtnNo;
+	private JTextField textDuracionM;
 
 	/**
 	 * Create the panel.
@@ -273,15 +274,15 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblNombre.gridy = 0;
 		Monumento.add(lblNombre, gbc_lblNombre);
 
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 3;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 0;
-		Monumento.add(textField, gbc_textField);
-		textField.setColumns(10);
+		textNombreM = new JTextField();
+		GridBagConstraints gbc_textNombreM = new GridBagConstraints();
+		gbc_textNombreM.gridwidth = 3;
+		gbc_textNombreM.insets = new Insets(0, 0, 5, 5);
+		gbc_textNombreM.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNombreM.gridx = 1;
+		gbc_textNombreM.gridy = 0;
+		Monumento.add(textNombreM, gbc_textNombreM);
+		textNombreM.setColumns(10);
 
 		lblGratuito = new JLabel("Gratuito ");
 		GridBagConstraints gbc_lblGratuito = new GridBagConstraints();
@@ -291,23 +292,23 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblGratuito.gridy = 2;
 		Monumento.add(lblGratuito, gbc_lblGratuito);
 
-		rdbtnNewRadioButton = new JRadioButton("SI");
-		buttonGroup.add(rdbtnNewRadioButton);
-		GridBagConstraints gbc_rdbtnNewRadioButton = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton.anchor = GridBagConstraints.EAST;
-		gbc_rdbtnNewRadioButton.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton.gridx = 1;
-		gbc_rdbtnNewRadioButton.gridy = 2;
-		Monumento.add(rdbtnNewRadioButton, gbc_rdbtnNewRadioButton);
+		BtnSI = new JRadioButton("SI");
+		buttonGroup.add(BtnSI);
+		GridBagConstraints gbc_BtnSI = new GridBagConstraints();
+		gbc_BtnSI.anchor = GridBagConstraints.EAST;
+		gbc_BtnSI.insets = new Insets(0, 0, 5, 5);
+		gbc_BtnSI.gridx = 1;
+		gbc_BtnSI.gridy = 2;
+		Monumento.add(BtnSI, gbc_BtnSI);
 
-		rdbtnNewRadioButton_1 = new JRadioButton("NO");
-		buttonGroup.add(rdbtnNewRadioButton_1);
-		GridBagConstraints gbc_rdbtnNewRadioButton_1 = new GridBagConstraints();
-		gbc_rdbtnNewRadioButton_1.anchor = GridBagConstraints.WEST;
-		gbc_rdbtnNewRadioButton_1.insets = new Insets(0, 0, 5, 5);
-		gbc_rdbtnNewRadioButton_1.gridx = 2;
-		gbc_rdbtnNewRadioButton_1.gridy = 2;
-		Monumento.add(rdbtnNewRadioButton_1, gbc_rdbtnNewRadioButton_1);
+		BtnNo = new JRadioButton("NO");
+		buttonGroup.add(BtnNo);
+		GridBagConstraints gbc_BtnNo = new GridBagConstraints();
+		gbc_BtnNo.anchor = GridBagConstraints.WEST;
+		gbc_BtnNo.insets = new Insets(0, 0, 5, 5);
+		gbc_BtnNo.gridx = 2;
+		gbc_BtnNo.gridy = 2;
+		Monumento.add(BtnNo, gbc_BtnNo);
 
 		lblNewLabel = new JLabel("Apertura");
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
@@ -318,7 +319,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 
 		Apertura = new JSpinner();
-		Apertura.setModel(new SpinnerListModel(new String[] { "00:00" }));
+		Apertura.setModel(new SpinnerListModel(new String[] {"00:00"}));
 		GridBagConstraints gbc_Apertura = new GridBagConstraints();
 		gbc_Apertura.gridwidth = 3;
 		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
@@ -354,15 +355,15 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblNewLabel_1.gridy = 8;
 		Monumento.add(lblNewLabel_1, gbc_lblNewLabel_1);
 
-		textField_1 = new JTextField();
-		GridBagConstraints gbc_textField_1 = new GridBagConstraints();
-		gbc_textField_1.gridwidth = 3;
-		gbc_textField_1.insets = new Insets(0, 0, 5, 5);
-		gbc_textField_1.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_1.gridx = 1;
-		gbc_textField_1.gridy = 8;
-		Monumento.add(textField_1, gbc_textField_1);
-		textField_1.setColumns(10);
+		textDuracionM = new JTextField();
+		GridBagConstraints gbc_textDuracionM = new GridBagConstraints();
+		gbc_textDuracionM.gridwidth = 3;
+		gbc_textDuracionM.insets = new Insets(0, 0, 5, 5);
+		gbc_textDuracionM.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textDuracionM.gridx = 1;
+		gbc_textDuracionM.gridy = 8;
+		Monumento.add(textDuracionM, gbc_textDuracionM);
+		textDuracionM.setColumns(10);
 		GridBagConstraints gbc_AñadirM = new GridBagConstraints();
 		gbc_AñadirM.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_AñadirM.insets = new Insets(0, 0, 5, 5);
@@ -467,15 +468,15 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblNewLabel_4.gridy = 0;
 		Tiendas.add(lblNewLabel_4, gbc_lblNewLabel_4);
 
-		textField_4 = new JTextField();
-		GridBagConstraints gbc_textField_4 = new GridBagConstraints();
-		gbc_textField_4.gridwidth = 4;
-		gbc_textField_4.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_4.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_4.gridx = 2;
-		gbc_textField_4.gridy = 0;
-		Tiendas.add(textField_4, gbc_textField_4);
-		textField_4.setColumns(10);
+		textNombreT = new JTextField();
+		GridBagConstraints gbc_textNombreT = new GridBagConstraints();
+		gbc_textNombreT.gridwidth = 4;
+		gbc_textNombreT.insets = new Insets(0, 0, 5, 0);
+		gbc_textNombreT.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNombreT.gridx = 2;
+		gbc_textNombreT.gridy = 0;
+		Tiendas.add(textNombreT, gbc_textNombreT);
+		textNombreT.setColumns(10);
 
 		lblNewLabel_5 = new JLabel("Tipo de Tienda ");
 		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
@@ -484,15 +485,15 @@ public class PanelCircuitos extends JPanel {
 		gbc_lblNewLabel_5.gridy = 2;
 		Tiendas.add(lblNewLabel_5, gbc_lblNewLabel_5);
 
-		textField_5 = new JTextField();
-		GridBagConstraints gbc_textField_5 = new GridBagConstraints();
-		gbc_textField_5.gridwidth = 4;
-		gbc_textField_5.insets = new Insets(0, 0, 5, 0);
-		gbc_textField_5.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField_5.gridx = 2;
-		gbc_textField_5.gridy = 2;
-		Tiendas.add(textField_5, gbc_textField_5);
-		textField_5.setColumns(10);
+		textTipoT = new JTextField();
+		GridBagConstraints gbc_textTipoT = new GridBagConstraints();
+		gbc_textTipoT.gridwidth = 4;
+		gbc_textTipoT.insets = new Insets(0, 0, 5, 0);
+		gbc_textTipoT.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textTipoT.gridx = 2;
+		gbc_textTipoT.gridy = 2;
+		Tiendas.add(textTipoT, gbc_textTipoT);
+		textTipoT.setColumns(10);
 
 		btnNewButton = new JButton("AÑADIR");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
@@ -557,6 +558,8 @@ public class PanelCircuitos extends JPanel {
 			R.clearSelection();
 			CardLayout cl = (CardLayout) (Formulario.getLayout());
 			cl.show(Formulario, "Tiendas");
+			textTipoT.setText(tiendas.get(T.getSelectedIndex()).getTipo());
+			textNombreT.setText(tiendas.get(T.getSelectedIndex()).getNombre());
 
 		}
 	}
@@ -577,6 +580,16 @@ public class PanelCircuitos extends JPanel {
 			R.clearSelection();
 			CardLayout cl = (CardLayout) (Formulario.getLayout());
 			cl.show(Formulario, "Monumentos");
+			textNombreM.setText(monumentos.get(Mo.getSelectedIndex()).getNombre());
+			if(monumentos.get(Mo.getSelectedIndex()).isGratuito()==true) {
+				BtnSI.setSelected(true);
+			}else {
+				BtnNo.setSelected(true);
+			}
+			DefaultListModel hora;
+			//hora.addElement(monumentos.get(Mo.getSelectedIndex()).getDuracion());
+			//SpinnerModel hora2.add
+			//.setModel(hora2);
 		}
 	}
 

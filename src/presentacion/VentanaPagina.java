@@ -269,6 +269,7 @@ public class VentanaPagina {
 	         }
 	      }
 	   }
+	
 		
 	}
 
