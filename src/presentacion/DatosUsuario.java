@@ -1,50 +1,52 @@
 package presentacion;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.PrintWriter;
 
 import javax.print.DocFlavor.URL;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
 import java.util.ArrayList;
-import java.util.zip.Deflater;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
+
 
 public class DatosUsuario {
 
-	
-	public String usuario ="Pedro";
-	
-	public int  Existe(String nombre, String Contraseña) {
+	private String usuario;
+	private String pass;
+	private String Conexion;
+	private URL foto; //ruta con la foto, imporar antes
+	public DatosUsuario(String usuario, String pass, String conexion) {
+		this.usuario = usuario;
+		this.pass = pass;
+		Conexion = conexion;
 		
-		if(nombre.equals("jesus") || nombre.equals("pedro")) {
-			if (Contraseña.equals("1234a")) {
-				return 1;
-			}else 
-				return -1;
-		}else return 0 ;
-	
 	}
-	public void UsuarioConectado(String nombre)  {
-	    
-	}
-
 	public String getUsuario() {
 		return usuario;
 	}
-
-	public void setUsuario2(String usuario) {
+	public void setUsuario(String usuario) {
 		this.usuario = usuario;
+	}
+	public String getPass() {
+		return pass;
+	}
+	public void setPass(String pass) {
+		this.pass = pass;
+	}
+	public String getConexion() {
+		return Conexion;
+	}
+	public void setConexion(String conexion) {
+		Conexion = conexion;
+	}
+	public URL getFoto() {
+		return foto;
+	}
+	public void setFoto(URL foto) {
+		this.foto = foto;
+	}
+	public static ArrayList<DatosUsuario> generarEmpleado() {
+		ArrayList<DatosUsuario> usuarios=new ArrayList<DatosUsuario>();
+		usuarios.add(new DatosUsuario("Jesus Gamero Tello","1234a","04/12/18 20:02"));
+		usuarios.add(new DatosUsuario("Pedro Millan Alvarez","1234a","07/01/19 19:45"));
+		
+		return usuarios;
 	}
 
 	

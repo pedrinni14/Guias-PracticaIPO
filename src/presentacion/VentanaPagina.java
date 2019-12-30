@@ -68,10 +68,11 @@ public class VentanaPagina {
 
 	private JLabel lblFoto;
 	private JPanel pnlOfertas;
-	private JLabel Nombre;
+	private static JLabel Nombre;
 	private JButton btnCerrarSesion;
 	private JLabel lblUltimaConexion;
-	private JSpinner spinner;
+	private static JSpinner spinner;
+	public  VentanaLogin Ventanalogin = new VentanaLogin();
 
 	
 
@@ -175,7 +176,7 @@ public class VentanaPagina {
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
-		DatosUsuario d =new DatosUsuario();
+		//DatosUsuario d =new DatosUsuario();
 		GridBagLayout gbl_panel_1 = new GridBagLayout();
 		gbl_panel_1.columnWidths = new int[]{156, 427, 0, 129, 64, 0, 0};
 		gbl_panel_1.rowHeights = new int[]{0, 64, 0, 0, 0, 0};
@@ -193,6 +194,8 @@ public class VentanaPagina {
 		panel_1.add(lblFoto, gbc_lblFoto);
 		
 		Nombre = new JLabel("(nombre)");
+//		System.out.println(Ventanalogin.get_usuarioConectado());
+//		Nombre.setText(Ventanalogin.get_usuarioConectado());
 		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 18));
 		GridBagConstraints gbc_Nombre = new GridBagConstraints();
 		gbc_Nombre.gridwidth = 2;
@@ -232,7 +235,7 @@ public class VentanaPagina {
 		gbc_btnCerrarSesion.gridx = 3;
 		gbc_btnCerrarSesion.gridy = 4;
 		panel_1.add(btnCerrarSesion, gbc_btnCerrarSesion);
-		UserConectado();
+		//UserConectado();
 	}
 
 	public JFrame getFrame() {
@@ -242,33 +245,43 @@ public class VentanaPagina {
 	public void setFrame(JFrame frame) {
 		this.frmAplicacion = frame;
 	}
-	public void UserConectado() {
-		  URL archivo = null;
-	      InputStreamReader fr = null;
-	      BufferedReader br = null;
-
-	      try {
-	         
-	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
-	         fr =  new InputStreamReader(archivo.openStream());
-	         br = new BufferedReader(fr);
-	         String linea;
-	         while((linea=br.readLine())!=null)
-	        	 Nombre.setText(linea);
-	      }
-	      catch(Exception e){
-	         e.printStackTrace();
-	      }finally{
-	        
-	         try{                    
-	            if( null != fr ){   
-	               fr.close();     
-	            }                  
-	         }catch (Exception e2){ 
-	            e2.printStackTrace();
-	         }
-	      }
-	   }
+//	public void UserConectado() {
+//		  URL archivo = null;
+//	      InputStreamReader fr = null;
+//	      BufferedReader br = null;
+//
+//	      try {
+//	         
+//	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
+//	         fr =  new InputStreamReader(archivo.openStream());
+//	         br = new BufferedReader(fr);
+//	         String linea;
+//	         while((linea=br.readLine())!=null)
+//	        	Nombre.setText(linea);
+//	      }
+//	      catch(Exception e){
+//	         e.printStackTrace();
+//	      }finally{
+//	        
+//	         try{                    
+//	            if( null != fr ){   
+//	               fr.close();     
+//	            }                  
+//	         }catch (Exception e2){ 
+//	            e2.printStackTrace();
+//	         }
+//	      }
+//	   }
+	
+	public static void setPersonal(String nombre) {
+		Nombre.setText(nombre);
+	}
+//	public static void setFoto(URL ruta) {
+//		lblFoto.setIcon(new ImageIcon(ruta));
+//	}
+	public static void setConexion(String conexion) {
+		spinner.setToolTipText(conexion);
+	}
 		
 	}
 
