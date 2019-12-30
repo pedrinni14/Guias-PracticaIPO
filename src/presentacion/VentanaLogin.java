@@ -304,11 +304,14 @@ public class VentanaLogin {
 			String nombre=user.getText();
 			
 			d.usuario=nombre;
-			d.UsuarioConectado( nombre);
+			String n=d.UsuarioConectado(nombre);
+			
 			////////////////////////////
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
+			Vp.SetNombre(n);
 			Vp.frmAplicacion.setVisible(true);
+			
 			
 			Login.dispose();//
 		}else {
