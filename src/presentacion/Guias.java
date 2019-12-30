@@ -8,18 +8,37 @@ import java.util.ArrayList;
 
 public class Guias {
 	private String Nombre;
+	private String Apellidos;
 	private String DNI;
 	private String Edad ;
 	private String Sexo;
-	public Guias(String nombre, String dNI, String edad, String sexo) {
+	
+	public Guias(String nombre, String apellidos, String dNI, String edad, String sexo) {
 		super();
 		Nombre = nombre;
+		Apellidos = apellidos;
 		DNI = dNI;
 		Edad = edad;
 		Sexo = sexo;
 	}
+
+
 	
 	
+	public String getApellidos() {
+		return Apellidos;
+	}
+
+
+
+
+	public void setApellidos(String apellidos) {
+		Apellidos = apellidos;
+	}
+
+
+
+
 	public String getNombre() {
 		return Nombre;
 	}
@@ -52,12 +71,12 @@ public class Guias {
 		      InputStreamReader fr =  new InputStreamReader(fichero.openStream());
 		      BufferedReader br = new BufferedReader(fr);
 		      int m =0 ; 
-		      String[][]guias = new String[m][4];
+		      String[][]guias = new String[m][5];
 		      String linea;
 		      while((linea = br.readLine()) != null) {
 		    	  m++;
 		    	 String[] tokens= linea.split(",");
-		    	 Guias.add(new Guias(tokens[0],tokens[1],tokens[2],tokens[3]));
+		    	 Guias.add(new Guias(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]));
 		       }
 		 
 		      fr.close();

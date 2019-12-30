@@ -42,6 +42,7 @@ public class VentanaLogin {
 	private JPasswordField pass;
 	private JLabel lblNewLabel;
 	private JComboBox comboBox;
+	public String UsuarioConectado;
 
 	/**
 	 * Launch the application.
@@ -304,6 +305,7 @@ public class VentanaLogin {
 			
 			d.usuario=nombre;
 			d.UsuarioConectado( nombre);
+			////////////////////////////
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.frmAplicacion.setVisible(true);

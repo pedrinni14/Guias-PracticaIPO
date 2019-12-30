@@ -1,8 +1,8 @@
-Juan,03456734D,23,Varon
-Pepe,090909090J,29,Varon
-Lola,909999987X,32,Mujer
-Carmen,87878787F,22,Mujer
-Lorena,87748478K,35,Mujer
-Raul,787878888P,43,Varon
-pedro,0898989f,23,Varon 
-Jesus,4567890d,22,Varon 
+Juan,Perez,03456734D,23,Varon
+Pepe,Triguero,090909090J,29,Varon
+Lola,Martin,909999987X,32,Mujer
+Carmen,Alvarez,87878787F,22,Mujer
+Lorena,Moreno,87748478K,35,Mujer
+Raul,Rodriguez,787878888P,43,Varon
+Pedro,Millan,0898989f,23,Varon 
+Jesus,Gamero,4567890d,22,Varon 
