@@ -249,7 +249,7 @@ public class PanelGuias extends JPanel {
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Guias g = new Guias(textNombre.getText(), textDNI.getText(), textEdad.getText(), textSexo.getText());
+				Guias g = new Guias(textNombre.getText(),textApellidos.getText(), textDNI.getText(), textEdad.getText(), textSexo.getText());
 
 				if (textNombre.getText().equals("") || textDNI.getText().equals("") || textEdad.getText().equals("")
 						|| textSexo.getText().equals("")) {
@@ -288,6 +288,7 @@ public class PanelGuias extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			Guias g = listaGuias.get(listGuias.getSelectedIndex());
 			g.setNombre(textNombre.getText());
+			g.setApellidos(textApellidos.getText());
 			g.setDNI(textDNI.getText());
 			g.setEdad(textEdad.getText());
 			g.setSexo(textSexo.getText());
@@ -298,6 +299,7 @@ public class PanelGuias extends JPanel {
 	private class ListGuiasListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent e) {
 			textNombre.setText(listaGuias.get(listGuias.getSelectedIndex()).getNombre());
+			textApellidos.setText(listaGuias.get(listGuias.getSelectedIndex()).getApellidos());
 			textDNI.setText(listaGuias.get(listGuias.getSelectedIndex()).getDNI());
 			textEdad.setText(listaGuias.get(listGuias.getSelectedIndex()).getEdad());
 			textSexo.setText(listaGuias.get(listGuias.getSelectedIndex()).getSexo());
