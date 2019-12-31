@@ -3,15 +3,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.*;
-
-
-
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Cursor;
 import java.awt.Frame;
@@ -43,14 +38,10 @@ public class VentanaLogin {
 	private final ButtonGroup buttonGroup_1 = new ButtonGroup();
 	private String letra;
 	private int tamanio=12;
-	private JButton btnEntrar;
+	private JButton btnNewButton;
 	private JPasswordField pass;
 	private JLabel lblNewLabel;
 	private JComboBox comboBox;
-	public String usuario;
-	private ArrayList<DatosUsuario> listaUsuarios = DatosUsuario.generarEmpleado();
-	private int usuarioapp;
-	private JLabel lblAviso;
 
 	/**
 	 * Launch the application.
@@ -145,7 +136,6 @@ public class VentanaLogin {
 		
 		pass = new JPasswordField();
 		pass.setToolTipText("CONTRASEÑA");
-		pass.addActionListener(new passActionListener());
 		GridBagConstraints gbc_pass = new GridBagConstraints();
 		gbc_pass.gridwidth = 2;
 		gbc_pass.fill = GridBagConstraints.BOTH;
@@ -154,14 +144,14 @@ public class VentanaLogin {
 		gbc_pass.gridy = 4;
 		Login.getContentPane().add(pass, gbc_pass);
 		
-		btnEntrar = new JButton("ENTRAR");
-		GridBagConstraints gbc_btnEntrar = new GridBagConstraints();
-		gbc_btnEntrar.anchor = GridBagConstraints.EAST;
-		gbc_btnEntrar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEntrar.gridx = 1;
-		gbc_btnEntrar.gridy = 5;
-		Login.getContentPane().add(btnEntrar, gbc_btnEntrar);
-		btnEntrar.addActionListener(new EntrarActionListener());
+		btnNewButton = new JButton("ENTRAR");
+		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
+		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
+		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
+		gbc_btnNewButton.gridx = 1;
+		gbc_btnNewButton.gridy = 5;
+		Login.getContentPane().add(btnNewButton, gbc_btnNewButton);
+		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 		
 		btnLimpiar = new JButton("LIMPIAR");
 		GridBagConstraints gbc_btnLimpiar = new GridBagConstraints();
@@ -169,14 +159,6 @@ public class VentanaLogin {
 		gbc_btnLimpiar.gridx = 2;
 		gbc_btnLimpiar.gridy = 5;
 		Login.getContentPane().add(btnLimpiar, gbc_btnLimpiar);
-		
-		lblAviso = new JLabel("");
-		GridBagConstraints gbc_lblAviso = new GridBagConstraints();
-		gbc_lblAviso.anchor = GridBagConstraints.WEST;
-		gbc_lblAviso.insets = new Insets(0, 0, 5, 5);
-		gbc_lblAviso.gridx = 4;
-		gbc_lblAviso.gridy = 5;
-		Login.getContentPane().add(lblAviso, gbc_lblAviso);
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				user.setText("");
@@ -200,11 +182,11 @@ public class VentanaLogin {
 			tamanio=16;
 			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-			btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-			btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
@@ -217,11 +199,11 @@ public class VentanaLogin {
 				tamanio=12;
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-				btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-				btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
@@ -234,11 +216,11 @@ public class VentanaLogin {
 				tamanio=10;
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-				btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-				btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			
 			}
@@ -255,11 +237,11 @@ public class VentanaLogin {
 			letra="Arial";
 			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-			btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-			btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
@@ -272,11 +254,11 @@ public class VentanaLogin {
 				letra="Calibri";
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-				btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-				btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
@@ -289,11 +271,11 @@ public class VentanaLogin {
 				letra="Times New Roman";
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
 				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
-				btnEntrar.setFont(new Font(null, Font.PLAIN, tamanio ));
+				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
-				btnEntrar.setFont(new Font(letra, Font.PLAIN, btnEntrar.getFont().getSize()));
+				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			}
 		});
@@ -311,110 +293,33 @@ public class VentanaLogin {
 	
 
 	
-//	private class BtnNewButtonActionListener implements ActionListener {
-//		public void actionPerformed(ActionEvent e) {
-//			
-//		// Codigo correspondiente al de entrar mas o menos Usuario jesus o pedro y contraseña 1234a para los dos 
-//			// Codigo sucio hay que mejorarlo 
-//			DatosUsuario d =new DatosUsuario(); 
-//		if (d.Existe(user.getText(), pass.getText())==1) {
-//			String nombre=user.getText();
-//			
-//			d.usuario=nombre;
-//			d.UsuarioConectado( nombre);
-//			usuario=cambiar_usuario(nombre);
-//			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
-//			VentanaPagina Vp= new VentanaPagina();
-//			Vp.frmAplicacion.setVisible(true);
-//			
-//			Login.dispose();//
-//		}else {
-//			if (d.Existe(user.getText(), pass.getText())==-1) {
-//			JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
-//			}else {
-//				JOptionPane.showMessageDialog(null, "USUARIO INCORRECTO");
-//			}
-//		}
-//			
-//		}
-//	}
-	
-	
+	private class BtnNewButtonActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			
+		// Codigo correspondiente al de entrar mas o menos Usuario jesus o pedro y contraseña 1234a para los dos 
+			// Codigo sucio hay que mejorarlo 
+			DatosUsuario d =new DatosUsuario(); 
+		if (d.Existe(user.getText(), pass.getText())==1) {
+			String nombre=user.getText();
+			
+			d.usuario=nombre;
+			d.UsuarioConectado( nombre);
+			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
+			VentanaPagina Vp= new VentanaPagina();
+			Vp.frmAplicacion.setVisible(true);
+			
+			Login.dispose();//
+		}else {
+			if (d.Existe(user.getText(), pass.getText())==-1) {
+			JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
+			}else {
+				JOptionPane.showMessageDialog(null, "USUARIO INCORRECTO");
+			}
+		}
+			
+		}
+	}
 	public static JFrame getFrame() {
 		return Login;
-	}
-	
-
-	private class passActionListener implements ActionListener {
-        public void actionPerformed(ActionEvent e) {
-            usuario();
-        }
-        
-        private void usuario() {
-    		int i=0;
-    		for(i=0; i < listaUsuarios.size(); i++) {
-    		if (String.valueOf(pass.getPassword()).equals(listaUsuarios.get(i).getPass()) & 
-    				String.valueOf(user.getText()).equals(listaUsuarios.get(i).getUsuario()))
-            {
-    			usuarioapp=i;
-    			i=listaUsuarios.size()+3;
-                lblAviso.setBackground(Color.GREEN);
-                lblAviso.setText("Contraseña correcta. Puede entrar");
-                lblAviso.setVisible(true);
-                btnEntrar.setEnabled(true);
-                lblContraseña.setEnabled(false);
-                pass.setEnabled(false);
-
-            } 
-    		}
-    		if (i!=listaUsuarios.size()+4) {
-    		lblAviso.setBackground(Color.RED);
-    		lblAviso.setText("Usuario o Contraseña incorrecta.");
-            user.requestFocus();
-            lblAviso.setVisible(true);
-            user.setText("");
-            lblContraseña.setEnabled(false);
-            pass.setEnabled(false);
-            pass.setText("");
-            btnEntrar.setEnabled(false);
-    		}
-    	}
-    
-	}
-	
-	
-	
-	
-	private class EntrarActionListener implements ActionListener {
-		public void actionPerformed(ActionEvent arg0) {
-			VentanaPagina otraVentana = new VentanaPagina();
-			VentanaPagina.setPersonal(listaUsuarios.get(usuarioapp).getUsuario());
-			VentanaPagina.setConexion(listaUsuarios.get(usuarioapp).getConexion());
-			otraVentana.frmAplicacion.setVisible(true);
-			Login.dispose();
-			user.setText("");
-			pass.setText("");
-			lblAviso.setText("");
-			btnEntrar.setEnabled(false);
-		}
-		
-	}
-	
-	
-	
-	
-	public String cambiar_usuario(String nombre) {
-		String n;
-		if(nombre.equals("jesus")) {
-			n="Jesus Gamero Tello";
-			return n;
-			
-		}else if (nombre.equals("pedro")) {
-			n="Pedro Millan Alvarez";
-			return n;
-		}else return null;
-	}
-	public String get_usuarioConectado() {
-		return usuario;
 	}
 }
