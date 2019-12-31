@@ -33,6 +33,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 
@@ -319,7 +322,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 
 		Apertura = new JSpinner();
-		Apertura.setModel(new SpinnerListModel(new String[] {"00:00"}));
+		Apertura.setModel(new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.HOUR));
 		GridBagConstraints gbc_Apertura = new GridBagConstraints();
 		gbc_Apertura.gridwidth = 3;
 		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
@@ -586,7 +589,18 @@ public class PanelCircuitos extends JPanel {
 			}else {
 				BtnNo.setSelected(true);
 			}
-			DefaultListModel hora;
+			String pattern = "HH:mm";
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+            Date date;
+            try {
+                date = simpleDateFormat.parse(monumentos.get(Mo.getSelectedIndex()).getApertura());
+                Apertura.setValue(date);
+            } catch (ParseException e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            }
+            
+			
 			//hora.addElement(monumentos.get(Mo.getSelectedIndex()).getDuracion());
 			//SpinnerModel hora2.add
 			//.setModel(hora2);
