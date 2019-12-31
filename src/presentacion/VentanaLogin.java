@@ -319,6 +319,8 @@ public class VentanaLogin {
 			
 		}
 	}
+	
+	
 	public static JFrame getFrame() {
 		return Login;
 	}
