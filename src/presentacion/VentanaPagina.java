@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JMenuBar;
@@ -232,7 +234,7 @@ public class VentanaPagina {
 		gbc_btnCerrarSesion.gridx = 3;
 		gbc_btnCerrarSesion.gridy = 4;
 		panel_1.add(btnCerrarSesion, gbc_btnCerrarSesion);
-		UserConectado();
+		//UserConectado();
 	}
 
 	public JFrame getFrame() {
@@ -242,33 +244,43 @@ public class VentanaPagina {
 	public void setFrame(JFrame frame) {
 		this.frmAplicacion = frame;
 	}
-	public void UserConectado() {
-		  URL archivo = null;
-	      InputStreamReader fr = null;
-	      BufferedReader br = null;
-
-	      try {
-	         
-	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
-	         fr =  new InputStreamReader(archivo.openStream());
-	         br = new BufferedReader(fr);
-	         String linea;
-	         while((linea=br.readLine())!=null)
-	        	 Nombre.setText(linea);
-	      }
-	      catch(Exception e){
-	         e.printStackTrace();
-	      }finally{
-	        
-	         try{                    
-	            if( null != fr ){   
-	               fr.close();     
-	            }                  
-	         }catch (Exception e2){ 
-	            e2.printStackTrace();
-	         }
-	      }
-	   }
+//	public void UserConectado() {
+//		  URL archivo = null;
+//	      InputStreamReader fr = null;
+//	      BufferedReader br = null;
+//
+//	      try {
+//	         
+//	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
+//	         fr =  new InputStreamReader(archivo.openStream());
+//	         br = new BufferedReader(fr);
+//	         String linea;
+//	         while((linea=br.readLine())!=null)
+//	        	 Nombre.setText(linea);
+//	      }
+//	      catch(Exception e){
+//	         e.printStackTrace();
+//	      }finally{
+//	        
+//	         try{                    
+//	            if( null != fr ){   
+//	               fr.close();     
+//	            }                  
+//	         }catch (Exception e2){ 
+//	            e2.printStackTrace();
+//	         }
+//	      }
+//	   }
+	public void SetNombre(String nombre) {
+		Nombre.setText(nombre);
+	}
+	
+	public void SetUltimaConexion(String ultimaconexion) throws ParseException {
+		String pattern = "dd-MM-yyyy HH:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(ultimaconexion);
+		spinner.setValue(date);
+	}
 	
 		
 	}

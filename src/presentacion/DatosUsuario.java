@@ -35,8 +35,16 @@ public class DatosUsuario {
 		}else return 0 ;
 	
 	}
-	public void UsuarioConectado(String nombre)  {
-	    
+	public String UsuarioConectado(String nombre)  {
+		if(nombre.equals("jesus")) {
+
+					return "Jesus Gamero Tello";
+				
+		}else {
+			return "Pedro Millán Álvarez";
+		}
+		
+	
 	}
 
 	public String getUsuario() {
