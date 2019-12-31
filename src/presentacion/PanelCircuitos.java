@@ -133,19 +133,16 @@ public class PanelCircuitos extends JPanel {
 				for (int i = 0; i <= monumentos.size() - 1; i++) {
 
 					modelo2.addElement(monumentos.get(i).getNombre());
-					System.out.print(monumentos.get(i).getNombre());
 				}
 
 				for (int i = 0; i <= tiendas.size() - 1; i++) {
 
 					modelo3.addElement(tiendas.get(i).getNombre());
-					System.out.print(tiendas.get(i).getNombre());
 				}
 
 				for (int i = 0; i <= restaurantes.size() - 1; i++) {
 
 					modelo4.addElement(restaurantes.get(i).getNombre());
-					System.out.print(restaurantes.get(i).getNombre());
 
 				}
 				Mo.setModel(modelo2);
@@ -322,7 +319,12 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 
 		Apertura = new JSpinner();
-		Apertura.setModel(new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.HOUR));
+		Date date=new Date();
+		SpinnerDateModel sm = new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.HOUR_OF_DAY);
+		Apertura.setModel(sm);
+		JSpinner.DateEditor de = new JSpinner.DateEditor(Apertura, "HH:mm");
+		de.getTextField().setEditable( false );
+		Apertura.setEditor(de);
 		GridBagConstraints gbc_Apertura = new GridBagConstraints();
 		gbc_Apertura.gridwidth = 3;
 		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
@@ -342,7 +344,12 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel_6, gbc_lblNewLabel_6);
 
 		Cierre = new JSpinner();
-		Cierre.setModel(new SpinnerListModel(new String[] { "00:00" }));
+		Date date2=new Date();
+		SpinnerDateModel sm2 = new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.HOUR_OF_DAY);
+		Cierre.setModel(sm2);
+		JSpinner.DateEditor de2 = new JSpinner.DateEditor(Cierre, "HH:mm");
+		de2.getTextField().setEditable( false );
+		Cierre.setEditor(de2);
 		GridBagConstraints gbc_Cierre = new GridBagConstraints();
 		gbc_Cierre.gridwidth = 3;
 		gbc_Cierre.insets = new Insets(0, 0, 5, 5);
@@ -591,19 +598,18 @@ public class PanelCircuitos extends JPanel {
 			}
 			String pattern = "HH:mm";
             SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-            Date date;
+            Date date_apertura;
+            Date date_cierre;
             try {
-                date = simpleDateFormat.parse(monumentos.get(Mo.getSelectedIndex()).getApertura());
-                Apertura.setValue(date);
+                date_apertura = simpleDateFormat.parse(monumentos.get(Mo.getSelectedIndex()).getApertura());
+                Apertura.setValue(date_apertura);
+                date_cierre = simpleDateFormat.parse(monumentos.get(Mo.getSelectedIndex()).getCierre());
+                Cierre.setValue(date_cierre);
             } catch (ParseException e1) {
-                // TODO Auto-generated catch block
                 e1.printStackTrace();
             }
             
-			
-			//hora.addElement(monumentos.get(Mo.getSelectedIndex()).getDuracion());
-			//SpinnerModel hora2.add
-			//.setModel(hora2);
+		
 		}
 	}
 
