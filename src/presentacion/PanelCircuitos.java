@@ -33,6 +33,9 @@ import java.awt.event.ActionEvent;
 import javax.swing.ListSelectionModel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+
 import javax.swing.SpinnerListModel;
 import javax.swing.SpinnerModel;
 
@@ -88,6 +91,8 @@ public class PanelCircuitos extends JPanel {
 	private JRadioButton BtnSI;
 	private JRadioButton BtnNo;
 	private JTextField textDuracionM;
+
+	
 
 	/**
 	 * Create the panel.
@@ -150,6 +155,11 @@ public class PanelCircuitos extends JPanel {
 				R.setModel(modelo4);
 			}
 		});
+		
+		
+			
+		
+		
 		scrollPane.setViewportView(list);
 
 		btnAadir = new JButton("Añadir");
@@ -182,7 +192,7 @@ public class PanelCircuitos extends JPanel {
 		panel.setLayout(gbl_panel);
 
 		scrollPane_1 = new JScrollPane();
-		scrollPane_1.addMouseListener(new MMouseListener());
+	
 		GridBagConstraints gbc_scrollPane_1 = new GridBagConstraints();
 		gbc_scrollPane_1.gridheight = 2;
 		gbc_scrollPane_1.insets = new Insets(0, 0, 5, 5);
@@ -197,7 +207,7 @@ public class PanelCircuitos extends JPanel {
 		scrollPane_1.setViewportView(Mo);
 
 		scrollPane_2 = new JScrollPane();
-		scrollPane_2.addMouseListener(new MMouseListener());
+	
 		GridBagConstraints gbc_scrollPane_2 = new GridBagConstraints();
 		gbc_scrollPane_2.gridheight = 2;
 		gbc_scrollPane_2.insets = new Insets(0, 0, 5, 5);
@@ -225,7 +235,7 @@ public class PanelCircuitos extends JPanel {
 		scrollPane_2.setViewportView(R);
 
 		scrollPane_3 = new JScrollPane();
-		scrollPane_3.addMouseListener(new MMouseListener());
+		
 		GridBagConstraints gbc_scrollPane_3 = new GridBagConstraints();
 		gbc_scrollPane_3.gridheight = 2;
 		gbc_scrollPane_3.insets = new Insets(0, 0, 5, 5);
@@ -319,7 +329,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel, gbc_lblNewLabel);
 
 		Apertura = new JSpinner();
-		Apertura.setModel(new SpinnerListModel(new String[] {"00:00"}));
+		Apertura.setModel(new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.HOUR));
 		GridBagConstraints gbc_Apertura = new GridBagConstraints();
 		gbc_Apertura.gridwidth = 3;
 		gbc_Apertura.insets = new Insets(0, 0, 5, 5);
@@ -339,7 +349,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(lblNewLabel_6, gbc_lblNewLabel_6);
 
 		Cierre = new JSpinner();
-		Cierre.setModel(new SpinnerListModel(new String[] { "00:00" }));
+		Cierre.setModel(new SpinnerDateModel(new Date(1577746800000L), null, null, Calendar.DAY_OF_YEAR));
 		GridBagConstraints gbc_Cierre = new GridBagConstraints();
 		gbc_Cierre.gridwidth = 3;
 		gbc_Cierre.insets = new Insets(0, 0, 5, 5);
@@ -535,23 +545,43 @@ public class PanelCircuitos extends JPanel {
 
 	private class BtnAadirActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-
+			try {
+			ArrayList<Monumento> monumentos2 = new  ArrayList<Monumento>();
+			ArrayList<Tienda> tiendas2= new  ArrayList<Tienda>();
+			ArrayList<Restaurante> restaurantes2 = new  ArrayList<Restaurante>();
+			list.clearSelection();
+	       int size= listaRutas.size()+1;
+	       String nombre= "Ruta "+size;
+            listaRutas.add(new Ruta(nombre,monumentos2,restaurantes2,tiendas2));
+            añadirRuta();
+            
+		}catch(ArrayIndexOutOfBoundsException p) {
+			
+		 }
 		}
 	}
 
 	private class BtnEliminarActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			try {
+				listaRutas.remove(list.getSelectedIndex());
+				System.out.print(listaRutas.size());
+				DefaultListModel modelo2 = new DefaultListModel();
+				DefaultListModel modelo3 = new DefaultListModel();
+				for (int i = 0; i <= listaRutas.size() - 1; i++) {
 
+					modelo2.addElement(listaRutas.get(i).getNombre());
+
+				}
+				list.setModel(modelo2);
+				
+			} catch (ArrayIndexOutOfBoundsException p) {
+
+			}
 		}
 	}
 
-	private class MMouseListener extends MouseAdapter {
-		@Override
-		public void mouseExited(MouseEvent e) {
-
-		}
-	}
-
+	
 	private class TListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent e) {
 			Mo.clearSelection();
@@ -586,10 +616,18 @@ public class PanelCircuitos extends JPanel {
 			}else {
 				BtnNo.setSelected(true);
 			}
-			DefaultListModel hora;
-			//hora.addElement(monumentos.get(Mo.getSelectedIndex()).getDuracion());
-			//SpinnerModel hora2.add
-			//.setModel(hora2);
+			String pattern = "HH:mm";
+			SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+			Date date;
+			try {
+				
+				date = simpleDateFormat.parse(monumentos.get(Mo.getSelectedIndex()).getApertura());
+				Apertura.setValue(date);
+			} catch (ParseException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
 		}
 	}
 
@@ -600,6 +638,14 @@ public class PanelCircuitos extends JPanel {
 		}
 		list.setModel(modelo);
 
+	}
+	public void añadirRuta() {
+		DefaultListModel modelo2 = new DefaultListModel();
+		
+		for (int i = 0; i <= listaRutas.size() - 1; i++) {
+			modelo2.addElement(listaRutas.get(i).getNombre());
+		}
+		list.setModel(modelo2);
 	}
 
 }
