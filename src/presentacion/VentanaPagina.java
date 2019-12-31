@@ -8,6 +8,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.InputStreamReader;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import javax.swing.JMenuBar;
@@ -273,6 +275,12 @@ public class VentanaPagina {
 		Nombre.setText(nombre);
 	}
 	
+	public void SetUltimaConexion(String ultimaconexion) throws ParseException {
+		String pattern = "dd-MM-yyyy HH:mm:ss";
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+		Date date = simpleDateFormat.parse(ultimaconexion);
+		spinner.setValue(date);
+	}
 	
 		
 	}

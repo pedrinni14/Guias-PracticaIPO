@@ -4,6 +4,7 @@ import java.awt.Font;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;
+import java.text.ParseException;
 import java.awt.event.ActionEvent;
 import java.awt.Toolkit;
 import java.awt.BorderLayout;
@@ -310,6 +311,11 @@ public class VentanaLogin {
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.SetNombre(n);
+			try {
+				Vp.SetUltimaConexion("09-08-2019 20:30:10");
+			} catch (ParseException e1) {
+				e1.printStackTrace();
+			}
 			Vp.frmAplicacion.setVisible(true);
 			
 			
@@ -324,6 +330,8 @@ public class VentanaLogin {
 			
 		}
 	}
+	
+	
 	public static JFrame getFrame() {
 		return Login;
 	}
