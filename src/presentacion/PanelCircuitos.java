@@ -1,3 +1,4 @@
+
 package presentacion;
 
 import javax.swing.JPanel;
@@ -661,6 +662,8 @@ public class PanelCircuitos extends JPanel {
 			modelo2.addElement(listaRutas.get(i).getNombre());
 		}
 		list.setModel(modelo2);
+		System.out.print("Hola");
 	}
 
 }
+
