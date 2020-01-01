@@ -26,6 +26,8 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.awt.event.ActionEvent;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.event.ListSelectionEvent;
@@ -91,7 +93,7 @@ public class PanelGuias extends JPanel {
 
 		btnNewButton_1 = new JButton("Agregar ");
 		btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
-		
+
 		lblDatosDeLos = new JLabel("Datos de los Guias");
 		lblDatosDeLos.setFont(new Font("Tahoma", Font.BOLD, 16));
 		GridBagConstraints gbc_lblDatosDeLos = new GridBagConstraints();
@@ -110,6 +112,7 @@ public class PanelGuias extends JPanel {
 		add(lblNombre, gbc_lblNombre);
 
 		textNombre = new JTextField();
+//		textNombre.addActionListener(new textNombreActionListener());
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
 		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNombre.gridwidth = 3;
@@ -249,21 +252,41 @@ public class PanelGuias extends JPanel {
 	private class BtnNewButton_1ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {
-				Guias g = new Guias(textNombre.getText(),textApellidos.getText(), textDNI.getText(), textEdad.getText(), textSexo.getText());
+				Guias g = new Guias(textNombre.getText(), textApellidos.getText(), textDNI.getText(),
+						textEdad.getText(), textSexo.getText());
 
 				if (textNombre.getText().equals("") || textDNI.getText().equals("") || textEdad.getText().equals("")
 						|| textSexo.getText().equals("")) {
 					JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
 
-				} else {
+				} else if (soloLetras(textNombre.getText())) {
+					JOptionPane.showMessageDialog(null, "El nombre contiene caracteres invalidos");
+					limpiarCampos();
+				} else if (soloLetras(textApellidos.getText())) {
+					JOptionPane.showMessageDialog(null, "El apellido contiene caracteres invalidos");
+					limpiarCampos();
+				} else if (comprobarDNI()) {
+					JOptionPane.showMessageDialog(null, "El DNI introducido no es correcto");
+					limpiarCampos();
+				} else if (soloLetras(textEdad.getText())==false || textEdad.getText().length()>2) {
+					JOptionPane.showMessageDialog(null, "La edad introducida no es correcta");
+					limpiarCampos();
+				}else if(comprobarSexo(textSexo.getText())) {
+					JOptionPane.showMessageDialog(null, "El sexo introducido es incorrecto, pruebe con Varon/Mujer");
+					limpiarCampos();
+				}
+
+				else {
 
 					añadir(g);
+					limpiarCampos();
 				}
 
 			} catch (ArrayIndexOutOfBoundsException ex) {
 
 			}
 		}
+
 	}
 
 	private class BtnNewButtonActionListener implements ActionListener {
@@ -303,7 +326,119 @@ public class PanelGuias extends JPanel {
 			textDNI.setText(listaGuias.get(listGuias.getSelectedIndex()).getDNI());
 			textEdad.setText(listaGuias.get(listGuias.getSelectedIndex()).getEdad());
 			textSexo.setText(listaGuias.get(listGuias.getSelectedIndex()).getSexo());
-			
+
 		}
+	}
+
+	private class textNombreActionListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			for (int i = 0; i < textNombre.getText().length(); i++)
+
+			{
+				System.out.println(textNombre.getText());
+
+				char caracter = textNombre.getText().toUpperCase().charAt(i);
+
+				int valorASCII = (int) caracter;
+
+				if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90)) {
+					JOptionPane.showMessageDialog(null, "Valores Incorrectos");
+				}
+			}
+
+		}
+
+	}
+
+
+	public boolean soloLetras(String letra) {
+		for (int i = 0; i < letra.length(); i++)
+
+		{
+
+			char caracter = letra.toUpperCase().charAt(i);
+
+			int valorASCII = (int) caracter;
+
+			if (valorASCII != 165 && (valorASCII < 65 || valorASCII > 90)) {
+				return true;
+			}
+
+		}
+		return false;
+	}
+
+	public boolean comprobarDNI() {
+
+		String letraMayuscula = "";
+
+		if (textDNI.getText().length() != 9 || Character.isLetter(textDNI.getText().charAt(8)) == false) {
+			return true;
+		}
+
+		letraMayuscula = (textDNI.getText().substring(8)).toUpperCase();
+
+		if (soloNumeros() == true && letraDNI().equals(letraMayuscula)) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private boolean soloNumeros() {
+
+		int i, j = 0;
+		String numero = "";
+		String miDNI = "";
+		String[] unoNueve = { "0", "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+
+		for (i = 0; i < textDNI.getText().length() - 1; i++) {
+			numero = textDNI.getText().substring(i, i + 1);
+
+			for (j = 0; j < unoNueve.length; j++) {
+				if (numero.equals(unoNueve[j])) {
+					miDNI += unoNueve[j];
+				}
+			}
+		}
+
+		if (miDNI.length() != 8) {
+			return false;
+		} else {
+			return true;
+		}
+	}
+
+	private String letraDNI() {
+
+		int miDNI = Integer.parseInt(textDNI.getText().substring(0, 8));
+		int resto = 0;
+		String miLetra = "";
+		String[] asignacionLetra = { "T", "R", "W", "A", "G", "M", "Y", "F", "P", "D", "X", "B", "N", "J", "Z", "S",
+				"Q", "V", "H", "L", "C", "K", "E" };
+
+		resto = miDNI % 23;
+
+		miLetra = asignacionLetra[resto];
+
+		return miLetra;
+	}
+	public boolean comprobarSexo(String sexo) {
+		if(sexo.toUpperCase().equals("VARON")||sexo.toUpperCase().equals("MUJER")) {
+			return false;
+		}
+		else return true;
+	}
+
+
+
+	public void limpiarCampos() {
+		textNombre.setText("");
+		textDNI.setText("");
+		textEdad.setText("");
+		textSexo.setText("");
+		textApellidos.setText("");
 	}
 }
