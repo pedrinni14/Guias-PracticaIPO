@@ -612,16 +612,25 @@ public class PanelCircuitos extends JPanel {
 
 	private class AñadirMActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			try {
 			monumentos=listaRutas.get(list.getSelectedIndex()).getM();
-			if (BtnSI.isEnabled()) {
-				monumentos.add(new Monumento(textNombreM.getText(),true,Apertura.getToolTipText(),Cierre.getToolTipText(),textDuracionM.getText()));
-				System.out.println(Apertura.getToolTipText());
-				System.out.println(Apertura.getToolTipText());
-			}else {
-				monumentos.add(new Monumento(textNombreM.getText(),false,Apertura.getModel().toString(),Cierre.getModel().toString(),textDuracionM.getText()));
-			}
+			String apert = Apertura.getValue().toString();
+			String[] apert1 = apert.split(" ");
+			String[] apert2 = apert1[3].split(":");
+			System.out.print(apert2[0]+":"+apert2[1]);
+			String cierre = Cierre.getValue().toString();
+			String[] cierre1 = cierre.split(" ");
+			String[] cierre2= cierre1[3].split(":");
 			
-			System.out.print(monumentos.size());
+			
+			if (BtnSI.isEnabled()) {
+				monumentos.add(new Monumento(textNombreM.getText(),true,apert2[0]+":"+apert2[1],cierre2[0]+":"+cierre2[1],textDuracionM.getText()));
+				System.out.print("ESTOY ENTRANDO TONTO CULO ");
+			}else {
+				monumentos.add(new Monumento(textNombreM.getText(),false,apert2[0]+":"+apert2[1],cierre2[0]+":"+cierre2[1],textDuracionM.getText()));
+			
+			}
+		
 			DefaultListModel modelo2 = new DefaultListModel();
 			DefaultListModel modelo3 = new DefaultListModel();
 			for (int i = 0; i <= monumentos.size() - 1; i++) {
@@ -631,7 +640,10 @@ public class PanelCircuitos extends JPanel {
 			}
 			Mo.setModel(modelo2);
 			
+		}catch (ArrayIndexOutOfBoundsException x) {
+			
 		}
+	}
 	}
 
 	private class ModificarMActionListener implements ActionListener {
