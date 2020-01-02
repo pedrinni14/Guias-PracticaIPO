@@ -651,6 +651,7 @@ public class PanelCircuitos extends JPanel {
 
 	private class ModificarMActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			try {
 			monumentos=listaRutas.get(list.getSelectedIndex()).getM();
 			String apert = Apertura.getValue().toString();
 			String[] apert1 = apert.split(" ");
@@ -668,9 +669,20 @@ public class PanelCircuitos extends JPanel {
 			}else {
 				monumentos.get(Mo.getSelectedIndex()).setGratuito(false);
 			}
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= monumentos.size() - 1; i++) {
+
+				modelo2.addElement(monumentos.get(i).getNombre());
+
+			}
+			Mo.setModel(modelo2);
 			
 			
 			
+		}catch(ArrayIndexOutOfBoundsException x) {
+			
+		}
 		}
 	}
 
