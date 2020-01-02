@@ -8,10 +8,12 @@ import java.util.ArrayList;
 
 public class Guias {
 	private String Nombre;
+	// private String int long telefono 
 	private String Apellidos;
 	private String DNI;
 	private String Edad ;
 	private String Sexo;
+	// private Icon Imagen ;
 	
 	public Guias(String nombre, String apellidos, String dNI, String edad, String sexo) {
 		super();
@@ -65,8 +67,12 @@ public class Guias {
 	}
 	
 	public static ArrayList<Guias> generarGuia() {
+		
 		ArrayList<Guias> Guias= new ArrayList<Guias>();
-		  URL fichero = Guias.class.getResource("/presentacion/Guias.txt");
+		// Borrar todo lo de leer 
+		// Añadir a mano los Guias que serian 
+		// Guias.add(new Guias(Pedro,Millan,89989898,8979798D,23,varon,imagen);
+		URL fichero = Guias.class.getResource("/presentacion/Guias.txt");
 		  try {
 		      InputStreamReader fr =  new InputStreamReader(fichero.openStream());
 		      BufferedReader br = new BufferedReader(fr);
