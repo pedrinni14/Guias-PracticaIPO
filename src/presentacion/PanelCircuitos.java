@@ -463,6 +463,8 @@ public class PanelCircuitos extends JPanel {
 		Restaurantes.add(AñadirR, gbc_AñadirR);
 
 		ModificarR = new JButton("MODIFICAR ");
+		ModificarR.addActionListener(new ModificarRActionListener_1());
+		
 		GridBagConstraints gbc_ModificarR = new GridBagConstraints();
 		gbc_ModificarR.insets = new Insets(0, 0, 0, 5);
 		gbc_ModificarR.gridx = 2;
@@ -722,17 +724,7 @@ public class PanelCircuitos extends JPanel {
 		}
 	}
 	
-	private class ModificarRActionListener implements ActionListener{
-		public void actionPerformed(ActionEvent e) {
-			//Restaurante r = R.get(list.getSelectedIndex());
-//			r.setNombre(textNombreR.getText());
-//			r.setTipo(textTipoR.getText());
-	
-			
-			
-		}
-	}
-	
+		
 	private class AñadirRActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			restaurantes = listaRutas.get(list.getSelectedIndex()).getR();
@@ -749,6 +741,10 @@ public class PanelCircuitos extends JPanel {
 	}
 	private class BtnNewButton_2ActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			 tiendas = listaRutas.get(list.getSelectedIndex()).getT();
+				tiendas.get(T.getSelectedIndex()).setNombre((textNombreT.getText()));
+				tiendas.get(T.getSelectedIndex()).setTipo((textTipoT.getText()));
+				
 		}
 	}
 	private class EliminarTActionListener implements ActionListener {
@@ -770,6 +766,15 @@ public class PanelCircuitos extends JPanel {
 			}
 		}
 	}
+
+	private class ModificarRActionListener_1 implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			 restaurantes = listaRutas.get(list.getSelectedIndex()).getR();
+			restaurantes.get(R.getSelectedIndex()).setNombre((textNombreR.getText()));
+			restaurantes.get(R.getSelectedIndex()).setTipo((textTipoR.getText()));
+    }
+  }
+
 	private class AñadirTActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e ) {
 			tiendas = listaRutas.get(list.getSelectedIndex()).getT();
@@ -781,6 +786,7 @@ public class PanelCircuitos extends JPanel {
 
 			}
 			T.setModel(modelo2);
+
 		}
 	}
 
@@ -799,7 +805,7 @@ public class PanelCircuitos extends JPanel {
 			modelo2.addElement(listaRutas.get(i).getNombre());
 		}
 		list.setModel(modelo2);
-		System.out.print("Hola");
+		
 	}
 
 }
