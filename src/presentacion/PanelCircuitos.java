@@ -461,23 +461,23 @@ public class PanelCircuitos extends JPanel {
 		gbc_AñadirR.gridx = 1;
 		gbc_AñadirR.gridy = 5;
 		Restaurantes.add(AñadirR, gbc_AñadirR);
-
-		ModificarR = new JButton("MODIFICAR ");
-		ModificarR.addActionListener(new ModificarRActionListener_1());
-		
-		GridBagConstraints gbc_ModificarR = new GridBagConstraints();
-		gbc_ModificarR.insets = new Insets(0, 0, 0, 5);
-		gbc_ModificarR.gridx = 2;
-		gbc_ModificarR.gridy = 5;
-		Restaurantes.add(ModificarR, gbc_ModificarR);
-
-		EliminarR = new JButton("ELIMINAR ");
-		EliminarR.addActionListener(new EliminarRActionListener());
-		GridBagConstraints gbc_EliminarR = new GridBagConstraints();
-		gbc_EliminarR.insets = new Insets(0, 0, 0, 5);
-		gbc_EliminarR.gridx = 3;
-		gbc_EliminarR.gridy = 5;
-		Restaurantes.add(EliminarR, gbc_EliminarR);
+				
+						EliminarR = new JButton("ELIMINAR ");
+						EliminarR.addActionListener(new EliminarRActionListener());
+						GridBagConstraints gbc_EliminarR = new GridBagConstraints();
+						gbc_EliminarR.insets = new Insets(0, 0, 0, 5);
+						gbc_EliminarR.gridx = 2;
+						gbc_EliminarR.gridy = 5;
+						Restaurantes.add(EliminarR, gbc_EliminarR);
+				
+						ModificarR = new JButton("MODIFICAR ");
+						ModificarR.addActionListener(new ModificarRActionListener_1());
+						
+						GridBagConstraints gbc_ModificarR = new GridBagConstraints();
+						gbc_ModificarR.insets = new Insets(0, 0, 0, 5);
+						gbc_ModificarR.gridx = 3;
+						gbc_ModificarR.gridy = 5;
+						Restaurantes.add(ModificarR, gbc_ModificarR);
 
 		Tiendas = new JPanel();
 		Formulario.add(Tiendas, "Tiendas");
@@ -709,7 +709,6 @@ public class PanelCircuitos extends JPanel {
 			try {
 				monumentos=listaRutas.get(list.getSelectedIndex()).getM();
 				monumentos.remove(Mo.getSelectedIndex());
-				System.out.print(monumentos.size());
 				DefaultListModel modelo2 = new DefaultListModel();
 				DefaultListModel modelo3 = new DefaultListModel();
 				for (int i = 0; i <= monumentos.size() - 1; i++) {
@@ -764,6 +763,14 @@ public class PanelCircuitos extends JPanel {
 			 tiendas = listaRutas.get(list.getSelectedIndex()).getT();
 				tiendas.get(T.getSelectedIndex()).setNombre((textNombreT.getText()));
 				tiendas.get(T.getSelectedIndex()).setTipo((textTipoT.getText()));
+				DefaultListModel modelo2 = new DefaultListModel();
+				DefaultListModel modelo3 = new DefaultListModel();
+				for (int i = 0; i <= tiendas.size() - 1; i++) {
+
+					modelo2.addElement(tiendas.get(i).getNombre());
+
+				}
+				T.setModel(modelo2);
 				
 		}
 	}
@@ -792,6 +799,14 @@ public class PanelCircuitos extends JPanel {
 			 restaurantes = listaRutas.get(list.getSelectedIndex()).getR();
 			restaurantes.get(R.getSelectedIndex()).setNombre((textNombreR.getText()));
 			restaurantes.get(R.getSelectedIndex()).setTipo((textTipoR.getText()));
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= restaurantes.size() - 1; i++) {
+
+				modelo2.addElement(restaurantes.get(i).getNombre());
+
+			}
+			R.setModel(modelo2);
     }
   }
 
