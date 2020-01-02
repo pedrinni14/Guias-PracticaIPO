@@ -455,6 +455,7 @@ public class PanelCircuitos extends JPanel {
 		textTipoR.setColumns(10);
 
 		AñadirR = new JButton("AÑADIR ");
+		AñadirR.addActionListener(new AñadirRActionListener());
 		GridBagConstraints gbc_AñadirR = new GridBagConstraints();
 		gbc_AñadirR.insets = new Insets(0, 0, 0, 5);
 		gbc_AñadirR.gridx = 1;
@@ -704,21 +705,46 @@ public class PanelCircuitos extends JPanel {
 	private class EliminarRActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {
-			tiendas=listaRutas.get(list.getSelectedIndex()).getT();
-			tiendas.remove(T.getSelectedIndex());
-			System.out.print(tiendas.size());
+			restaurantes=listaRutas.get(list.getSelectedIndex()).getR();
+			restaurantes.remove(R.getSelectedIndex());
 			DefaultListModel modelo2 = new DefaultListModel();
 			DefaultListModel modelo3 = new DefaultListModel();
-			for (int i = 0; i <= tiendas.size() - 1; i++) {
+			for (int i = 0; i <= restaurantes.size() - 1; i++) {
 
-				modelo2.addElement(tiendas.get(i).getNombre());
+				modelo2.addElement(restaurantes.get(i).getNombre());
 
 			}
-			T.setModel(modelo2);
+			R.setModel(modelo2);
 			
 		} catch (ArrayIndexOutOfBoundsException p) {
 
 		}
+		}
+	}
+	
+	private class ModificarRActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			//Restaurante r = R.get(list.getSelectedIndex());
+//			r.setNombre(textNombreR.getText());
+//			r.setTipo(textTipoR.getText());
+	
+			
+			
+		}
+	}
+	
+	private class AñadirRActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			restaurantes = listaRutas.get(list.getSelectedIndex()).getR();
+			restaurantes.add(new Restaurante(textNombreR.getText(),textTipoR.getText()));
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= restaurantes.size() - 1; i++) {
+				modelo2.addElement(restaurantes.get(i).getNombre());
+
+			}
+			R.setModel(modelo2);
+
 		}
 	}
 	private class BtnNewButton_2ActionListener implements ActionListener {
