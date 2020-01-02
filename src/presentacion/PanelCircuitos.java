@@ -72,11 +72,11 @@ public class PanelCircuitos extends JPanel {
 	private JButton ModificarR;
 	private JButton EliminarR;
 	private JButton ModificarM;
-	private JLabel lblNewLabel_4;
-	private JLabel lblNewLabel_5;
-	private JButton btnNewButton;
-	private JButton btnNewButton_1;
-	private JButton btnNewButton_2;
+	private JLabel lblNombreT;
+	private JLabel lblTipoT;
+	private JButton btnAñadirT;
+	private JButton btnEliminarT;
+	private JButton btnModificarT;
 	private JLabel lblNewLabel_6;
 	private JSpinner Cierre;
 	DefaultListModel modelo = new DefaultListModel();
@@ -488,12 +488,12 @@ public class PanelCircuitos extends JPanel {
 		gbl_Tiendas.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		Tiendas.setLayout(gbl_Tiendas);
 
-		lblNewLabel_4 = new JLabel("Nombre ");
-		GridBagConstraints gbc_lblNewLabel_4 = new GridBagConstraints();
-		gbc_lblNewLabel_4.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_4.gridx = 1;
-		gbc_lblNewLabel_4.gridy = 0;
-		Tiendas.add(lblNewLabel_4, gbc_lblNewLabel_4);
+		lblNombreT = new JLabel("Nombre ");
+		GridBagConstraints gbc_lblNombreT = new GridBagConstraints();
+		gbc_lblNombreT.insets = new Insets(0, 0, 5, 5);
+		gbc_lblNombreT.gridx = 1;
+		gbc_lblNombreT.gridy = 0;
+		Tiendas.add(lblNombreT, gbc_lblNombreT);
 
 		textNombreT = new JTextField();
 		GridBagConstraints gbc_textNombreT = new GridBagConstraints();
@@ -505,12 +505,12 @@ public class PanelCircuitos extends JPanel {
 		Tiendas.add(textNombreT, gbc_textNombreT);
 		textNombreT.setColumns(10);
 
-		lblNewLabel_5 = new JLabel("Tipo de Tienda ");
-		GridBagConstraints gbc_lblNewLabel_5 = new GridBagConstraints();
-		gbc_lblNewLabel_5.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_5.gridx = 1;
-		gbc_lblNewLabel_5.gridy = 2;
-		Tiendas.add(lblNewLabel_5, gbc_lblNewLabel_5);
+		lblTipoT = new JLabel("Tipo de Tienda ");
+		GridBagConstraints gbc_lblTipoT = new GridBagConstraints();
+		gbc_lblTipoT.insets = new Insets(0, 0, 5, 5);
+		gbc_lblTipoT.gridx = 1;
+		gbc_lblTipoT.gridy = 2;
+		Tiendas.add(lblTipoT, gbc_lblTipoT);
 
 		textTipoT = new JTextField();
 		GridBagConstraints gbc_textTipoT = new GridBagConstraints();
@@ -522,28 +522,29 @@ public class PanelCircuitos extends JPanel {
 		Tiendas.add(textTipoT, gbc_textTipoT);
 		textTipoT.setColumns(10);
 
-		btnNewButton = new JButton("AÑADIR");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 4;
-		Tiendas.add(btnNewButton, gbc_btnNewButton);
+		btnAñadirT = new JButton("AÑADIR");
+		btnAñadirT.addActionListener(new AñadirTActionListener());
+		GridBagConstraints gbc_btnAñadirT = new GridBagConstraints();
+		gbc_btnAñadirT.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAñadirT.gridx = 2;
+		gbc_btnAñadirT.gridy = 4;
+		Tiendas.add(btnAñadirT, gbc_btnAñadirT);
 
-		btnNewButton_1 = new JButton("ELIMINAR ");
-		btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
-		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
-		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_1.gridx = 3;
-		gbc_btnNewButton_1.gridy = 4;
-		Tiendas.add(btnNewButton_1, gbc_btnNewButton_1);
+		btnEliminarT = new JButton("ELIMINAR ");
+		btnEliminarT.addActionListener(new EliminarTActionListener());
+		GridBagConstraints gbc_btnEliminarT = new GridBagConstraints();
+		gbc_btnEliminarT.insets = new Insets(0, 0, 0, 5);
+		gbc_btnEliminarT.gridx = 3;
+		gbc_btnEliminarT.gridy = 4;
+		Tiendas.add(btnEliminarT, gbc_btnEliminarT);
 
-		btnNewButton_2 = new JButton("MODIFICAR ");
-		btnNewButton_2.addActionListener(new BtnNewButton_2ActionListener());
-		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
-		gbc_btnNewButton_2.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton_2.gridx = 4;
-		gbc_btnNewButton_2.gridy = 4;
-		Tiendas.add(btnNewButton_2, gbc_btnNewButton_2);
+		btnModificarT = new JButton("MODIFICAR ");
+		btnModificarT.addActionListener(new BtnNewButton_2ActionListener());
+		GridBagConstraints gbc_btnModificarT = new GridBagConstraints();
+		gbc_btnModificarT.insets = new Insets(0, 0, 0, 5);
+		gbc_btnModificarT.gridx = 4;
+		gbc_btnModificarT.gridy = 4;
+		Tiendas.add(btnModificarT, gbc_btnModificarT);
 
 	}
 
@@ -626,9 +627,8 @@ public class PanelCircuitos extends JPanel {
 			String[] cierre2= cierre1[3].split(":");
 			
 			
-			if (BtnSI.isEnabled()) {
+			if (BtnSI.isSelected()) {
 				monumentos.add(new Monumento(textNombreM.getText(),true,apert2[0]+":"+apert2[1],cierre2[0]+":"+cierre2[1],textDuracionM.getText()));
-				System.out.print("ESTOY ENTRANDO TONTO CULO ");
 			}else {
 				monumentos.add(new Monumento(textNombreM.getText(),false,apert2[0]+":"+apert2[1],cierre2[0]+":"+cierre2[1],textDuracionM.getText()));
 			
@@ -747,31 +747,46 @@ public class PanelCircuitos extends JPanel {
 				
 		}
 	}
-	private class BtnNewButton_1ActionListener implements ActionListener {
+	private class EliminarTActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			try {
-				restaurantes=listaRutas.get(list.getSelectedIndex()).getR();
-				restaurantes.remove(R.getSelectedIndex());
-				System.out.print(restaurantes.size());
+				tiendas=listaRutas.get(list.getSelectedIndex()).getT();
+				tiendas.remove(T.getSelectedIndex());
 				DefaultListModel modelo2 = new DefaultListModel();
 				DefaultListModel modelo3 = new DefaultListModel();
-				for (int i = 0; i <= restaurantes.size() - 1; i++) {
+				for (int i = 0; i <= tiendas.size() - 1; i++) {
 
-					modelo2.addElement(restaurantes.get(i).getNombre());
+					modelo2.addElement(tiendas.get(i).getNombre());
 
 				}
-				R.setModel(modelo2);
+				T.setModel(modelo2);
 				
 			} catch (ArrayIndexOutOfBoundsException p) {
 
 			}
 		}
 	}
+
 	private class ModificarRActionListener_1 implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 			 restaurantes = listaRutas.get(list.getSelectedIndex()).getR();
 			restaurantes.get(R.getSelectedIndex()).setNombre((textNombreR.getText()));
 			restaurantes.get(R.getSelectedIndex()).setTipo((textTipoR.getText()));
+    }
+  }
+
+	private class AñadirTActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e ) {
+			tiendas = listaRutas.get(list.getSelectedIndex()).getT();
+			tiendas.add(new Tienda(textNombreT.getText(),textTipoT.getText()));
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= tiendas.size() - 1; i++) {
+				modelo2.addElement(tiendas.get(i).getNombre());
+
+			}
+			T.setModel(modelo2);
+
 		}
 	}
 
