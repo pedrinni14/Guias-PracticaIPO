@@ -651,6 +651,26 @@ public class PanelCircuitos extends JPanel {
 
 	private class ModificarMActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			monumentos=listaRutas.get(list.getSelectedIndex()).getM();
+			String apert = Apertura.getValue().toString();
+			String[] apert1 = apert.split(" ");
+			String[] apert2 = apert1[3].split(":");
+			
+			String cierre = Cierre.getValue().toString();
+			String[] cierre1 = cierre.split(" ");
+			String[] cierre2= cierre1[3].split(":");
+			monumentos.get(Mo.getSelectedIndex()).setNombre((textNombreM.getText()));
+			monumentos.get(Mo.getSelectedIndex()).setDuracion((textDuracionM.getText()));
+			monumentos.get(Mo.getSelectedIndex()).setApertura((apert2[0]+":"+apert2[1]));
+			monumentos.get(Mo.getSelectedIndex()).setCierre((cierre2[0]+":"+cierre2[1]));
+			if(BtnSI.isSelected()) {
+				monumentos.get(Mo.getSelectedIndex()).setGratuito(true);
+			}else {
+				monumentos.get(Mo.getSelectedIndex()).setGratuito(false);
+			}
+			
+			
+			
 		}
 	}
 
