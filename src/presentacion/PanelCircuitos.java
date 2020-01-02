@@ -394,6 +394,7 @@ public class PanelCircuitos extends JPanel {
 		Monumento.add(AñadirM, gbc_AñadirM);
 
 		EliminarM = new JButton("Eliminar ");
+		EliminarM.addActionListener(new EliminarMActionListener());
 		GridBagConstraints gbc_EliminarM = new GridBagConstraints();
 		gbc_EliminarM.anchor = GridBagConstraints.SOUTHWEST;
 		gbc_EliminarM.insets = new Insets(0, 0, 5, 5);
@@ -468,6 +469,7 @@ public class PanelCircuitos extends JPanel {
 		Restaurantes.add(ModificarR, gbc_ModificarR);
 
 		EliminarR = new JButton("ELIMINAR ");
+		EliminarR.addActionListener(new EliminarRActionListener());
 		GridBagConstraints gbc_EliminarR = new GridBagConstraints();
 		gbc_EliminarR.insets = new Insets(0, 0, 0, 5);
 		gbc_EliminarR.gridx = 3;
@@ -525,6 +527,7 @@ public class PanelCircuitos extends JPanel {
 		Tiendas.add(btnNewButton, gbc_btnNewButton);
 
 		btnNewButton_1 = new JButton("ELIMINAR ");
+		btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton_1.gridx = 3;
@@ -532,6 +535,7 @@ public class PanelCircuitos extends JPanel {
 		Tiendas.add(btnNewButton_1, gbc_btnNewButton_1);
 
 		btnNewButton_2 = new JButton("MODIFICAR ");
+		btnNewButton_2.addActionListener(new BtnNewButton_2ActionListener());
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton_2.gridx = 4;
@@ -608,6 +612,25 @@ public class PanelCircuitos extends JPanel {
 
 	private class AñadirMActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			monumentos=listaRutas.get(list.getSelectedIndex()).getM();
+			if (BtnSI.isEnabled()) {
+				monumentos.add(new Monumento(textNombreM.getText(),true,Apertura.getToolTipText(),Cierre.getToolTipText(),textDuracionM.getText()));
+				System.out.println(Apertura.getToolTipText());
+				System.out.println(Apertura.getToolTipText());
+			}else {
+				monumentos.add(new Monumento(textNombreM.getText(),false,Apertura.getModel().toString(),Cierre.getModel().toString(),textDuracionM.getText()));
+			}
+			
+			System.out.print(monumentos.size());
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= monumentos.size() - 1; i++) {
+
+				modelo2.addElement(monumentos.get(i).getNombre());
+
+			}
+			Mo.setModel(modelo2);
+			
 		}
 	}
 
@@ -641,9 +664,73 @@ public class PanelCircuitos extends JPanel {
             } catch (ParseException e1) {
                 e1.printStackTrace();
             }
-            
+            textDuracionM.setText(monumentos.get(Mo.getSelectedIndex()).getDuracion());
 
 		
+		}
+	}
+	private class EliminarMActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				monumentos=listaRutas.get(list.getSelectedIndex()).getM();
+				monumentos.remove(Mo.getSelectedIndex());
+				System.out.print(monumentos.size());
+				DefaultListModel modelo2 = new DefaultListModel();
+				DefaultListModel modelo3 = new DefaultListModel();
+				for (int i = 0; i <= monumentos.size() - 1; i++) {
+
+					modelo2.addElement(monumentos.get(i).getNombre());
+
+				}
+				Mo.setModel(modelo2);
+				
+			} catch (ArrayIndexOutOfBoundsException p) {
+
+			}
+		}
+	}
+	private class EliminarRActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+			tiendas=listaRutas.get(list.getSelectedIndex()).getT();
+			tiendas.remove(T.getSelectedIndex());
+			System.out.print(tiendas.size());
+			DefaultListModel modelo2 = new DefaultListModel();
+			DefaultListModel modelo3 = new DefaultListModel();
+			for (int i = 0; i <= tiendas.size() - 1; i++) {
+
+				modelo2.addElement(tiendas.get(i).getNombre());
+
+			}
+			T.setModel(modelo2);
+			
+		} catch (ArrayIndexOutOfBoundsException p) {
+
+		}
+		}
+	}
+	private class BtnNewButton_2ActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+		}
+	}
+	private class BtnNewButton_1ActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				restaurantes=listaRutas.get(list.getSelectedIndex()).getR();
+				restaurantes.remove(R.getSelectedIndex());
+				System.out.print(restaurantes.size());
+				DefaultListModel modelo2 = new DefaultListModel();
+				DefaultListModel modelo3 = new DefaultListModel();
+				for (int i = 0; i <= restaurantes.size() - 1; i++) {
+
+					modelo2.addElement(restaurantes.get(i).getNombre());
+
+				}
+				R.setModel(modelo2);
+				
+			} catch (ArrayIndexOutOfBoundsException p) {
+
+			}
 		}
 	}
 
