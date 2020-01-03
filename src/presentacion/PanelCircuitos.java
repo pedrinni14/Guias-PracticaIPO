@@ -728,7 +728,10 @@ public class PanelCircuitos extends JPanel {
 					modelo2.addElement(monumentos.get(i).getNombre());
 
 				}
+				textNombreM.setText("");
+				textDuracionM.setText("");
 				Mo.setModel(modelo2);
+				
 				
 			} catch (ArrayIndexOutOfBoundsException p) {
 
@@ -747,6 +750,8 @@ public class PanelCircuitos extends JPanel {
 				modelo2.addElement(restaurantes.get(i).getNombre());
 
 			}
+			textNombreR.setText("");
+			textTipoR.setText("");
 			R.setModel(modelo2);
 			
 		} catch (ArrayIndexOutOfBoundsException p) {
@@ -798,6 +803,8 @@ public class PanelCircuitos extends JPanel {
 					modelo2.addElement(tiendas.get(i).getNombre());
 
 				}
+				textTipoT.setText("");
+				textNombreT.setText("");
 				T.setModel(modelo2);
 				
 			} catch (ArrayIndexOutOfBoundsException p) {

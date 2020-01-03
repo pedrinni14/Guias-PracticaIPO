@@ -35,16 +35,17 @@ public class DatosUsuario {
 		}else return 0 ;
 	
 	}
-	public String UsuarioConectado(String nombre)  {
-		if(nombre.equals("jesus")) {
 
-					return "Jesus Gamero Tello";
-				
-		}else {
-			return "Pedro Millán Álvarez";
-		}
+	public Usuario UsuarioConectado(String nombre) {
 		
-	
+		if (nombre.equals("jesus")) {
+
+			return new Usuario("Jesus Gamero Tello",VentanaPagina.class.getResource("/presentacion/jesus.jpg"));
+
+		} else {
+			return new Usuario("Pedro Millan Alvarez",VentanaPagina.class.getResource("/presentacion/pedro.jpg"));
+		}
+
 	}
 
 	public String getUsuario() {

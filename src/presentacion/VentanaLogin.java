@@ -305,12 +305,13 @@ public class VentanaLogin {
 			String nombre=user.getText();
 			
 			d.usuario=nombre;
-			String n=d.UsuarioConectado(nombre);
+			Usuario usuario=d.UsuarioConectado(nombre);
 			
 			////////////////////////////
 			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
 			VentanaPagina Vp= new VentanaPagina();
-			Vp.SetNombre(n);
+			Vp.SetNombre(usuario);
+			Vp.SetFoto(usuario);
 			try {
 				Vp.SetUltimaConexion("09-08-2019 20:30:10");
 			} catch (ParseException e1) {
