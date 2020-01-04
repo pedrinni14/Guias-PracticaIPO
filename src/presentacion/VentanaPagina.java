@@ -271,8 +271,11 @@ public class VentanaPagina {
 //	         }
 //	      }
 //	   }
-	public void SetNombre(String nombre) {
-		Nombre.setText(nombre);
+	public void SetNombre(Usuario n) {
+		Nombre.setText(n.getUsuario());
+	}
+	public void SetFoto(Usuario n) {
+		lblFoto.setIcon(new ImageIcon(n.getFoto()));
 	}
 	
 	public void SetUltimaConexion(String ultimaconexion) throws ParseException {
