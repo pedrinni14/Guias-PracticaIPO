@@ -67,6 +67,7 @@ public class VentanaPagina {
 	private JPanel pnlCircuitosDisponibles;
 	private JPanel pnlGuias;
 	private JPanel pnlCreaTuRuta;
+	
 
 	private JLabel lblFoto;
 	private JPanel pnlOfertas;
@@ -75,6 +76,7 @@ public class VentanaPagina {
 	private JLabel lblUltimaConexion;
 	private JSpinner spinner;
 	private JLabel lblAplicacionDeRutas;
+	private JPanel pnlGrupos;
 
 	
 
@@ -175,6 +177,9 @@ public class VentanaPagina {
 		
 		pnlOfertas = new PanelOfertas();
 		tabbedPane.addTab("Ofertas y Promociones", null, pnlOfertas, null);
+		
+		pnlGrupos = new PanelGrupos();
+		tabbedPane.addTab("Grupos", null, pnlGrupos, null);
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
