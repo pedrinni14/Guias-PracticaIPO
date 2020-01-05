@@ -64,30 +64,38 @@ public class PanelGuias extends JPanel {
 
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[] { 49, 90, 78, 59, 0, 72, 57, 83, 46, 102, 0, 0, 0 };
-		gridBagLayout.rowHeights = new int[] { 68, 47, 71, 64, 63, 73, 0, 51, 25, 0 };
-		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0,
+		gridBagLayout.rowHeights = new int[] { 68, 0, 0, 47, 71, 64, 63, 73, 0, 51, 25, 0 };
+		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
 				Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		listGuias = new JList();
 		listGuias.addListSelectionListener(new ListGuiasListSelectionListener());
-
-		lblListaGuias = new JLabel("Lista de Guias");
-		lblListaGuias.setFont(new Font("Tahoma", Font.BOLD, 16));
-		GridBagConstraints gbc_lblListaGuias = new GridBagConstraints();
-		gbc_lblListaGuias.gridwidth = 2;
-		gbc_lblListaGuias.insets = new Insets(0, 0, 5, 5);
-		gbc_lblListaGuias.gridx = 1;
-		gbc_lblListaGuias.gridy = 0;
-		add(lblListaGuias, gbc_lblListaGuias);
+		
+				lblFotoGuia = new JLabel("");
+				lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
+				GridBagConstraints gbc_lblFotoGuia = new GridBagConstraints();
+				gbc_lblFotoGuia.insets = new Insets(0, 0, 5, 5);
+				gbc_lblFotoGuia.gridx = 10;
+				gbc_lblFotoGuia.gridy = 1;
+				add(lblFotoGuia, gbc_lblFotoGuia);
+		
+				lblListaGuias = new JLabel("Lista de Guias");
+				lblListaGuias.setFont(new Font("Tahoma", Font.BOLD, 16));
+				GridBagConstraints gbc_lblListaGuias = new GridBagConstraints();
+				gbc_lblListaGuias.gridwidth = 2;
+				gbc_lblListaGuias.insets = new Insets(0, 0, 5, 5);
+				gbc_lblListaGuias.gridx = 1;
+				gbc_lblListaGuias.gridy = 2;
+				add(lblListaGuias, gbc_lblListaGuias);
 		GridBagConstraints gbc_listGuias = new GridBagConstraints();
 		gbc_listGuias.gridwidth = 3;
 		gbc_listGuias.fill = GridBagConstraints.BOTH;
 		gbc_listGuias.insets = new Insets(0, 0, 5, 5);
 		gbc_listGuias.gridheight = 6;
 		gbc_listGuias.gridx = 1;
-		gbc_listGuias.gridy = 1;
+		gbc_listGuias.gridy = 3;
 		add(listGuias, gbc_listGuias);
 		crearLista();
 
@@ -100,7 +108,7 @@ public class PanelGuias extends JPanel {
 		gbc_lblDatosDeLos.gridwidth = 2;
 		gbc_lblDatosDeLos.insets = new Insets(0, 0, 5, 5);
 		gbc_lblDatosDeLos.gridx = 6;
-		gbc_lblDatosDeLos.gridy = 1;
+		gbc_lblDatosDeLos.gridy = 3;
 		add(lblDatosDeLos, gbc_lblDatosDeLos);
 
 		lblNombre = new JLabel("Nombre");
@@ -108,34 +116,26 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNombre.gridx = 5;
-		gbc_lblNombre.gridy = 2;
+		gbc_lblNombre.gridy = 4;
 		add(lblNombre, gbc_lblNombre);
 
 		textNombre = new JTextField();
-//		textNombre.addActionListener(new textNombreActionListener());
+		textNombre.addActionListener(new textNombreActionListener());
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
 		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNombre.gridwidth = 3;
 		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_textNombre.gridx = 6;
-		gbc_textNombre.gridy = 2;
+		gbc_textNombre.gridy = 4;
 		add(textNombre, gbc_textNombre);
 		textNombre.setColumns(10);
-
-		lblFotoGuia = new JLabel("");
-		lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
-		GridBagConstraints gbc_lblFotoGuia = new GridBagConstraints();
-		gbc_lblFotoGuia.insets = new Insets(0, 0, 5, 5);
-		gbc_lblFotoGuia.gridx = 10;
-		gbc_lblFotoGuia.gridy = 2;
-		add(lblFotoGuia, gbc_lblFotoGuia);
 
 		lblApellidos = new JLabel("Apellidos");
 		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
 		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
 		gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
 		gbc_lblApellidos.gridx = 5;
-		gbc_lblApellidos.gridy = 3;
+		gbc_lblApellidos.gridy = 5;
 		add(lblApellidos, gbc_lblApellidos);
 
 		textApellidos = new JTextField();
@@ -144,7 +144,7 @@ public class PanelGuias extends JPanel {
 		gbc_textApellidos.insets = new Insets(0, 0, 5, 5);
 		gbc_textApellidos.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textApellidos.gridx = 6;
-		gbc_textApellidos.gridy = 3;
+		gbc_textApellidos.gridy = 5;
 		add(textApellidos, gbc_textApellidos);
 		textApellidos.setColumns(10);
 
@@ -153,7 +153,7 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
 		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel.gridx = 5;
-		gbc_lblNewLabel.gridy = 4;
+		gbc_lblNewLabel.gridy = 6;
 		add(lblNewLabel, gbc_lblNewLabel);
 
 		textDNI = new JTextField();
@@ -163,7 +163,7 @@ public class PanelGuias extends JPanel {
 		gbc_textDNI.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textDNI.insets = new Insets(0, 0, 5, 5);
 		gbc_textDNI.gridx = 6;
-		gbc_textDNI.gridy = 4;
+		gbc_textDNI.gridy = 6;
 		add(textDNI, gbc_textDNI);
 
 		lblNewLabel_2 = new JLabel("Edad");
@@ -171,7 +171,7 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
 		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_2.gridx = 5;
-		gbc_lblNewLabel_2.gridy = 5;
+		gbc_lblNewLabel_2.gridy = 7;
 		add(lblNewLabel_2, gbc_lblNewLabel_2);
 
 		textEdad = new JTextField();
@@ -181,7 +181,7 @@ public class PanelGuias extends JPanel {
 		gbc_textEdad.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textEdad.insets = new Insets(0, 0, 5, 5);
 		gbc_textEdad.gridx = 6;
-		gbc_textEdad.gridy = 5;
+		gbc_textEdad.gridy = 7;
 		add(textEdad, gbc_textEdad);
 
 		lblNewLabel_3 = new JLabel("Sexo");
@@ -189,7 +189,7 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
 		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
 		gbc_lblNewLabel_3.gridx = 5;
-		gbc_lblNewLabel_3.gridy = 6;
+		gbc_lblNewLabel_3.gridy = 8;
 		add(lblNewLabel_3, gbc_lblNewLabel_3);
 
 		textSexo = new JTextField();
@@ -199,12 +199,12 @@ public class PanelGuias extends JPanel {
 		gbc_textSexo.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textSexo.insets = new Insets(0, 0, 5, 5);
 		gbc_textSexo.gridx = 6;
-		gbc_textSexo.gridy = 6;
+		gbc_textSexo.gridy = 8;
 		add(textSexo, gbc_textSexo);
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 1;
-		gbc_btnNewButton_1.gridy = 7;
+		gbc_btnNewButton_1.gridy = 9;
 		add(btnNewButton_1, gbc_btnNewButton_1);
 
 		btnNewButton = new JButton("Eliminar ");
@@ -212,7 +212,7 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton.gridx = 2;
-		gbc_btnNewButton.gridy = 7;
+		gbc_btnNewButton.gridy = 9;
 		add(btnNewButton, gbc_btnNewButton);
 
 		btnNewButton_2 = new JButton("Modificar ");
@@ -220,7 +220,7 @@ public class PanelGuias extends JPanel {
 		GridBagConstraints gbc_btnNewButton_2 = new GridBagConstraints();
 		gbc_btnNewButton_2.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_2.gridx = 3;
-		gbc_btnNewButton_2.gridy = 7;
+		gbc_btnNewButton_2.gridy = 9;
 		add(btnNewButton_2, gbc_btnNewButton_2);
 
 		lblNewLabel_1 = new JLabel("DESCRIPCION ");
@@ -253,7 +253,7 @@ public class PanelGuias extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				Guias g = new Guias(textNombre.getText(), textApellidos.getText(), textDNI.getText(),
-						textEdad.getText(), textSexo.getText());
+						textEdad.getText(), textSexo.getText(),PanelGuias.class.getResource("/presentacion/user-2.png"));
 
 				if (textNombre.getText().equals("") || textDNI.getText().equals("") || textEdad.getText().equals("")
 						|| textSexo.getText().equals("")) {
@@ -326,6 +326,8 @@ public class PanelGuias extends JPanel {
 			textDNI.setText(listaGuias.get(listGuias.getSelectedIndex()).getDNI());
 			textEdad.setText(listaGuias.get(listGuias.getSelectedIndex()).getEdad());
 			textSexo.setText(listaGuias.get(listGuias.getSelectedIndex()).getSexo());
+			lblFotoGuia.setIcon(new ImageIcon(listaGuias.get(listGuias.getSelectedIndex()).getImagen()));
+			
 
 		}
 	}

@@ -6,6 +6,8 @@ import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.ArrayList;
 
+import javax.swing.Icon;
+
 public class Guias {
 	private String Nombre;
 	// private String int long telefono 
@@ -13,20 +15,29 @@ public class Guias {
 	private String DNI;
 	private String Edad ;
 	private String Sexo;
-	// private Icon Imagen ;
+	private URL Imagen ;
 	
-	public Guias(String nombre, String apellidos, String dNI, String edad, String sexo) {
+
+
+
+
+
+
+	
+	
+	public Guias(String nombre, String apellidos, String dNI, String edad, String sexo, URL imagen) {
 		super();
 		Nombre = nombre;
 		Apellidos = apellidos;
 		DNI = dNI;
 		Edad = edad;
 		Sexo = sexo;
+		Imagen = imagen;
 	}
 
 
-	
-	
+
+
 	public String getApellidos() {
 		return Apellidos;
 	}
@@ -69,32 +80,27 @@ public class Guias {
 	public static ArrayList<Guias> generarGuia() {
 		
 		ArrayList<Guias> Guias= new ArrayList<Guias>();
-		// Borrar todo lo de leer 
-		// Añadir a mano los Guias que serian 
-		// Guias.add(new Guias(Pedro,Millan,89989898,8979798D,23,varon,imagen);
-		URL fichero = Guias.class.getResource("/presentacion/Guias.txt");
-		  try {
-		      InputStreamReader fr =  new InputStreamReader(fichero.openStream());
-		      BufferedReader br = new BufferedReader(fr);
-		      int m =0 ; 
-		      String[][]guias = new String[m][5];
-		      String linea;
-		      while((linea = br.readLine()) != null) {
-		    	  m++;
-		    	 String[] tokens= linea.split(",");
-		    	 Guias.add(new Guias(tokens[0],tokens[1],tokens[2],tokens[3],tokens[4]));
-		       }
 		 
-		      fr.close();
-		    }
-		    
-		    catch(Exception e) {
-		      System.out.println("Excepcion leyendo fichero "+ fichero + ": " + e);
-		     }
-		    
-		  
-			return Guias;
+		 
+		Guias.add(new Guias("Pedro","Millán","05658987G","21","Varon",Guias.getClass().getResource("/presentacion/Guia1.jpg")));
+		
+		return Guias;
+		
 		}
+
+
+	public URL getImagen() {
+		return Imagen;
+	}
+
+
+
+
+	public void setImagen(URL imagen) {
+		Imagen = imagen;
+	}
+
+
 
 
 	@Override
