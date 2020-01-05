@@ -11,6 +11,9 @@ import java.awt.BorderLayout;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+
 import java.awt.Insets;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
@@ -25,6 +28,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,6 +37,7 @@ import net.miginfocom.swing.MigLayout;
 import javax.swing.event.ListSelectionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
+import javax.swing.JScrollPane;
 
 public class PanelGuias extends JPanel {
 	private static ArrayList<Guias> listaGuias = Guias.generarGuia();;
@@ -56,6 +61,12 @@ public class PanelGuias extends JPanel {
 	private JLabel lblApellidos;
 	private JTextField textApellidos;
 	private JLabel lblDatosDeLos;
+	private JPanel pnlFoto;
+	private JButton btnCargarFoto;
+	private JLabel lblFoto;
+	private JFrame frame;
+	private ImageIcon imagen;
+
 
 	/**
 	 * Create the panel.
@@ -67,19 +78,11 @@ public class PanelGuias extends JPanel {
 		gridBagLayout.rowHeights = new int[] { 68, 0, 0, 47, 71, 64, 63, 73, 0, 51, 25, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0,
 				Double.MIN_VALUE };
-		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, Double.MIN_VALUE };
+		gridBagLayout.rowWeights = new double[] { 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		listGuias = new JList();
 		listGuias.addListSelectionListener(new ListGuiasListSelectionListener());
-		
-				lblFotoGuia = new JLabel("");
-				lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
-				GridBagConstraints gbc_lblFotoGuia = new GridBagConstraints();
-				gbc_lblFotoGuia.insets = new Insets(0, 0, 5, 5);
-				gbc_lblFotoGuia.gridx = 10;
-				gbc_lblFotoGuia.gridy = 1;
-				add(lblFotoGuia, gbc_lblFotoGuia);
 		
 				lblListaGuias = new JLabel("Lista de Guias");
 				lblListaGuias.setFont(new Font("Tahoma", Font.BOLD, 16));
@@ -89,6 +92,24 @@ public class PanelGuias extends JPanel {
 				gbc_lblListaGuias.gridx = 1;
 				gbc_lblListaGuias.gridy = 2;
 				add(lblListaGuias, gbc_lblListaGuias);
+		
+				lblDatosDeLos = new JLabel("Datos de los Guias");
+				lblDatosDeLos.setFont(new Font("Tahoma", Font.BOLD, 16));
+				GridBagConstraints gbc_lblDatosDeLos = new GridBagConstraints();
+				gbc_lblDatosDeLos.gridwidth = 2;
+				gbc_lblDatosDeLos.insets = new Insets(0, 0, 5, 5);
+				gbc_lblDatosDeLos.gridx = 6;
+				gbc_lblDatosDeLos.gridy = 2;
+				add(lblDatosDeLos, gbc_lblDatosDeLos);
+		
+		lblFoto = new JLabel("Foto Del Guia");
+		lblFoto.setFont(new Font("Tahoma", Font.BOLD, 16));
+		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
+		gbc_lblFoto.gridwidth = 2;
+		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_lblFoto.gridx = 9;
+		gbc_lblFoto.gridy = 2;
+		add(lblFoto, gbc_lblFoto);
 		GridBagConstraints gbc_listGuias = new GridBagConstraints();
 		gbc_listGuias.gridwidth = 3;
 		gbc_listGuias.fill = GridBagConstraints.BOTH;
@@ -101,106 +122,121 @@ public class PanelGuias extends JPanel {
 
 		btnNewButton_1 = new JButton("Agregar ");
 		btnNewButton_1.addActionListener(new BtnNewButton_1ActionListener());
-
-		lblDatosDeLos = new JLabel("Datos de los Guias");
-		lblDatosDeLos.setFont(new Font("Tahoma", Font.BOLD, 16));
-		GridBagConstraints gbc_lblDatosDeLos = new GridBagConstraints();
-		gbc_lblDatosDeLos.gridwidth = 2;
-		gbc_lblDatosDeLos.insets = new Insets(0, 0, 5, 5);
-		gbc_lblDatosDeLos.gridx = 6;
-		gbc_lblDatosDeLos.gridy = 3;
-		add(lblDatosDeLos, gbc_lblDatosDeLos);
-
-		lblNombre = new JLabel("Nombre");
-		lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
-		gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNombre.gridx = 5;
-		gbc_lblNombre.gridy = 4;
-		add(lblNombre, gbc_lblNombre);
-
-		textNombre = new JTextField();
-		textNombre.addActionListener(new textNombreActionListener());
-		GridBagConstraints gbc_textNombre = new GridBagConstraints();
-		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textNombre.gridwidth = 3;
-		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
-		gbc_textNombre.gridx = 6;
-		gbc_textNombre.gridy = 4;
-		add(textNombre, gbc_textNombre);
-		textNombre.setColumns(10);
-
-		lblApellidos = new JLabel("Apellidos");
-		lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
-		gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
-		gbc_lblApellidos.gridx = 5;
-		gbc_lblApellidos.gridy = 5;
-		add(lblApellidos, gbc_lblApellidos);
-
-		textApellidos = new JTextField();
-		GridBagConstraints gbc_textApellidos = new GridBagConstraints();
-		gbc_textApellidos.gridwidth = 3;
-		gbc_textApellidos.insets = new Insets(0, 0, 5, 5);
-		gbc_textApellidos.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textApellidos.gridx = 6;
-		gbc_textApellidos.gridy = 5;
-		add(textApellidos, gbc_textApellidos);
-		textApellidos.setColumns(10);
-
-		lblNewLabel = new JLabel("DNI");
-		lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 5;
-		gbc_lblNewLabel.gridy = 6;
-		add(lblNewLabel, gbc_lblNewLabel);
-
-		textDNI = new JTextField();
-		textDNI.setColumns(10);
-		GridBagConstraints gbc_textDNI = new GridBagConstraints();
-		gbc_textDNI.gridwidth = 3;
-		gbc_textDNI.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textDNI.insets = new Insets(0, 0, 5, 5);
-		gbc_textDNI.gridx = 6;
-		gbc_textDNI.gridy = 6;
-		add(textDNI, gbc_textDNI);
-
-		lblNewLabel_2 = new JLabel("Edad");
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
-		gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_2.gridx = 5;
-		gbc_lblNewLabel_2.gridy = 7;
-		add(lblNewLabel_2, gbc_lblNewLabel_2);
-
-		textEdad = new JTextField();
-		textEdad.setColumns(10);
-		GridBagConstraints gbc_textEdad = new GridBagConstraints();
-		gbc_textEdad.gridwidth = 3;
-		gbc_textEdad.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textEdad.insets = new Insets(0, 0, 5, 5);
-		gbc_textEdad.gridx = 6;
-		gbc_textEdad.gridy = 7;
-		add(textEdad, gbc_textEdad);
-
-		lblNewLabel_3 = new JLabel("Sexo");
-		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
-		gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel_3.gridx = 5;
-		gbc_lblNewLabel_3.gridy = 8;
-		add(lblNewLabel_3, gbc_lblNewLabel_3);
-
-		textSexo = new JTextField();
-		textSexo.setColumns(10);
-		GridBagConstraints gbc_textSexo = new GridBagConstraints();
-		gbc_textSexo.gridwidth = 3;
-		gbc_textSexo.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textSexo.insets = new Insets(0, 0, 5, 5);
-		gbc_textSexo.gridx = 6;
-		gbc_textSexo.gridy = 8;
-		add(textSexo, gbc_textSexo);
+		
+				textNombre = new JTextField();
+				textNombre.addActionListener(new textNombreActionListener());
+				
+						lblNombre = new JLabel("Nombre");
+						lblNombre.setFont(new Font("Tahoma", Font.PLAIN, 14));
+						GridBagConstraints gbc_lblNombre = new GridBagConstraints();
+						gbc_lblNombre.insets = new Insets(0, 0, 5, 5);
+						gbc_lblNombre.gridx = 5;
+						gbc_lblNombre.gridy = 3;
+						add(lblNombre, gbc_lblNombre);
+				GridBagConstraints gbc_textNombre = new GridBagConstraints();
+				gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textNombre.gridwidth = 3;
+				gbc_textNombre.insets = new Insets(0, 0, 5, 5);
+				gbc_textNombre.gridx = 6;
+				gbc_textNombre.gridy = 3;
+				add(textNombre, gbc_textNombre);
+				textNombre.setColumns(10);
+				
+						lblApellidos = new JLabel("Apellidos");
+						lblApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14));
+						GridBagConstraints gbc_lblApellidos = new GridBagConstraints();
+						gbc_lblApellidos.insets = new Insets(0, 0, 5, 5);
+						gbc_lblApellidos.gridx = 5;
+						gbc_lblApellidos.gridy = 4;
+						add(lblApellidos, gbc_lblApellidos);
+		
+				textApellidos = new JTextField();
+				GridBagConstraints gbc_textApellidos = new GridBagConstraints();
+				gbc_textApellidos.gridwidth = 3;
+				gbc_textApellidos.insets = new Insets(0, 0, 5, 5);
+				gbc_textApellidos.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textApellidos.gridx = 6;
+				gbc_textApellidos.gridy = 4;
+				add(textApellidos, gbc_textApellidos);
+				textApellidos.setColumns(10);
+		
+		pnlFoto = new JPanel();
+		GridBagConstraints gbc_pnlFoto = new GridBagConstraints();
+		gbc_pnlFoto.gridheight = 3;
+		gbc_pnlFoto.gridwidth = 2;
+		gbc_pnlFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_pnlFoto.fill = GridBagConstraints.BOTH;
+		gbc_pnlFoto.gridx = 9;
+		gbc_pnlFoto.gridy = 4;
+		add(pnlFoto, gbc_pnlFoto);
+		pnlFoto.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+				lblFotoGuia = new JLabel("");
+				pnlFoto.add(lblFotoGuia);
+				lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
+				
+						lblNewLabel = new JLabel("DNI");
+						lblNewLabel.setFont(new Font("Tahoma", Font.PLAIN, 14));
+						GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
+						gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
+						gbc_lblNewLabel.gridx = 5;
+						gbc_lblNewLabel.gridy = 5;
+						add(lblNewLabel, gbc_lblNewLabel);
+		
+				textDNI = new JTextField();
+				textDNI.setColumns(10);
+				GridBagConstraints gbc_textDNI = new GridBagConstraints();
+				gbc_textDNI.gridwidth = 3;
+				gbc_textDNI.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textDNI.insets = new Insets(0, 0, 5, 5);
+				gbc_textDNI.gridx = 6;
+				gbc_textDNI.gridy = 5;
+				add(textDNI, gbc_textDNI);
+		
+				lblNewLabel_2 = new JLabel("Edad");
+				lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				GridBagConstraints gbc_lblNewLabel_2 = new GridBagConstraints();
+				gbc_lblNewLabel_2.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_2.gridx = 5;
+				gbc_lblNewLabel_2.gridy = 6;
+				add(lblNewLabel_2, gbc_lblNewLabel_2);
+		
+				textEdad = new JTextField();
+				textEdad.setColumns(10);
+				GridBagConstraints gbc_textEdad = new GridBagConstraints();
+				gbc_textEdad.gridwidth = 3;
+				gbc_textEdad.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textEdad.insets = new Insets(0, 0, 5, 5);
+				gbc_textEdad.gridx = 6;
+				gbc_textEdad.gridy = 6;
+				add(textEdad, gbc_textEdad);
+		
+				lblNewLabel_3 = new JLabel("Sexo");
+				lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 14));
+				GridBagConstraints gbc_lblNewLabel_3 = new GridBagConstraints();
+				gbc_lblNewLabel_3.insets = new Insets(0, 0, 5, 5);
+				gbc_lblNewLabel_3.gridx = 5;
+				gbc_lblNewLabel_3.gridy = 7;
+				add(lblNewLabel_3, gbc_lblNewLabel_3);
+		
+				textSexo = new JTextField();
+				textSexo.setColumns(10);
+				GridBagConstraints gbc_textSexo = new GridBagConstraints();
+				gbc_textSexo.gridwidth = 3;
+				gbc_textSexo.fill = GridBagConstraints.HORIZONTAL;
+				gbc_textSexo.insets = new Insets(0, 0, 5, 5);
+				gbc_textSexo.gridx = 6;
+				gbc_textSexo.gridy = 7;
+				add(textSexo, gbc_textSexo);
+		
+		btnCargarFoto = new JButton("Cargar Foto");
+		btnCargarFoto.addActionListener(new BtnCargarFotoActionListener());
+		GridBagConstraints gbc_btnCargarFoto = new GridBagConstraints();
+		gbc_btnCargarFoto.gridwidth = 2;
+		gbc_btnCargarFoto.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCargarFoto.gridx = 9;
+		gbc_btnCargarFoto.gridy = 7;
+		add(btnCargarFoto, gbc_btnCargarFoto);
 		GridBagConstraints gbc_btnNewButton_1 = new GridBagConstraints();
 		gbc_btnNewButton_1.insets = new Insets(0, 0, 5, 5);
 		gbc_btnNewButton_1.gridx = 1;
@@ -318,7 +354,19 @@ public class PanelGuias extends JPanel {
 
 		}
 	}
+	
+	private class BtnCargarFotoActionListener implements ActionListener{
+		public void actionPerformed(ActionEvent e) {
+			JFileChooser fcAbrir = new JFileChooser();
+			int valorDevuelto = fcAbrir.showOpenDialog(frame);
+			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+			File file = fcAbrir.getSelectedFile();
+			imagen = new ImageIcon(file.getAbsolutePath());
+			lblFotoGuia.setIcon(imagen);
+			}
 
+		}
+	}
 	private class ListGuiasListSelectionListener implements ListSelectionListener {
 		public void valueChanged(ListSelectionEvent e) {
 			textNombre.setText(listaGuias.get(listGuias.getSelectedIndex()).getNombre());

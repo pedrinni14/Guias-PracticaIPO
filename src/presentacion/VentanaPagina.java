@@ -74,6 +74,7 @@ public class VentanaPagina {
 	private JButton btnCerrarSesion;
 	private JLabel lblUltimaConexion;
 	private JSpinner spinner;
+	private JLabel lblAplicacionDeRutas;
 
 	
 
@@ -184,6 +185,16 @@ public class VentanaPagina {
 		gbl_panel_1.columnWeights = new double[]{0.0, 0.0, 1.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
+		
+		lblAplicacionDeRutas = new JLabel("APLICACION DE RUTAS");
+		lblAplicacionDeRutas.setFont(new Font("Tahoma", Font.BOLD, 18));
+		GridBagConstraints gbc_lblAplicacionDeRutas = new GridBagConstraints();
+		gbc_lblAplicacionDeRutas.gridheight = 3;
+		gbc_lblAplicacionDeRutas.gridwidth = 2;
+		gbc_lblAplicacionDeRutas.insets = new Insets(0, 0, 5, 5);
+		gbc_lblAplicacionDeRutas.gridx = 0;
+		gbc_lblAplicacionDeRutas.gridy = 1;
+		panel_1.add(lblAplicacionDeRutas, gbc_lblAplicacionDeRutas);
 		
 		lblFoto = new JLabel("");
 		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
