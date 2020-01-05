@@ -82,7 +82,10 @@ public class Guias {
 		ArrayList<Guias> Guias= new ArrayList<Guias>();
 		 
 		 
-		Guias.add(new Guias("Pedro","Millán","05658987G","21","Varon",Guias.getClass().getResource("/presentacion/Guia1.jpg")));
+		Guias.add(new Guias("Juán","López Muñoz","05658987G","21","Varon",Guias.getClass().getResource("/presentacion/Guia1.jpg")));
+		Guias.add(new Guias("Pepe","Reina Sanchez","98765432P","23","Varon",Guias.getClass().getResource("/presentacion/Guia2.jpg")));
+		Guias.add(new Guias("Jonathan","Ruiz Lopez","56897545L","27","Varon",Guias.getClass().getResource("/presentacion/Guia3.jpg")));
+		Guias.add(new Guias("Natalie","Muñoz Gonzalez","02315645EL","31","Mujer",Guias.getClass().getResource("/presentacion/Guia4.jpg")));
 		
 		return Guias;
 		
