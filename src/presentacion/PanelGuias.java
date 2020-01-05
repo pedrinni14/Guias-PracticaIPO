@@ -29,6 +29,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,6 +39,7 @@ import javax.swing.event.ListSelectionEvent;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import javax.swing.JScrollPane;
+import java.awt.Dimension;
 
 public class PanelGuias extends JPanel {
 	private static ArrayList<Guias> listaGuias = Guias.generarGuia();;
@@ -172,6 +174,7 @@ public class PanelGuias extends JPanel {
 		pnlFoto.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 				lblFotoGuia = new JLabel("");
+				lblFotoGuia.setMaximumSize(new Dimension(40, 40));
 				pnlFoto.add(lblFotoGuia);
 				lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
 				
@@ -357,12 +360,20 @@ public class PanelGuias extends JPanel {
 	
 	private class BtnCargarFotoActionListener implements ActionListener{
 		public void actionPerformed(ActionEvent e) {
+			
+			Guias g= listaGuias.get(listGuias.getSelectedIndex());
 			JFileChooser fcAbrir = new JFileChooser();
 			int valorDevuelto = fcAbrir.showOpenDialog(frame);
 			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
 			File file = fcAbrir.getSelectedFile();
 			imagen = new ImageIcon(file.getAbsolutePath());
 			lblFotoGuia.setIcon(imagen);
+			try {
+				g.setImagen(file.toURL());
+			} catch (MalformedURLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 			}
 
 		}
