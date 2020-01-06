@@ -27,7 +27,7 @@ public String getDescripcion() {
 public void setDescripcion(String descripcion) {
 	this.descripcion = descripcion;
 }
-  public ArrayList<Ofertas> generarOfertas(){
+  public static ArrayList<Ofertas> generarOfertas(){
 	  ArrayList<Ofertas> Ofertas= new ArrayList<Ofertas>();
 	  
 	    Ofertas.add(new Ofertas("2x1 Tapas", "Por cada dos tapas quee pidas la segunda te sale gratis en todos los bares de nuestra ruta",
@@ -39,7 +39,7 @@ public void setDescripcion(String descripcion) {
 	  return Ofertas;
 	  
   }
-  public ArrayList<Ofertas> generarPromociones(){
+  public static ArrayList<Ofertas> generarPromociones(){
 	  ArrayList<Ofertas> Promocion= new ArrayList<Ofertas>();
 	  
 	    Promocion.add(new Ofertas("Ruta Gratis", "Si reserva en menos de 5 dias de recibir este correo recibira una ruta a la mitad de precio",
