@@ -19,6 +19,7 @@ import java.awt.Dimension;
 import javax.swing.JMenu;
 import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
@@ -31,6 +32,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import java.awt.Button;
 import javax.swing.AbstractListModel;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.GridBagLayout;
@@ -235,8 +237,14 @@ public class VentanaPagina {
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaLogin frame = new VentanaLogin();
-				frame.Login.setVisible(true);
-				frmAplicacion.dispose();
+				Icon icono = new ImageIcon(getClass().getResource("/presentacion/Guia1.jpg"));
+				
+				int i =JOptionPane.showConfirmDialog(null, "Realmente quieres cerrar sesión", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,lblFoto.getIcon());
+				if(i==0) {
+					frame.Login.setVisible(true);
+					frmAplicacion.dispose();
+				}
+				
 			}
 		});
 		GridBagConstraints gbc_btnCerrarSesion = new GridBagConstraints();
