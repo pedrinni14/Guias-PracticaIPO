@@ -14,6 +14,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.ImageIcon;
 import java.awt.TextField;
+import java.awt.CardLayout;
+import javax.swing.JTextArea;
 
 public class PanelOfertas extends JPanel {
 	private JPanel pnlOfertas;
@@ -26,12 +28,15 @@ public class PanelOfertas extends JPanel {
 	private JButton btnAadir_1;
 	private JButton btnModificar_1;
 	private JButton btnBorrar_1;
-	private JButton btnEnviar;
-	private JButton button;
-	private JTextField textField;
 	private JButton btnAadir;
 	private JButton btnModificar;
 	private JButton btnBorrar;
+	private JTextArea textArea;
+	private JTextField textField;
+	private JButton button;
+	private JButton btnGuardar;
+	private JButton btnEnviar;
+	private JButton btnCancelar;
 
 	/**
 	 * Create the panel.
@@ -134,36 +139,64 @@ public class PanelOfertas extends JPanel {
 		panel_2 = new JPanel();
 		add(panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{69, 0, 0, 40, 0, 0};
-		gbl_panel_2.rowHeights = new int[]{31, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
-		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWidths = new int[]{68, 81, 85, 82, 0, 0};
+		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
+		gbl_panel_2.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
-		button = new JButton("");
-		button.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 5);
-		gbc_button.gridx = 0;
-		gbc_button.gridy = 1;
-		panel_2.add(button, gbc_button);
-		
 		textField = new JTextField();
+		textField.setText("");
+		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		textField.setEditable(false);
+		textField.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 3;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
 		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 1;
 		panel_2.add(textField, gbc_textField);
-		textField.setColumns(10);
+		
+		button = new JButton("");
+		button.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
+		GridBagConstraints gbc_button = new GridBagConstraints();
+		gbc_button.insets = new Insets(0, 0, 5, 5);
+		gbc_button.gridx = 2;
+		gbc_button.gridy = 1;
+		panel_2.add(button, gbc_button);
+		
+		textArea = new JTextArea();
+		GridBagConstraints gbc_textArea = new GridBagConstraints();
+		gbc_textArea.gridwidth = 3;
+		gbc_textArea.insets = new Insets(0, 0, 5, 5);
+		gbc_textArea.fill = GridBagConstraints.BOTH;
+		gbc_textArea.gridx = 1;
+		gbc_textArea.gridy = 2;
+		panel_2.add(textArea, gbc_textArea);
+		
+		btnGuardar = new JButton("Guardar");
+		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
+		gbc_btnGuardar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnGuardar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnGuardar.gridx = 1;
+		gbc_btnGuardar.gridy = 3;
+		panel_2.add(btnGuardar, gbc_btnGuardar);
 		
 		btnEnviar = new JButton("Enviar");
 		GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
-		gbc_btnEnviar.insets = new Insets(0, 0, 0, 5);
-		gbc_btnEnviar.gridx = 1;
-		gbc_btnEnviar.gridy = 4;
+		gbc_btnEnviar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnEnviar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnEnviar.gridx = 2;
+		gbc_btnEnviar.gridy = 3;
 		panel_2.add(btnEnviar, gbc_btnEnviar);
+		
+		btnCancelar = new JButton("Cancelar");
+		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
+		gbc_btnCancelar.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnCancelar.insets = new Insets(0, 0, 5, 5);
+		gbc_btnCancelar.gridx = 3;
+		gbc_btnCancelar.gridy = 3;
+		panel_2.add(btnCancelar, gbc_btnCancelar);
 
 	}
 
