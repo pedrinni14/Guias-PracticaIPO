@@ -27,7 +27,7 @@ public String getDescripcion() {
 public void setDescripcion(String descripcion) {
 	this.descripcion = descripcion;
 }
-  public ArrayList<Ofertas> generarOfertas(){
+  public static ArrayList<Ofertas> generarOfertas(){
 	  ArrayList<Ofertas> Ofertas= new ArrayList<Ofertas>();
 	  
 	    Ofertas.add(new Ofertas("2x1 Tapas", "Por cada dos tapas quee pidas la segunda te sale gratis en todos los bares de nuestra ruta",

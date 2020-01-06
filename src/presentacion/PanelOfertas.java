@@ -2,6 +2,8 @@ package presentacion;
 
 import javax.swing.JPanel;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
+
 import java.awt.GridBagLayout;
 import javax.swing.JScrollPane;
 import java.awt.GridBagConstraints;
@@ -17,9 +19,11 @@ import java.awt.TextField;
 import java.awt.CardLayout;
 import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PanelOfertas extends JPanel {
+	private static ArrayList<Ofertas> listaOfertas = Ofertas.generarOfertas();
 	private JPanel pnlOfertas;
 	private JPanel pnlPromociones;
 	private JPanel panel_2;
@@ -35,6 +39,7 @@ public class PanelOfertas extends JPanel {
 	private JButton btnEnviar;
 	private JButton btnCancelar;
 	private JTextField textField;
+	DefaultListModel modelo = new DefaultListModel();
 
 	/**
 	 * Create the panel.
@@ -64,7 +69,26 @@ public class PanelOfertas extends JPanel {
 		list.setBorder(new TitledBorder(null, "Ofertas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(list);
 		
+		
 		btnBorrar = new JButton("Borrar");
+		btnBorrar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				try {
+	                listaOfertas.remove(list.getSelectedIndex());
+
+	                DefaultListModel modelo2 = new DefaultListModel();
+	                for (int i = 0; i <= listaOfertas.size() - 1; i++) {
+
+	                    modelo2.addElement(listaOfertas.get(i).getNombre());
+
+	                }
+	                list.setModel(modelo2);
+	            } catch (ArrayIndexOutOfBoundsException p) {
+
+	            }
+			}
+			
+		});
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
 		gbc_btnBorrar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 5);
@@ -93,6 +117,7 @@ public class PanelOfertas extends JPanel {
 		list_1 = new JList();
 		list_1.setBorder(new TitledBorder(null, "Promociones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(list_1);
+		crearListaOfertas();
 		
 		btnBorrar_1 = new JButton("Borrar");
 		GridBagConstraints gbc_btnBorrar_1 = new GridBagConstraints();
@@ -171,5 +196,13 @@ public class PanelOfertas extends JPanel {
 		panel_2.add(btnCancelar, gbc_btnCancelar);
 
 	}
+	public void crearListaOfertas() {
+
+		for (int i = 0; i <= listaOfertas.size() - 1; i++) {
+			modelo.addElement(listaOfertas.get(i).getNombre());
+		}
+		list.setModel(modelo);
+	}
+
 
 }
