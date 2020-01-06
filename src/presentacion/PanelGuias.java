@@ -42,7 +42,7 @@ import javax.swing.JScrollPane;
 import java.awt.Dimension;
 
 public class PanelGuias extends JPanel {
-	private static ArrayList<Guias> listaGuias = Guias.generarGuia();;
+	private static ArrayList<Guias> listaGuias = Guias.generarGuia();
 	private JLabel lblNewLabel_1;
 	private JTextField textNombre;
 	private JTextField textDNI;
