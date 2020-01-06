@@ -9,6 +9,7 @@ import javax.swing.JScrollPane;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import javax.swing.border.TitledBorder;
 import java.awt.Dimension;
@@ -23,6 +24,7 @@ import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.event.ListSelectionEvent;
+import java.awt.ComponentOrientation;
 
 public class PanelOfertas extends JPanel {
 	private static ArrayList<Ofertas> listaOfertas = Ofertas.generarOfertas();
@@ -35,13 +37,13 @@ public class PanelOfertas extends JPanel {
 	private JList list_1;
 	private JButton btnBorrar_1;
 	private JButton btnBorrar;
-	private JTextArea textArea;
-	private JButton button;
 	private JButton btnGuardar;
+	private JButton btnAñadir;
 	private JButton btnEnviar;
-	private JButton btnCancelar;
-	private JTextField textField;
   private static ArrayList<Ofertas> Promociones= Ofertas.generarPromociones();
+  private JTextField textNombre;
+  private JTextArea textDes;
+  private JButton Imagen;
 
 	/**
 	 * Create the panel.
@@ -68,6 +70,7 @@ public class PanelOfertas extends JPanel {
 		pnlOfertas.add(scrollPane, gbc_scrollPane);
 		
 		list = new JList();
+		list.addListSelectionListener(new ListListSelectionListener());
 		list.setBorder(new TitledBorder(null, "Ofertas", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane.setViewportView(list);
 		
@@ -117,6 +120,7 @@ public class PanelOfertas extends JPanel {
 		pnlPromociones.add(scrollPane_1, gbc_scrollPane_1);
 		
 		list_1 = new JList();
+		list_1.addListSelectionListener(new List_1ListSelectionListener());
 		
 		list_1.setBorder(new TitledBorder(null, "Promociones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(list_1);
@@ -136,7 +140,7 @@ public class PanelOfertas extends JPanel {
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{68, 96, 90, 82, 0};
 		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
@@ -146,32 +150,34 @@ public class PanelOfertas extends JPanel {
 			}
 		});
 		
-		textField = new JTextField();
-		GridBagConstraints gbc_textField = new GridBagConstraints();
-		gbc_textField.gridwidth = 2;
-		gbc_textField.insets = new Insets(0, 0, 5, 5);
-		gbc_textField.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textField.gridx = 1;
-		gbc_textField.gridy = 1;
-		panel_2.add(textField, gbc_textField);
-		textField.setColumns(10);
+		textNombre = new JTextField();
+		GridBagConstraints gbc_textNombre = new GridBagConstraints();
+		gbc_textNombre.gridwidth = 2;
+		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
+		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
+		gbc_textNombre.gridx = 1;
+		gbc_textNombre.gridy = 1;
+		panel_2.add(textNombre, gbc_textNombre);
+		textNombre.setColumns(10);
 		
-		button = new JButton("");
-		button.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
-		GridBagConstraints gbc_button = new GridBagConstraints();
-		gbc_button.insets = new Insets(0, 0, 5, 0);
-		gbc_button.gridx = 3;
-		gbc_button.gridy = 1;
-		panel_2.add(button, gbc_button);
+		Imagen = new JButton("");
+		Imagen.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
+		GridBagConstraints gbc_Imagen = new GridBagConstraints();
+		gbc_Imagen.insets = new Insets(0, 0, 5, 0);
+		gbc_Imagen.gridx = 3;
+		gbc_Imagen.gridy = 1;
+		panel_2.add(Imagen, gbc_Imagen);
 		
-		textArea = new JTextArea();
-		GridBagConstraints gbc_textArea = new GridBagConstraints();
-		gbc_textArea.gridwidth = 3;
-		gbc_textArea.insets = new Insets(0, 0, 5, 0);
-		gbc_textArea.fill = GridBagConstraints.BOTH;
-		gbc_textArea.gridx = 1;
-		gbc_textArea.gridy = 2;
-		panel_2.add(textArea, gbc_textArea);
+		textDes = new JTextArea();
+		textDes.setFont(new Font("Monospaced", Font.PLAIN, 13));
+		textDes.setMaximumSize(new Dimension(100, 100));
+		GridBagConstraints gbc_textDes = new GridBagConstraints();
+		gbc_textDes.gridwidth = 3;
+		gbc_textDes.insets = new Insets(0, 0, 5, 0);
+		gbc_textDes.fill = GridBagConstraints.BOTH;
+		gbc_textDes.gridx = 1;
+		gbc_textDes.gridy = 2;
+		panel_2.add(textDes, gbc_textDes);
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnGuardar.insets = new Insets(0, 0, 5, 5);
@@ -179,25 +185,27 @@ public class PanelOfertas extends JPanel {
 		gbc_btnGuardar.gridy = 3;
 		panel_2.add(btnGuardar, gbc_btnGuardar);
 		
-		btnEnviar = new JButton("Añadir");
-		btnEnviar.addActionListener(new ActionListener() {
+		btnAñadir = new JButton("Añadir");
+		btnAñadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
+		GridBagConstraints gbc_btnAñadir = new GridBagConstraints();
+		gbc_btnAñadir.fill = GridBagConstraints.HORIZONTAL;
+		gbc_btnAñadir.insets = new Insets(0, 0, 5, 5);
+		gbc_btnAñadir.gridx = 2;
+		gbc_btnAñadir.gridy = 3;
+		panel_2.add(btnAñadir, gbc_btnAñadir);
+		
+		btnEnviar = new JButton("Enviar");
+		btnEnviar.addActionListener(new BtnEnviarActionListener());
+		btnEnviar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
 		gbc_btnEnviar.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnEnviar.insets = new Insets(0, 0, 5, 5);
-		gbc_btnEnviar.gridx = 2;
+		gbc_btnEnviar.insets = new Insets(0, 0, 5, 0);
+		gbc_btnEnviar.gridx = 3;
 		gbc_btnEnviar.gridy = 3;
 		panel_2.add(btnEnviar, gbc_btnEnviar);
-		
-		btnCancelar = new JButton("Cancelar");
-		GridBagConstraints gbc_btnCancelar = new GridBagConstraints();
-		gbc_btnCancelar.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnCancelar.insets = new Insets(0, 0, 5, 0);
-		gbc_btnCancelar.gridx = 3;
-		gbc_btnCancelar.gridy = 3;
-		panel_2.add(btnCancelar, gbc_btnCancelar);
 		crearPromociones();
 
 	}
@@ -231,6 +239,50 @@ public class PanelOfertas extends JPanel {
 
 			}
 		}
+	}
+	private class List_1ListSelectionListener implements ListSelectionListener {
+		public void valueChanged(ListSelectionEvent e) {
+			try {
+			list.clearSelection();
+			textNombre.setText(Promociones.get(list_1.getSelectedIndex()).getNombre());
+			textDes.setText(Promociones.get(list_1.getSelectedIndex()).getDescripcion());
+			Imagen.setIcon(new ImageIcon(Promociones.get(list_1.getSelectedIndex()).getImagen()));
+		}catch(ArrayIndexOutOfBoundsException p) {
+			
+		}
+		}	
+	}
+	private class ListListSelectionListener implements ListSelectionListener {
+		public void valueChanged(ListSelectionEvent e) {
+			try {
+			list_1.clearSelection();
+			textNombre.setText(listaOfertas.get(list.getSelectedIndex()).getNombre());
+			textDes.setText(listaOfertas.get(list.getSelectedIndex()).getDescripcion());
+			Imagen.setIcon(new ImageIcon(listaOfertas.get(list.getSelectedIndex()).getImagen()));
+			}catch(ArrayIndexOutOfBoundsException p) {
+				
+			}
+		}
+	}
+	private class BtnEnviarActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			if(textNombre.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "No se ha seleccionado oferta", "ERROR", JOptionPane.WARNING_MESSAGE);
+			}else {
+			try {
+				
+			String correo = JOptionPane.showInputDialog(null, "Escribe la dirección de correo " );
+			if (correo.contains("@")) {
+				JOptionPane.showMessageDialog(null, "Correo enviado a : "+correo);
+			}else {
+				JOptionPane.showMessageDialog(null, "Correo Invalido", "ERROR", JOptionPane.WARNING_MESSAGE);
+			}
+		}catch(Exception p ) {
+			
+		}
+			}
+			
+	}
 	}
 	public void crearPromociones() {
 		DefaultListModel modelo = new DefaultListModel();

@@ -27,10 +27,18 @@ public String getDescripcion() {
 public void setDescripcion(String descripcion) {
 	this.descripcion = descripcion;
 }
-  public static ArrayList<Ofertas> generarOfertas(){
+
+  public URL getImagen() {
+	return imagen;
+}
+public void setImagen(URL imagen) {
+	this.imagen = imagen;
+}
+public static ArrayList<Ofertas> generarOfertas(){
 	  ArrayList<Ofertas> Ofertas= new ArrayList<Ofertas>();
 	  
-	    Ofertas.add(new Ofertas("2x1 Tapas", "Por cada dos tapas quee pidas la segunda te sale gratis en todos los bares de nuestra ruta",
+	    Ofertas.add(new Ofertas("2x1 Tapas", "Por cada dos tapas quee pidas la segunda te sale gratis "
+	    		+ "en todos los bares de nuestra ruta",
 	    		Ofertas.getClass().getResource("/presentacion/user-2.png")));
 	    Ofertas.add(new Ofertas("Niños gratis", "Los niños menores de 14 años podrán pasar gratis a todos los momumentos de la ruta",
 	    		Ofertas.getClass().getResource("/presentacion/user-2.png")));
@@ -42,7 +50,8 @@ public void setDescripcion(String descripcion) {
   public static ArrayList<Ofertas> generarPromociones(){
 	  ArrayList<Ofertas> Promocion= new ArrayList<Ofertas>();
 	  
-	    Promocion.add(new Ofertas("Ruta Gratis", "Si reserva en menos de 5 dias de recibir este correo recibira una ruta a la mitad de precio",
+	    Promocion.add(new Ofertas("Ruta Gratis", "Si reserva en menos de 5 dias de recibir "
+	    		+ "este correo recibira una ruta a la mitad de precio",
 	    		Promocion.getClass().getResource("/presentacion/user-2.png")));
 	    Promocion.add(new Ofertas("Grupo de 20 personas", "Si se trae a 20 personas y a la suegra le dejamos la mitad de precio la ruta por persona",
 	    		Promocion.getClass().getResource("/presentacion/user-2.png")));
