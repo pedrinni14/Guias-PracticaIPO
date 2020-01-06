@@ -39,7 +39,7 @@ public void setDescripcion(String descripcion) {
 	  return Ofertas;
 	  
   }
-  public ArrayList<Ofertas> generarPromociones(){
+  public static ArrayList<Ofertas> generarPromociones(){
 	  ArrayList<Ofertas> Promocion= new ArrayList<Ofertas>();
 	  
 	    Promocion.add(new Ofertas("Ruta Gratis", "Si reserva en menos de 5 dias de recibir este correo recibira una ruta a la mitad de precio",

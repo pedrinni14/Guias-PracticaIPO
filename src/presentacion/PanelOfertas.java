@@ -21,6 +21,8 @@ import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.event.ListSelectionEvent;
 
 public class PanelOfertas extends JPanel {
 	private static ArrayList<Ofertas> listaOfertas = Ofertas.generarOfertas();
@@ -39,7 +41,7 @@ public class PanelOfertas extends JPanel {
 	private JButton btnEnviar;
 	private JButton btnCancelar;
 	private JTextField textField;
-	DefaultListModel modelo = new DefaultListModel();
+  private static ArrayList<Ofertas> Promociones= Ofertas.generarPromociones();
 
 	/**
 	 * Create the panel.
@@ -115,11 +117,13 @@ public class PanelOfertas extends JPanel {
 		pnlPromociones.add(scrollPane_1, gbc_scrollPane_1);
 		
 		list_1 = new JList();
+		
 		list_1.setBorder(new TitledBorder(null, "Promociones", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(list_1);
 		crearListaOfertas();
 		
 		btnBorrar_1 = new JButton("Borrar");
+		btnBorrar_1.addActionListener(new BtnBorrar_1ActionListener());
 		GridBagConstraints gbc_btnBorrar_1 = new GridBagConstraints();
 		gbc_btnBorrar_1.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnBorrar_1.insets = new Insets(0, 0, 5, 5);
@@ -194,10 +198,12 @@ public class PanelOfertas extends JPanel {
 		gbc_btnCancelar.gridx = 3;
 		gbc_btnCancelar.gridy = 3;
 		panel_2.add(btnCancelar, gbc_btnCancelar);
+		crearPromociones();
 
 	}
-	public void crearListaOfertas() {
 
+	public void crearListaOfertas() {
+  DefaultListModel modelo = new DefaultListModel();
 		for (int i = 0; i <= listaOfertas.size() - 1; i++) {
 			modelo.addElement(listaOfertas.get(i).getNombre());
 		}
@@ -205,4 +211,32 @@ public class PanelOfertas extends JPanel {
 	}
 
 
+	
+
+	
+	private class BtnBorrar_1ActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent e) {
+			try {
+				Promociones.remove(list_1.getSelectedIndex());
+				
+				DefaultListModel modelo2 = new DefaultListModel();
+				for (int i = 0; i <= Promociones.size() - 1; i++) {
+
+					modelo2.addElement(Promociones.get(i).getNombre());
+
+
+				}
+				list_1.setModel(modelo2);
+			} catch (ArrayIndexOutOfBoundsException p) {
+
+			}
+		}
+	}
+	public void crearPromociones() {
+		DefaultListModel modelo = new DefaultListModel();
+		for (int i = 0; i <= Promociones.size() - 1; i++) {
+			modelo.addElement(Promociones.get(i).getNombre());
+		}
+		list_1.setModel(modelo);
+	}
 }
