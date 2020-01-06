@@ -30,11 +30,11 @@ public class PanelOfertas extends JPanel {
 	private JButton btnBorrar_1;
 	private JButton btnBorrar;
 	private JTextArea textArea;
-	private JTextField textField;
 	private JButton button;
 	private JButton btnGuardar;
 	private JButton btnEnviar;
 	private JButton btnCancelar;
+	private JTextField textField;
 
 	/**
 	 * Create the panel.
@@ -107,7 +107,7 @@ public class PanelOfertas extends JPanel {
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
 		gbl_panel_2.columnWidths = new int[]{68, 96, 90, 82, 0};
 		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{0.0, 1.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
@@ -118,10 +118,6 @@ public class PanelOfertas extends JPanel {
 		});
 		
 		textField = new JTextField();
-		textField.setText("");
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		textField.setEditable(false);
-		textField.setColumns(10);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 2;
 		gbc_textField.insets = new Insets(0, 0, 5, 5);
@@ -129,6 +125,7 @@ public class PanelOfertas extends JPanel {
 		gbc_textField.gridx = 1;
 		gbc_textField.gridy = 1;
 		panel_2.add(textField, gbc_textField);
+		textField.setColumns(10);
 		
 		button = new JButton("");
 		button.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
