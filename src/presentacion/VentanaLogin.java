@@ -297,9 +297,7 @@ public class VentanaLogin {
 	
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
-			
-		// Codigo correspondiente al de entrar mas o menos Usuario jesus o pedro y contraseña 1234a para los dos 
-			// Codigo sucio hay que mejorarlo 
+	
 			DatosUsuario d =new DatosUsuario(); 
 		if (d.Existe(user.getText(), pass.getText())==1) {
 			String nombre=user.getText();

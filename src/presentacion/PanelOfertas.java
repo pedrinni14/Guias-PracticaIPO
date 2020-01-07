@@ -147,6 +147,22 @@ public class PanelOfertas extends JPanel {
 		btnGuardar = new JButton("Modificar");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			try {
+				Ofertas o = listaOfertas.get(list.getSelectedIndex());
+				o.setNombre(textNombre.getText());
+				o.setDescripcion(textDes.getText());
+				crearListaOfertas();
+			}catch(ArrayIndexOutOfBoundsException p) {
+				
+			}
+			try {
+				Ofertas o = Promociones.get(list_1.getSelectedIndex());
+				o.setNombre(textNombre.getText());
+				o.setDescripcion(textDes.getText());
+				crearPromociones();
+			}catch(ArrayIndexOutOfBoundsException y) {
+				
+			}
 			}
 		});
 		
@@ -188,7 +204,37 @@ public class PanelOfertas extends JPanel {
 		btnAñadir = new JButton("Añadir");
 		btnAñadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			}
+				Ofertas o = new Ofertas(textNombre.getText(),textDes.getText(),PanelOfertas.class.getResource("/presentacion/user-2.png"));
+				if(textNombre.getText().equals("")|| textDes.getText().equals("")) {
+					JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
+				}else {
+					ImageIcon icon = new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png"));
+					String[] options = {"Promoción", "Oferta"};
+					int seleccion = JOptionPane.showOptionDialog(null, "Selecciona oferta o promoción", "Elige una opción", JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, icon, options, options[0]);
+				
+					
+					if(seleccion==0) {
+						
+					Promociones.add(new Ofertas(textNombre.getText(),textDes.getText(),PanelOfertas.class.getResource("/presentacion/user-2.png")));
+					DefaultListModel modelo = new DefaultListModel();
+					for (int i = 0; i <= Promociones.size() - 1; i++) {
+						modelo.addElement(Promociones.get(i).getNombre());
+					}
+					list_1.setModel(modelo);
+					}else if (seleccion==1){
+						
+						listaOfertas.add(new Ofertas(textNombre.getText(),textDes.getText(),PanelOfertas.class.getResource("/presentacion/user-2.png")));
+						DefaultListModel modelo = new DefaultListModel();
+						for (int i = 0; i <= listaOfertas.size() - 1; i++) {
+							modelo.addElement(listaOfertas.get(i).getNombre());
+						}
+						list.setModel(modelo);
+					}
+				}
+					
+				}
+				
+			
 		});
 		GridBagConstraints gbc_btnAñadir = new GridBagConstraints();
 		gbc_btnAñadir.fill = GridBagConstraints.HORIZONTAL;
