@@ -6,11 +6,17 @@ import javax.swing.JTable;
 import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
+
+
+
 import javax.swing.JToolBar;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
 
 import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -21,18 +27,24 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class PanelGrupos extends JPanel {
+	private static ArrayList<Grupos> listaGrupos = Grupos.generarGrupos();
+	private JLabel lblNewLabel_1;
+	private JFrame frame;
 	private JToolBar toolBar;
 	private JButton btnAadirFila;
 	private JButton btnEliminarFila;
 	private JPanel panel;
 	private JScrollPane scrollPane;
 	private JTextArea taFilaSeleccionada;
-	private JLabel lblfoto;
 	private JScrollPane scrollPaneTabla;
 	private JTable mitabla;
+	private JButton btnfoto;
+	private ImageIcon imagen;
 
 	/**
 	 * Create the panel.
@@ -47,7 +59,8 @@ public class PanelGrupos extends JPanel {
 		btnAadirFila.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MiModeloTabla modeloTabla = (MiModeloTabla) mitabla.getModel();
-				Object[] nuevaFila = {null, "...", "...", null, null, "....", "..." };
+				Object[] nuevaFila = {listaGrupos.size()+1, "...", "...", 0, 0, "....", "Español" };
+				listaGrupos.add(new Grupos( listaGrupos.size()+1, "...", "...", 0, 0, "....", "Español",PanelGrupos.class.getResource("/presentacion/loading.png")));
 				modeloTabla.aniadeFila(nuevaFila);
 				modeloTabla.fireTableDataChanged();
 			}
@@ -78,8 +91,10 @@ public class PanelGrupos extends JPanel {
 		scrollPane.setPreferredSize(new Dimension(50, 200));
 		panel.add(scrollPane);
 		
-		lblfoto = new JLabel("");
-		scrollPane.setViewportView(lblfoto);
+		btnfoto = new JButton("");
+		btnfoto.setIcon(new ImageIcon(PanelGrupos.class.getResource("/presentacion/loading.png")));
+		btnfoto.addActionListener(new btnFotoActionListener());
+		scrollPane.setViewportView(btnfoto);
 		
 		taFilaSeleccionada = new JTextArea();
 		taFilaSeleccionada.setEditable(false);
@@ -109,11 +124,12 @@ public class PanelGrupos extends JPanel {
 				return columnTypes[columnIndex];
 			}
 		});*/
-		Object[] fila1 = { 1, "Pedro Gomez", "05697842K", 2, 15, "Ruta por Toledo", "Español"};
+		
+		Object[] fila1 = { listaGrupos.get(0).getID(),listaGrupos.get(0).getNombre(),listaGrupos.get(0).getDNI(),listaGrupos.get(0).getGrupo(),listaGrupos.get(0).getTamaño(),listaGrupos.get(0).getRuta(),listaGrupos.get(0).getIdioma()};
 		modeloTabla.aniadeFila(fila1);
-		Object[] fila2 = {2, "Mathew Edwards","04558976L", 1, 8, "Ruta por Cuenca", "English"};
+		Object[] fila2 = {listaGrupos.get(1).getID(),listaGrupos.get(1).getNombre(),listaGrupos.get(1).getDNI(),listaGrupos.get(1).getGrupo(),listaGrupos.get(1).getTamaño(),listaGrupos.get(1).getRuta(),listaGrupos.get(1).getIdioma()};
 		modeloTabla.aniadeFila(fila2);
-		Object[] fila3 = { 3, "Pablo Gonzalez", "04894568S", 3, 12, "Ruta por Ciudad Real", "Español" };
+		Object[] fila3 = { listaGrupos.get(2).getID(),listaGrupos.get(2).getNombre(),listaGrupos.get(2).getDNI(),listaGrupos.get(2).getGrupo(),listaGrupos.get(2).getTamaño(),listaGrupos.get(2).getRuta(),listaGrupos.get(2).getIdioma() };
 		modeloTabla.aniadeFila(fila3);
 		scrollPaneTabla.setViewportView(mitabla);
 		
@@ -145,27 +161,38 @@ public class PanelGrupos extends JPanel {
 				switch (n) {
 				case 0:
 					
-					lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/GrupoToledo.jpg")));
+					btnfoto.setIcon(new ImageIcon( listaGrupos.get(0).getImagen()));
 					break;
 				case 1:
 					
-					lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/GrupoIngles.jpg")));
+					btnfoto.setIcon(new ImageIcon( listaGrupos.get(1).getImagen()));
 					break;
 				case 2:
 					
-					lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/GrupoCuenca.jpg")));
+					btnfoto.setIcon(new ImageIcon( listaGrupos.get(2).getImagen()));
 					break;
-				case 3:
-			
-					lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/Guadalajara.jpg")));
-					break;
+				
 				default:
+					btnfoto.setIcon(new ImageIcon(listaGrupos.get(n).getImagen()));
 					break;
 					
 				}
 			}
 		});
 
+
+	}
+	class btnFotoActionListener implements ActionListener {
+		public void actionPerformed(ActionEvent arg0) {
+			JFileChooser fcAbrir = new JFileChooser();
+			int valorDevuelto = fcAbrir.showOpenDialog(frame);
+			if (valorDevuelto == JFileChooser.APPROVE_OPTION) {
+			File file = fcAbrir.getSelectedFile();
+			imagen = new ImageIcon(file.getAbsolutePath());
+			btnfoto.setIcon(imagen);
+			}
+
+		}
 	}
 
 }
