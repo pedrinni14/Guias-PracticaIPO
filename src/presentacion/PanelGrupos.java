@@ -7,7 +7,7 @@ import java.awt.BorderLayout;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 
-
+import dominio.Grupos;
 
 import javax.swing.JToolBar;
 import javax.swing.JButton;
@@ -28,6 +28,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.ActionListener;
 import java.io.File;
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -45,6 +46,7 @@ public class PanelGrupos extends JPanel {
 	private JTable mitabla;
 	private JButton btnfoto;
 	private ImageIcon imagen;
+	private int fila=0;
 
 	/**
 	 * Create the panel.
@@ -59,8 +61,9 @@ public class PanelGrupos extends JPanel {
 		btnAadirFila.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				MiModeloTabla modeloTabla = (MiModeloTabla) mitabla.getModel();
-				Object[] nuevaFila = {listaGrupos.size()+1, "...", "...", 0, 0, "....", "Español" };
-				listaGrupos.add(new Grupos( listaGrupos.size()+1, "...", "...", 0, 0, "....", "Español",PanelGrupos.class.getResource("/presentacion/loading.png")));
+				int ultimo = listaGrupos.get(listaGrupos.size()-1).getID()+1;
+				Object[] nuevaFila = {ultimo, "...", "...", 0, 0, "....", "Español" };
+				listaGrupos.add(new Grupos( ultimo, "...", "...", 0, 0, "....", "Español",PanelGrupos.class.getResource("/presentacion/loading.png")));
 				modeloTabla.aniadeFila(nuevaFila);
 				modeloTabla.fireTableDataChanged();
 			}
@@ -71,8 +74,10 @@ public class PanelGrupos extends JPanel {
 		btnEliminarFila = new JButton("Eliminar Grupo");
 		btnEliminarFila.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+			
 				MiModeloTabla modeloTabla = (MiModeloTabla) mitabla.getModel();
 				int n = mitabla.getSelectedRow();
+				listaGrupos.remove(n);
 				if (n != -1)
 					modeloTabla.eliminaFila(mitabla.getSelectedRow());
 				modeloTabla.fireTableDataChanged();
@@ -153,6 +158,7 @@ public class PanelGrupos extends JPanel {
 						contenido += "Idioma que habla el representante :" + modeloTabla.getValueAt(n, 6) + "\n";
 						taFilaSeleccionada.setText(contenido);
 						PonerImagen(n);
+						fila=n;
 					}
 				}
 			}
@@ -190,6 +196,12 @@ public class PanelGrupos extends JPanel {
 			File file = fcAbrir.getSelectedFile();
 			imagen = new ImageIcon(file.getAbsolutePath());
 			btnfoto.setIcon(imagen);
+			try {
+				listaGrupos.get(fila).setImagen(file.getAbsoluteFile().toURL());
+			} catch (MalformedURLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			}
 
 		}

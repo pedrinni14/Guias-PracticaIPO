@@ -1,4 +1,4 @@
-package presentacion;
+package dominio;
 import java.io.Serializable;
 
 public class ObjetoGrafico implements Serializable{

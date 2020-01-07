@@ -26,6 +26,9 @@ import java.awt.GridLayout;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import dominio.Guias;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import java.awt.event.ActionListener;
 import java.io.File;

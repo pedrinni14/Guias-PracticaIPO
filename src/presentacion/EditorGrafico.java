@@ -16,6 +16,10 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.io.File;
 import javax.swing.JToolBar;
+
+import dominio.ImagenGrafico;
+import dominio.TextoGrafico;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFileChooser;

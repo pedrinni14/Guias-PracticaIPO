@@ -1,4 +1,4 @@
-package presentacion;
+package dominio;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -6,6 +6,9 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 
 import javax.print.DocFlavor.URL;
+
+import presentacion.VentanaPagina;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;

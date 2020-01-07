@@ -3,6 +3,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.*;
+
+import dominio.DatosUsuario;
+import dominio.Usuario;
+
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 import java.awt.event.ActionEvent;
