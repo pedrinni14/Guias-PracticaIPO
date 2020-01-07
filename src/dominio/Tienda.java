@@ -1,9 +1,9 @@
-package presentacion;
+package dominio;
 
-public class Restaurante {
+public class Tienda {
 	public String nombre ;
 	public String tipo;
-	public Restaurante(String nombre, String tipo) {
+	public Tienda(String nombre, String tipo) {
 		super();
 		this.nombre = nombre;
 		this.tipo = tipo;

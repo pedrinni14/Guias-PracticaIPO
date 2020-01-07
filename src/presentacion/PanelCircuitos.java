@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.Dimension;
 import javax.swing.JButton;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.border.TitledBorder;
 import java.awt.CardLayout;
 import javax.swing.JLabel;
@@ -28,6 +29,12 @@ import java.util.Calendar;
 import javax.swing.AbstractButton;
 import javax.swing.AbstractListModel;
 import javax.swing.event.ListSelectionListener;
+
+import dominio.Monumento;
+import dominio.Restaurante;
+import dominio.Ruta;
+import dominio.Tienda;
+
 import javax.swing.event.ListSelectionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -616,12 +623,15 @@ public class PanelCircuitos extends JPanel {
 
 	private class AñadirMActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
+			if (textNombreM.getText().equals("")||textDuracionM.getText().equals("")) {
+				JOptionPane.showMessageDialog(null, "CAMPOS VACIOS");
+			}else {
 			try {
 			monumentos=listaRutas.get(list.getSelectedIndex()).getM();
 			String apert = Apertura.getValue().toString();
 			String[] apert1 = apert.split(" ");
 			String[] apert2 = apert1[3].split(":");
-			System.out.print(apert2[0]+":"+apert2[1]);
+			
 			String cierre = Cierre.getValue().toString();
 			String[] cierre1 = cierre.split(" ");
 			String[] cierre2= cierre1[3].split(":");
@@ -646,6 +656,7 @@ public class PanelCircuitos extends JPanel {
 		}catch (ArrayIndexOutOfBoundsException x) {
 			
 		}
+			}
 	}
 	}
 

@@ -40,6 +40,10 @@ import java.awt.GridBagConstraints;
 import java.awt.Insets;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+
+import dominio.DatosUsuario;
+import dominio.Usuario;
+
 import java.util.Date;
 import java.util.Calendar;
 import java.awt.Rectangle;

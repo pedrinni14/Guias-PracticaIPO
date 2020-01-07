@@ -23,6 +23,9 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.event.ListSelectionListener;
+
+import dominio.Ofertas;
+
 import javax.swing.event.ListSelectionEvent;
 import java.awt.ComponentOrientation;
 

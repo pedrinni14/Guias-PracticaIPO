@@ -1,4 +1,4 @@
-package presentacion;
+package dominio;
 
 public class Monumento {
 	String Nombre;

@@ -5,6 +5,11 @@ import java.util.ArrayList;
 
 import javax.swing.JLabel;
 
+import dominio.ImagenGrafico;
+import dominio.ObjetoGrafico;
+import dominio.RectanguloGrafico;
+import dominio.TextoGrafico;
+
 public class MiAreaDibujo extends JLabel {
 	private ArrayList<ObjetoGrafico> objetosGraficos = new ArrayList<ObjetoGrafico>();
 

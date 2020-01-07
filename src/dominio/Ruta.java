@@ -1,4 +1,4 @@
-package presentacion;
+package dominio;
 
 import java.util.ArrayList;
 
