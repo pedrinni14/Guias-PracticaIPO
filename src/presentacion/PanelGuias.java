@@ -335,14 +335,16 @@ public class PanelGuias extends JPanel {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				listaGuias.remove(listGuias.getSelectedIndex());
-				System.out.print(listaGuias.size());
 				DefaultListModel modelo2 = new DefaultListModel();
 				for (int i = 0; i <= listaGuias.size() - 1; i++) {
 
 					modelo2.addElement(listaGuias.get(i).getNombre());
 
 				}
+				limpiarCampos();
+				lblFotoGuia.setIcon(new ImageIcon(PanelGuias.class.getResource("/presentacion/user-2.png")));
 				listGuias.setModel(modelo2);
+				
 			} catch (ArrayIndexOutOfBoundsException p) {
 
 			}
