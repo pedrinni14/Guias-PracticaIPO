@@ -45,7 +45,7 @@ public class VentanaLogin {
 	private int tamanio=12;
 	private JButton btnNewButton;
 	private JPasswordField pass;
-	private JLabel lblNewLabel;
+	private JLabel lbliniciarsesion;
 	private JComboBox comboBox;
 	public String UsuarioConectado;
 
@@ -105,15 +105,15 @@ public class VentanaLogin {
 		Login.getContentPane().add(comboBox, gbc_comboBox);
 		
 		
-		lblNewLabel = new JLabel("INICIAR SESION");
-		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 20));
-		GridBagConstraints gbc_lblNewLabel = new GridBagConstraints();
-		gbc_lblNewLabel.anchor = GridBagConstraints.NORTH;
-		gbc_lblNewLabel.gridwidth = 2;
-		gbc_lblNewLabel.insets = new Insets(0, 0, 5, 5);
-		gbc_lblNewLabel.gridx = 0;
-		gbc_lblNewLabel.gridy = 1;
-		Login.getContentPane().add(lblNewLabel, gbc_lblNewLabel);
+		lbliniciarsesion = new JLabel("INICIAR SESION");
+		lbliniciarsesion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		GridBagConstraints gbc_lbliniciarsesion = new GridBagConstraints();
+		gbc_lbliniciarsesion.anchor = GridBagConstraints.NORTH;
+		gbc_lbliniciarsesion.gridwidth = 2;
+		gbc_lbliniciarsesion.insets = new Insets(0, 0, 5, 5);
+		gbc_lbliniciarsesion.gridx = 0;
+		gbc_lbliniciarsesion.gridy = 1;
+		Login.getContentPane().add(lbliniciarsesion, gbc_lbliniciarsesion);
 		
 		JLabel lblUsuario_1 = new JLabel("USUARIO");
 		GridBagConstraints gbc_lblUsuario_1 = new GridBagConstraints();
@@ -194,6 +194,7 @@ public class VentanaLogin {
 			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+			lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 		buttonGroup.add(rdbtnmntmGrande);
@@ -211,6 +212,7 @@ public class VentanaLogin {
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 		buttonGroup.add(rdbtnmntmMediana);
@@ -228,7 +230,7 @@ public class VentanaLogin {
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
-			
+				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 		buttonGroup.add(rdbtnmntmPequeña);
@@ -249,6 +251,7 @@ public class VentanaLogin {
 			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+			lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 		buttonGroup_1.add(rdbtnmntmArial);
@@ -266,6 +269,7 @@ public class VentanaLogin {
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 		buttonGroup_1.add(rdbtnmntmCalibri);
@@ -283,6 +287,7 @@ public class VentanaLogin {
 				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
+				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
 			}
 		});
 	

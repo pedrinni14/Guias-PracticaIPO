@@ -73,9 +73,9 @@ public class Ruta {
 		tiendas3.add(new Tienda("Bershka","Ropa"));
 		tiendas3.add(new Tienda("La Manchega","Pasteleria"));
 		
-		rutas.add(new Ruta("Ruta 1",monumentos1,restaurantes1,tiendas1));
-		rutas.add(new Ruta("Ruta 2",monumentos2,restaurantes2,tiendas2));
-		rutas.add(new Ruta("Ruta 3",monumentos3,restaurantes3,tiendas3));
+		rutas.add(new Ruta("Ruta por Toledo",monumentos1,restaurantes1,tiendas1));
+		rutas.add(new Ruta("Ruta por Cuenca",monumentos2,restaurantes2,tiendas2));
+		rutas.add(new Ruta("Ruta por Ciudad Real",monumentos3,restaurantes3,tiendas3));
 	
 		return rutas ;
 	}

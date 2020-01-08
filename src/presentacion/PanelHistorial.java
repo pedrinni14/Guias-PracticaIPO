@@ -43,22 +43,19 @@ ListSelectionModel rowSM = table.getSelectionModel();
 		if (n != -1) {
 			switch (n) {
 			case 0:
-				textArea_1.setText("Ruta por Ciudad Real en la que recorreremos los punto de interes mas importantes a si como "
-						+ "\n sus bares y restaurantes de tapas");
+				textArea_1.setText("Ruta por Ciudad Real en la que recorreremos los punto de interes mas importantes como sus bares y restaurantes de tapas");
 				lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/ciudad-real.jpg")));
 				break;
 			case 1:
-				textArea_1.setText("Ruta por Toledo recorreremos "
-						+ "\n el casco historico y lugares emblematicos ");
+				textArea_1.setText("Ruta por Toledo recorreremos el casco historico y visitaremos algunos lugares emblematicos, como el Alcazar o San Juan de los Reyes");
 				lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/toledo.jpg")));
 				break;
 			case 2:
-				textArea_1.setText("Ruta por Cuenca veremos "
-						+ "\n las casas colgantes");
+				textArea_1.setText("Ruta por Cuenca veremos las casas colgantes y donde comeremos en los mejores restaurantes");
 				lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/cuenca.jpg")));
 				break;
 			case 3:
-				textArea_1.setText("Ruta por Guadalajara");
+				textArea_1.setText("Ruta por Guadalajara en la que disfrutaremos de la ciudad y sus gentes, asi como de sus restaurantes y tiendas");
 				lblfoto.setIcon(new ImageIcon(PanelHistorial.class.getResource("/presentacion/Guadalajara.jpg")));
 				break;
 				
@@ -108,6 +105,7 @@ ListSelectionModel rowSM = table.getSelectionModel();
 		panel.setLayout(gbl_panel);
 		
 		textArea_1 = new JTextArea();
+		textArea_1.setLineWrap(true);
 		GridBagConstraints gbc_textArea_1 = new GridBagConstraints();
 		gbc_textArea_1.insets = new Insets(0, 0, 0, 5);
 		gbc_textArea_1.fill = GridBagConstraints.BOTH;

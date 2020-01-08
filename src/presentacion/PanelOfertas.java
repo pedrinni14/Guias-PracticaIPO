@@ -141,9 +141,9 @@ public class PanelOfertas extends JPanel {
 		panel_2 = new JPanel();
 		add(panel_2);
 		GridBagLayout gbl_panel_2 = new GridBagLayout();
-		gbl_panel_2.columnWidths = new int[]{68, 96, 90, 82, 0};
+		gbl_panel_2.columnWidths = new int[]{68, 96, 90, 82, 0, 0};
 		gbl_panel_2.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0};
-		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gbl_panel_2.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		gbl_panel_2.rowWeights = new double[]{0.0, 0.0, 1.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_2.setLayout(gbl_panel_2);
 		
@@ -171,7 +171,7 @@ public class PanelOfertas extends JPanel {
 		
 		textNombre = new JTextField();
 		GridBagConstraints gbc_textNombre = new GridBagConstraints();
-		gbc_textNombre.gridwidth = 2;
+		gbc_textNombre.gridwidth = 3;
 		gbc_textNombre.insets = new Insets(0, 0, 5, 5);
 		gbc_textNombre.fill = GridBagConstraints.HORIZONTAL;
 		gbc_textNombre.gridx = 1;
@@ -183,16 +183,17 @@ public class PanelOfertas extends JPanel {
 		Imagen.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/user-2.png")));
 		GridBagConstraints gbc_Imagen = new GridBagConstraints();
 		gbc_Imagen.insets = new Insets(0, 0, 5, 0);
-		gbc_Imagen.gridx = 3;
+		gbc_Imagen.gridx = 4;
 		gbc_Imagen.gridy = 1;
 		panel_2.add(Imagen, gbc_Imagen);
 		
 		textDes = new JTextArea();
+		textDes.setLineWrap(true);
 		textDes.setFont(new Font("Monospaced", Font.PLAIN, 13));
 		textDes.setMaximumSize(new Dimension(100, 100));
 		GridBagConstraints gbc_textDes = new GridBagConstraints();
 		gbc_textDes.gridwidth = 3;
-		gbc_textDes.insets = new Insets(0, 0, 5, 0);
+		gbc_textDes.insets = new Insets(0, 0, 5, 5);
 		gbc_textDes.fill = GridBagConstraints.BOTH;
 		gbc_textDes.gridx = 1;
 		gbc_textDes.gridy = 2;
@@ -251,7 +252,7 @@ public class PanelOfertas extends JPanel {
 		btnEnviar.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		GridBagConstraints gbc_btnEnviar = new GridBagConstraints();
 		gbc_btnEnviar.fill = GridBagConstraints.HORIZONTAL;
-		gbc_btnEnviar.insets = new Insets(0, 0, 5, 0);
+		gbc_btnEnviar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnEnviar.gridx = 3;
 		gbc_btnEnviar.gridy = 3;
 		panel_2.add(btnEnviar, gbc_btnEnviar);
