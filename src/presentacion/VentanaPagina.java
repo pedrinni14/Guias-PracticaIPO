@@ -115,7 +115,7 @@ public class VentanaPagina {
 	private void initialize() {
 		frmAplicacion = new JFrame();
 		frmAplicacion.setSize(new Dimension(700, 700));
-		frmAplicacion.setMinimumSize(new Dimension(900, 700));
+		frmAplicacion.setMinimumSize(new Dimension(1081, 589));
 		frmAplicacion.setTitle("Aplicacion");
 		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
 		frmAplicacion.setBounds(225, 0, 900, 700);
@@ -179,7 +179,7 @@ public class VentanaPagina {
 		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
 		
 		pnlGuias = new PanelGuias();
-		tabbedPane.addTab("Guias Turisticos", null, pnlGuias, null);
+		tabbedPane.addTab("Guías Turísticos", null, pnlGuias, null);
 		
 		pnlOfertas = new PanelOfertas();
 		tabbedPane.addTab("Ofertas y Promociones", null, pnlOfertas, null);
@@ -197,7 +197,7 @@ public class VentanaPagina {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		lblAplicacionDeRutas = new JLabel("APLICACION DE RUTAS");
+		lblAplicacionDeRutas = new JLabel("APLICACIÓN DE RUTAS");
 		lblAplicacionDeRutas.setFont(new Font("Tahoma", Font.BOLD, 18));
 		GridBagConstraints gbc_lblAplicacionDeRutas = new GridBagConstraints();
 		gbc_lblAplicacionDeRutas.gridheight = 3;
@@ -225,7 +225,7 @@ public class VentanaPagina {
 		gbc_Nombre.gridy = 1;
 		panel_1.add(Nombre, gbc_Nombre);
 		
-		lblUltimaConexion = new JLabel("Ultima Conexion");
+		lblUltimaConexion = new JLabel("Ultima Conexión");
 		GridBagConstraints gbc_lblUltimaConexion = new GridBagConstraints();
 		gbc_lblUltimaConexion.anchor = GridBagConstraints.EAST;
 		gbc_lblUltimaConexion.insets = new Insets(0, 0, 5, 5);
@@ -242,7 +242,7 @@ public class VentanaPagina {
 		gbc_spinner.gridy = 2;
 		panel_1.add(spinner, gbc_spinner);
 		
-		btnCerrarSesion = new JButton("Cerrar Sesion");
+		btnCerrarSesion = new JButton("Cerrar Sesión");
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaLogin frame = new VentanaLogin();

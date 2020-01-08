@@ -39,9 +39,9 @@ public static ArrayList<Ofertas> generarOfertas(){
 	  
 	    Ofertas.add(new Ofertas("2x1 Tapas", "Por cada dos tapas quee pidas la segunda te sale gratis "
 	    		+ "en todos los bares de nuestra ruta",
-	    		Ofertas.getClass().getResource("/presentacion/user-2.png")));
+	    		Ofertas.getClass().getResource("/presentacion/2x1.jpg")));
 	    Ofertas.add(new Ofertas("Niños gratis", "Los niños menores de 14 años podrán pasar gratis a todos los momumentos de la ruta",
-	    		Ofertas.getClass().getResource("/presentacion/user-2.png")));
+	    		Ofertas.getClass().getResource("/presentacion/niños_gratis.jpg")));
 	  
 	  
 	  return Ofertas;
@@ -52,9 +52,9 @@ public static ArrayList<Ofertas> generarOfertas(){
 	  
 	    Promocion.add(new Ofertas("Ruta Gratis", "Si reserva en menos de 5 dias de recibir "
 	    		+ "este correo recibira una ruta a la mitad de precio",
-	    		Promocion.getClass().getResource("/presentacion/user-2.png")));
+	    		Promocion.getClass().getResource("/presentacion/rutagratis.jpg")));
 	    Promocion.add(new Ofertas("Grupo de 20 personas", "Si se trae a 20 personas y a la suegra le dejamos la mitad de precio la ruta por persona",
-	    		Promocion.getClass().getResource("/presentacion/user-2.png")));
+	    		Promocion.getClass().getResource("/presentacion/grupopersonas.jpg")));
 	  
 	  
 	  return Promocion;
