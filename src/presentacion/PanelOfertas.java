@@ -90,6 +90,9 @@ public class PanelOfertas extends JPanel {
 	                    modelo2.addElement(listaOfertas.get(i).getNombre());
 
 	                }
+	                Imagen.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/loading.png")));
+	                textNombre.setText("");
+					textDes.setText("");
 	                list.setModel(modelo2);
 	            } catch (ArrayIndexOutOfBoundsException p) {
 
@@ -284,6 +287,9 @@ public class PanelOfertas extends JPanel {
 
 
 				}
+				textNombre.setText("");
+				textDes.setText("");
+				Imagen.setIcon(new ImageIcon(PanelOfertas.class.getResource("/presentacion/loading.png")));
 				list_1.setModel(modelo2);
 			} catch (ArrayIndexOutOfBoundsException p) {
 

@@ -48,6 +48,8 @@ public class VentanaLogin {
 	private JLabel lbliniciarsesion;
 	private JComboBox comboBox;
 	public String UsuarioConectado;
+	private JLabel lblUsuario_1;
+	private JLabel lblContraseña_2;
 
 	/**
 	 * Launch the application.
@@ -81,10 +83,10 @@ public class VentanaLogin {
 		Login.getContentPane().setMaximumSize(new Dimension(600, 400));
 		Login.setMaximumSize(new Dimension(600, 400));
 		Login.setMinimumSize(new Dimension(600, 400));
-		Login.setTitle("LOGIN");
+		Login.setTitle(MessagesApp.getString("VentanaLogin.Login.title")); //$NON-NLS-1$
 		Login.getContentPane().setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
 		Login.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png")));
+		Login.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaLogin.class.getResource("/presentacion/route.png"))); //$NON-NLS-1$
 		Login.setBounds(100, 100, 600, 400);
 		Login.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		GridBagLayout gridBagLayout = new GridBagLayout();
@@ -95,7 +97,20 @@ public class VentanaLogin {
 		Login.getContentPane().setLayout(gridBagLayout);
 		
 		comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"}));
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox.getSelectedItem().toString()=="ENGLISH") { //$NON-NLS-1$
+					MessagesApp.setIdioma("ingles"); //$NON-NLS-1$
+					textoIngles();
+				}else {
+					MessagesApp.setIdioma("español");
+					textoIngles();
+				}
+					
+			}
+			
+		});
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"})); //$NON-NLS-1$ //$NON-NLS-2$
 		GridBagConstraints gbc_comboBox = new GridBagConstraints();
 		gbc_comboBox.anchor = GridBagConstraints.NORTH;
 		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
@@ -105,8 +120,9 @@ public class VentanaLogin {
 		Login.getContentPane().add(comboBox, gbc_comboBox);
 		
 		
-		lbliniciarsesion = new JLabel("INICIAR SESION");
-		lbliniciarsesion.setFont(new Font("Tahoma", Font.BOLD, 20));
+		lbliniciarsesion = new JLabel();
+		lbliniciarsesion.setText(MessagesApp.getString("VentanaLogin.lbliniciarsesion.text")); //$NON-NLS-1$
+		lbliniciarsesion.setFont(new Font("Tahoma", Font.BOLD, 20)); //$NON-NLS-1$
 		GridBagConstraints gbc_lbliniciarsesion = new GridBagConstraints();
 		gbc_lbliniciarsesion.anchor = GridBagConstraints.NORTH;
 		gbc_lbliniciarsesion.gridwidth = 2;
@@ -115,7 +131,8 @@ public class VentanaLogin {
 		gbc_lbliniciarsesion.gridy = 1;
 		Login.getContentPane().add(lbliniciarsesion, gbc_lbliniciarsesion);
 		
-		JLabel lblUsuario_1 = new JLabel("USUARIO");
+		lblUsuario_1 = new JLabel();
+		lblUsuario_1.setText(MessagesApp.getString("VentanaLogin.lblUsuario_1.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblUsuario_1 = new GridBagConstraints();
 		gbc_lblUsuario_1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUsuario_1.gridx = 0;
@@ -123,7 +140,7 @@ public class VentanaLogin {
 		Login.getContentPane().add(lblUsuario_1, gbc_lblUsuario_1);
 		
 		user = new JTextField();
-		user.setToolTipText("NOMBRE DE USUARIO");
+		user.setToolTipText(MessagesApp.getString("VentanaLogin.user.toolTipText")); //$NON-NLS-1$
 		GridBagConstraints gbc_user = new GridBagConstraints();
 		gbc_user.gridwidth = 2;
 		gbc_user.fill = GridBagConstraints.BOTH;
@@ -133,15 +150,16 @@ public class VentanaLogin {
 		Login.getContentPane().add(user, gbc_user);
 		user.setColumns(10);
 		
-		JLabel lblContraseña_1 = new JLabel("CONTRASEÑA");
-		GridBagConstraints gbc_lblContraseña_1 = new GridBagConstraints();
-		gbc_lblContraseña_1.insets = new Insets(0, 0, 5, 5);
-		gbc_lblContraseña_1.gridx = 0;
-		gbc_lblContraseña_1.gridy = 4;
-		Login.getContentPane().add(lblContraseña_1, gbc_lblContraseña_1);
+		lblContraseña_2 = new JLabel();
+		lblContraseña_2.setText(MessagesApp.getString("VentanaLogin.lblContraseña_1.text")); //$NON-NLS-1$
+		GridBagConstraints gbc_lblContraseña_2 = new GridBagConstraints();
+		gbc_lblContraseña_2.insets = new Insets(0, 0, 5, 5);
+		gbc_lblContraseña_2.gridx = 0;
+		gbc_lblContraseña_2.gridy = 4;
+		Login.getContentPane().add(lblContraseña_2, gbc_lblContraseña_2);
 		
 		pass = new JPasswordField();
-		pass.setToolTipText("CONTRASEÑA");
+		pass.setToolTipText(MessagesApp.getString("VentanaLogin.pass.toolTipText")); //$NON-NLS-1$
 		GridBagConstraints gbc_pass = new GridBagConstraints();
 		gbc_pass.gridwidth = 2;
 		gbc_pass.fill = GridBagConstraints.BOTH;
@@ -150,7 +168,8 @@ public class VentanaLogin {
 		gbc_pass.gridy = 4;
 		Login.getContentPane().add(pass, gbc_pass);
 		
-		btnNewButton = new JButton("ENTRAR");
+		btnNewButton = new JButton();
+		btnNewButton.setText(MessagesApp.getString("VentanaLogin.btnNewButton.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.anchor = GridBagConstraints.EAST;
 		gbc_btnNewButton.insets = new Insets(0, 0, 5, 5);
@@ -159,7 +178,8 @@ public class VentanaLogin {
 		Login.getContentPane().add(btnNewButton, gbc_btnNewButton);
 		btnNewButton.addActionListener(new BtnNewButtonActionListener());
 		
-		btnLimpiar = new JButton("LIMPIAR");
+		btnLimpiar = new JButton();
+		btnLimpiar.setText(MessagesApp.getString("VentanaLogin.btnLimpiar.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_btnLimpiar = new GridBagConstraints();
 		gbc_btnLimpiar.insets = new Insets(0, 0, 5, 5);
 		gbc_btnLimpiar.gridx = 2;
@@ -167,31 +187,34 @@ public class VentanaLogin {
 		Login.getContentPane().add(btnLimpiar, gbc_btnLimpiar);
 		btnLimpiar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				user.setText("");
-				pass.setText("");
+				user.setText(""); //$NON-NLS-1$
+				pass.setText(""); //$NON-NLS-1$
 			}
 		});
 		
 		menuBar = new JMenuBar();
 		Login.setJMenuBar(menuBar);
 		
-		mnOpciones = new JMenu("Opciones");
+		mnOpciones = new JMenu();
+		mnOpciones.setText(MessagesApp.getString("VentanaLogin.mnOpciones.text")); //$NON-NLS-1$
 		mnOpciones.setMnemonic('O');
 		menuBar.add(mnOpciones);
 		
-		mnTamañoFuente = new JMenu("Tamaño de Fuente");
+		mnTamañoFuente = new JMenu();
+		mnTamañoFuente.setText(MessagesApp.getString("VentanaLogin.mnTamañoFuente.text")); //$NON-NLS-1$
 		mnOpciones.add(mnTamañoFuente);
 		
-		rdbtnmntmGrande = new JRadioButtonMenuItem("Grande");
+		rdbtnmntmGrande = new JRadioButtonMenuItem();
+		rdbtnmntmGrande.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmGrande.text")); //$NON-NLS-1$
 		rdbtnmntmGrande.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			tamanio=16;
 			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+			lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+			lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -200,16 +223,17 @@ public class VentanaLogin {
 		buttonGroup.add(rdbtnmntmGrande);
 		mnTamañoFuente.add(rdbtnmntmGrande);
 		
-		rdbtnmntmMediana = new JRadioButtonMenuItem("Mediana");
+		rdbtnmntmMediana = new JRadioButtonMenuItem();
+		rdbtnmntmMediana.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmMediana.text")); //$NON-NLS-1$
 		rdbtnmntmMediana.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tamanio=12;
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+				lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -218,16 +242,17 @@ public class VentanaLogin {
 		buttonGroup.add(rdbtnmntmMediana);
 		mnTamañoFuente.add(rdbtnmntmMediana);
 		
-		rdbtnmntmPequeña = new JRadioButtonMenuItem("Pequeña");
+		rdbtnmntmPequeña = new JRadioButtonMenuItem();
+		rdbtnmntmPequeña.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmPequeña.text")); //$NON-NLS-1$
 		rdbtnmntmPequeña.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tamanio=10;
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+				lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -236,19 +261,20 @@ public class VentanaLogin {
 		buttonGroup.add(rdbtnmntmPequeña);
 		mnTamañoFuente.add(rdbtnmntmPequeña);
 		
-		mnFuente = new JMenu("Tipo de fuente");
+		mnFuente = new JMenu();
+		mnFuente.setText(MessagesApp.getString("VentanaLogin.mnFuente.text")); //$NON-NLS-1$
 		mnOpciones.add(mnFuente);
 		
-		rdbtnmntmArial = new JRadioButtonMenuItem("Arial");
+		rdbtnmntmArial = new JRadioButtonMenuItem("Arial"); //$NON-NLS-1$
 		rdbtnmntmArial.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-			letra="Arial";
+			letra="Arial"; //$NON-NLS-1$
 			lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-			lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+			lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 			btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 			btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 			lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-			lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+			lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 			btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 			btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 			lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -257,16 +283,16 @@ public class VentanaLogin {
 		buttonGroup_1.add(rdbtnmntmArial);
 		mnFuente.add(rdbtnmntmArial);
 		
-		rdbtnmntmCalibri = new JRadioButtonMenuItem("Calibri");
+		rdbtnmntmCalibri = new JRadioButtonMenuItem("Calibri"); //$NON-NLS-1$
 		rdbtnmntmCalibri.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				letra="Calibri";
+				letra="Calibri"; //$NON-NLS-1$
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+				lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -275,16 +301,16 @@ public class VentanaLogin {
 		buttonGroup_1.add(rdbtnmntmCalibri);
 		mnFuente.add(rdbtnmntmCalibri);
 		
-		rdbtnmntmTimesNewRoman = new JRadioButtonMenuItem("Times New Roman");
+		rdbtnmntmTimesNewRoman = new JRadioButtonMenuItem("Times New Roman"); //$NON-NLS-1$
 		rdbtnmntmTimesNewRoman.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				letra="Times New Roman";
+				letra="Times New Roman"; //$NON-NLS-1$
 				lblUsuario_1.setFont(new Font(null, Font.PLAIN, tamanio));
-				lblContraseña_1.setFont(new Font(null, Font.PLAIN,tamanio ));
+				lblContraseña_2.setFont(new Font(null, Font.PLAIN,tamanio ));
 				btnNewButton.setFont(new Font(null, Font.PLAIN, tamanio ));
 				btnLimpiar.setFont(new Font(null, Font.PLAIN, tamanio ));
 				lblUsuario_1.setFont(new Font(letra, Font.PLAIN, lblUsuario_1.getFont().getSize()));
-				lblContraseña_1.setFont(new Font(letra, Font.PLAIN, lblContraseña_1.getFont().getSize()));
+				lblContraseña_2.setFont(new Font(letra, Font.PLAIN, lblContraseña_2.getFont().getSize()));
 				btnNewButton.setFont(new Font(letra, Font.PLAIN, btnNewButton.getFont().getSize()));
 				btnLimpiar.setFont(new Font(letra, Font.PLAIN, btnLimpiar.getFont().getSize()));
 				lbliniciarsesion.setFont(new Font(letra, Font.PLAIN, lbliniciarsesion.getFont().getSize()));
@@ -294,16 +320,37 @@ public class VentanaLogin {
 		buttonGroup_1.add(rdbtnmntmTimesNewRoman);
 		mnFuente.add(rdbtnmntmTimesNewRoman);
 		
-		mnAyuda = new JMenu("Ayuda");
+		mnAyuda = new JMenu();
+		mnAyuda.setText(MessagesApp.getString("VentanaLogin.mnAyuda.text")); //$NON-NLS-1$
 		mnAyuda.setMnemonic('A');
 		menuBar.add(mnAyuda);
 		
-		mntmAcercaDe = new JMenuItem("Acerca de ");
+		mntmAcercaDe = new JMenuItem();
+		mntmAcercaDe.setText(MessagesApp.getString("VentanaLogin.mntmAcercaDe.text")); //$NON-NLS-1$
 		mnAyuda.add(mntmAcercaDe);
 	}
 	
 
-	
+	private void textoIngles() {
+		lbliniciarsesion.setText(MessagesApp.getString("VentanaLogin.lbliniciarsesion.text")); //$NON-NLS-1$
+		lblUsuario_1.setText(MessagesApp.getString("VentanaLogin.lblUsuario_1.text")); //$NON-NLS-1$
+		user.setToolTipText(MessagesApp.getString("VentanaLogin.user.toolTipText")); //$NON-NLS-1$
+		lblContraseña_2.setText(MessagesApp.getString("VentanaLogin.lblContraseña_1.text")); //$NON-NLS-1$
+		pass.setToolTipText(MessagesApp.getString("VentanaLogin.pass.toolTipText")); //$NON-NLS-1$
+		btnNewButton.setText(MessagesApp.getString("VentanaLogin.btnNewButton.text")); //$NON-NLS-1$
+		btnLimpiar.setText(MessagesApp.getString("VentanaLogin.btnLimpiar.text")); //$NON-NLS-1$
+		mnOpciones.setText(MessagesApp.getString("VentanaLogin.mnOpciones.text")); //$NON-NLS-1$
+		mnTamañoFuente.setText(MessagesApp.getString("VentanaLogin.mnTamañoFuente.text")); //$NON-NLS-1$
+		rdbtnmntmGrande.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmGrande.text")); //$NON-NLS-1$
+		rdbtnmntmMediana.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmMediana.text")); //$NON-NLS-1$
+		rdbtnmntmPequeña.setText(MessagesApp.getString("VentanaLogin.rdbtnmntmPequeña.text")); //$NON-NLS-1$
+		mnFuente.setText(MessagesApp.getString("VentanaLogin.mnFuente.text")); //$NON-NLS-1$
+		mnAyuda.setText(MessagesApp.getString("VentanaLogin.mnAyuda.text")); //$NON-NLS-1$
+		mntmAcercaDe.setText(MessagesApp.getString("VentanaLogin.mntmAcercaDe.text")); //$NON-NLS-1$
+
+
+		
+	}
 	private class BtnNewButtonActionListener implements ActionListener {
 		public void actionPerformed(ActionEvent e) {
 	
@@ -315,12 +362,18 @@ public class VentanaLogin {
 			Usuario usuario=d.UsuarioConectado(nombre);
 			
 			////////////////////////////
-			JOptionPane.showMessageDialog(null, "INICIO CORRECTO");
+			Object[] botonesOptionPane= {MessagesApp.getString("VentanaLogin.btnacceptar")};
+			
+			//JOptionPane.showMessageDialog(null, MessagesApp.getString("VentanaLogin.0")); //$NON-NLS-1$
+			JOptionPane.showOptionDialog(Login, MessagesApp.getString("VentanaLogin.0"),
+					MessagesApp.getString("VentanaLogin.0"), 
+					JOptionPane.PLAIN_MESSAGE,JOptionPane.PLAIN_MESSAGE, null,botonesOptionPane, 0);
+			
 			VentanaPagina Vp= new VentanaPagina();
 			Vp.SetNombre(usuario);
 			Vp.SetFoto(usuario);
 			try {
-				Vp.SetUltimaConexion("09-08-2019 20:30:10");
+				Vp.SetUltimaConexion("09-08-2019 20:30:10"); //$NON-NLS-1$
 			} catch (ParseException e1) {
 				e1.printStackTrace();
 			}
@@ -330,9 +383,17 @@ public class VentanaLogin {
 			Login.dispose();//
 		}else {
 			if (d.Existe(user.getText(), pass.getText())==-1) {
-			JOptionPane.showMessageDialog(null, "CONTRASEÑA INCORRECTA");
+				Object[] botonesOptionPane= {MessagesApp.getString("VentanaLogin.btnacceptar")};
+			//JOptionPane.showMessageDialog(null, MessagesApp.getString("VentanaLogin.1")); //$NON-NLS-1$
+				JOptionPane.showOptionDialog(Login, MessagesApp.getString("VentanaLogin.1"),
+						MessagesApp.getString("VentanaLogin.1"), 
+						JOptionPane.PLAIN_MESSAGE,JOptionPane.PLAIN_MESSAGE, null,botonesOptionPane, 0);
 			}else {
-				JOptionPane.showMessageDialog(null, "USUARIO INCORRECTO");
+				Object[] botonesOptionPane= {MessagesApp.getString("VentanaLogin.btnacceptar")};
+				//JOptionPane.showMessageDialog(null, MessagesApp.getString("VentanaLogin.17")); //$NON-NLS-1$
+				JOptionPane.showOptionDialog(Login, MessagesApp.getString("VentanaLogin.17"),
+						MessagesApp.getString("VentanaLogin.17"), 
+						JOptionPane.PLAIN_MESSAGE,JOptionPane.PLAIN_MESSAGE, null,botonesOptionPane, 0);
 			}
 		}
 			
