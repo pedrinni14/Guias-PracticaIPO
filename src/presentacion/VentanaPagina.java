@@ -52,6 +52,7 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
+import presentacion.PanelGuias;
 
 public class VentanaPagina {
 	
@@ -213,9 +214,19 @@ public class VentanaPagina {
 				if (comboBox.getSelectedItem().toString()=="ENGLISH") { //$NON-NLS-1$
 					MessagesPrincipal.setIdioma("ingles"); //$NON-NLS-1$
 					texto();
+					MessagesGuias.setIdioma("ingles");
+					PanelGuias.textoGuias();
+					
+					
+					
+					
+					
 				}else {
 					MessagesPrincipal.setIdioma("español"); //$NON-NLS-1$
 					texto();
+					MessagesGuias.setIdioma("español");
+					
+					PanelGuias.textoGuias();
 				}
 			}
 		});
@@ -344,6 +355,10 @@ public class VentanaPagina {
 		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.9"), null, pnlGuias, null); //$NON-NLS-1$
 		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.10"), null, pnlOfertas, null); //$NON-NLS-1$
 		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.11"), null, pnlGrupos, null); //$NON-NLS-1$
+		
+		
+		
+		
 	}
 }
 
