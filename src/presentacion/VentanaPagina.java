@@ -49,6 +49,8 @@ import java.util.Calendar;
 import java.awt.Rectangle;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 
 public class VentanaPagina {
@@ -83,6 +85,7 @@ public class VentanaPagina {
 	private JSpinner spinner;
 	private JLabel lblAplicacionDeRutas;
 	private JPanel pnlGrupos;
+	private JComboBox comboBox;
 
 	
 
@@ -116,47 +119,54 @@ public class VentanaPagina {
 		frmAplicacion = new JFrame();
 		frmAplicacion.setSize(new Dimension(700, 700));
 		frmAplicacion.setMinimumSize(new Dimension(1081, 589));
-		frmAplicacion.setTitle("Aplicacion");
-		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource("/presentacion/route.png")));
+		frmAplicacion.setTitle(MessagesPrincipal.getString("VentanaPagina.0")); //$NON-NLS-1$
+		frmAplicacion.setIconImage(Toolkit.getDefaultToolkit().getImage(VentanaPagina.class.getResource(MessagesPrincipal.getString("VentanaPagina.1")))); //$NON-NLS-1$
 		frmAplicacion.setBounds(225, 0, 900, 700);
 		frmAplicacion.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		menuBar = new JMenuBar();
 		frmAplicacion.setJMenuBar(menuBar);
 		
-		menu = new JMenu("Opciones");
+		menu = new JMenu();
+		menu.setText(MessagesPrincipal.getString("VentanaPagina.menu.text")); //$NON-NLS-1$
 		menu.setMnemonic('O');
 		menuBar.add(menu);
 		
-		menu_1 = new JMenu("Tamaño de Fuente");
+		menu_1 = new JMenu();
+		menu_1.setText(MessagesPrincipal.getString("VentanaPagina.menu_1.text")); //$NON-NLS-1$
 		menu.add(menu_1);
 		
-		radioButtonMenuItem = new JRadioButtonMenuItem("Grande");
+		radioButtonMenuItem = new JRadioButtonMenuItem();
+		radioButtonMenuItem.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem.text")); //$NON-NLS-1$
 		menu_1.add(radioButtonMenuItem);
 		
-		radioButtonMenuItem_1 = new JRadioButtonMenuItem("Mediana");
+		radioButtonMenuItem_1 = new JRadioButtonMenuItem();
+		radioButtonMenuItem_1.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem_1.text")); //$NON-NLS-1$
 		menu_1.add(radioButtonMenuItem_1);
 		
-		radioButtonMenuItem_2 = new JRadioButtonMenuItem("Pequeña");
+		radioButtonMenuItem_2 = new JRadioButtonMenuItem();
+		radioButtonMenuItem_2.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem_2.text")); //$NON-NLS-1$
 		menu_1.add(radioButtonMenuItem_2);
 		
-		menu_2 = new JMenu("Tipo de fuente");
+		menu_2 = new JMenu(MessagesPrincipal.getString("VentanaPagina.2")); //$NON-NLS-1$
 		menu.add(menu_2);
 		
-		radioButtonMenuItem_3 = new JRadioButtonMenuItem("Arial");
+		radioButtonMenuItem_3 = new JRadioButtonMenuItem(MessagesPrincipal.getString("VentanaPagina.3")); //$NON-NLS-1$
 		menu_2.add(radioButtonMenuItem_3);
 		
-		radioButtonMenuItem_4 = new JRadioButtonMenuItem("Calibri");
+		radioButtonMenuItem_4 = new JRadioButtonMenuItem(MessagesPrincipal.getString("VentanaPagina.4")); //$NON-NLS-1$
 		menu_2.add(radioButtonMenuItem_4);
 		
-		radioButtonMenuItem_5 = new JRadioButtonMenuItem("Times New Roman");
+		radioButtonMenuItem_5 = new JRadioButtonMenuItem(MessagesPrincipal.getString("VentanaPagina.5")); //$NON-NLS-1$
 		menu_2.add(radioButtonMenuItem_5);
 		
-		menu_3 = new JMenu("Ayuda");
+		menu_3 = new JMenu();
+		menu_3.setText(MessagesPrincipal.getString("VentanaPagina.menu_3.text")); //$NON-NLS-1$
 		menu_3.setMnemonic('A');
 		menuBar.add(menu_3);
 		
-		menuItem = new JMenuItem("Acerca de ");
+		menuItem = new JMenuItem();
+		menuItem.setText(MessagesPrincipal.getString("VentanaPagina.menuItem.text")); //$NON-NLS-1$
 		menu_3.add(menuItem);
 		frmAplicacion.getContentPane().setLayout(new BorderLayout(0, 0));
 		
@@ -168,24 +178,24 @@ public class VentanaPagina {
 		panel.add(tabbedPane);
 		
 		pnlHistorial = new PanelHistorial();
-		tabbedPane.addTab("Historial", null, pnlHistorial, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.6"), null, pnlHistorial, null); //$NON-NLS-1$
 		
 		pnlCircuitosDisponibles = new PanelCircuitos();
-		tabbedPane.addTab("Circuitos Disponibles", null, pnlCircuitosDisponibles, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.7"), null, pnlCircuitosDisponibles, null); //$NON-NLS-1$
 		
 
 		pnlCreaTuRuta = new EditorGrafico();
 
-		tabbedPane.addTab("Crea tu ruta", null, pnlCreaTuRuta, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.8"), null, pnlCreaTuRuta, null); //$NON-NLS-1$
 		
 		pnlGuias = new PanelGuias();
-		tabbedPane.addTab("Guías Turísticos", null, pnlGuias, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.9"), null, pnlGuias, null); //$NON-NLS-1$
 		
 		pnlOfertas = new PanelOfertas();
-		tabbedPane.addTab("Ofertas y Promociones", null, pnlOfertas, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.10"), null, pnlOfertas, null); //$NON-NLS-1$
 		
 		pnlGrupos = new PanelGrupos();
-		tabbedPane.addTab("Grupos", null, pnlGrupos, null);
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.11"), null, pnlGrupos, null); //$NON-NLS-1$
 		
 		panel_1 = new JPanel();
 		frmAplicacion.getContentPane().add(panel_1, BorderLayout.NORTH);
@@ -197,8 +207,30 @@ public class VentanaPagina {
 		gbl_panel_1.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		panel_1.setLayout(gbl_panel_1);
 		
-		lblAplicacionDeRutas = new JLabel("APLICACIÓN DE RUTAS");
-		lblAplicacionDeRutas.setFont(new Font("Tahoma", Font.BOLD, 18));
+		comboBox = new JComboBox();
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (comboBox.getSelectedItem().toString()=="ENGLISH") { //$NON-NLS-1$
+					MessagesPrincipal.setIdioma("ingles"); //$NON-NLS-1$
+					texto();
+				}else {
+					MessagesPrincipal.setIdioma("español"); //$NON-NLS-1$
+					texto();
+				}
+			}
+		});
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"ESPAÑOL", "ENGLISH"})); //$NON-NLS-1$ //$NON-NLS-2$
+		GridBagConstraints gbc_comboBox = new GridBagConstraints();
+		gbc_comboBox.gridwidth = 2;
+		gbc_comboBox.insets = new Insets(0, 0, 5, 5);
+		gbc_comboBox.fill = GridBagConstraints.HORIZONTAL;
+		gbc_comboBox.gridx = 4;
+		gbc_comboBox.gridy = 0;
+		panel_1.add(comboBox, gbc_comboBox);
+		
+		lblAplicacionDeRutas = new JLabel();
+		lblAplicacionDeRutas.setText(MessagesPrincipal.getString("VentanaPagina.lblAplicacionDeRutas.text")); //$NON-NLS-1$
+		lblAplicacionDeRutas.setFont(new Font("Tahoma", Font.BOLD, 18)); //$NON-NLS-1$
 		GridBagConstraints gbc_lblAplicacionDeRutas = new GridBagConstraints();
 		gbc_lblAplicacionDeRutas.gridheight = 3;
 		gbc_lblAplicacionDeRutas.gridwidth = 2;
@@ -207,8 +239,8 @@ public class VentanaPagina {
 		gbc_lblAplicacionDeRutas.gridy = 1;
 		panel_1.add(lblAplicacionDeRutas, gbc_lblAplicacionDeRutas);
 		
-		lblFoto = new JLabel("");
-		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png")));
+		lblFoto = new JLabel(""); //$NON-NLS-1$
+		lblFoto.setIcon(new ImageIcon(VentanaPagina.class.getResource("/presentacion/user-2.png"))); //$NON-NLS-1$
 		GridBagConstraints gbc_lblFoto = new GridBagConstraints();
 		gbc_lblFoto.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFoto.anchor = GridBagConstraints.NORTHEAST;
@@ -216,8 +248,9 @@ public class VentanaPagina {
 		gbc_lblFoto.gridy = 1;
 		panel_1.add(lblFoto, gbc_lblFoto);
 		
-		Nombre = new JLabel("(nombre)");
-		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 18));
+		Nombre = new JLabel();
+		Nombre.setText(MessagesPrincipal.getString("VentanaPagina.Nombre.text")); //$NON-NLS-1$
+		Nombre.setFont(new Font("Tahoma", Font.PLAIN, 18)); //$NON-NLS-1$
 		GridBagConstraints gbc_Nombre = new GridBagConstraints();
 		gbc_Nombre.gridwidth = 2;
 		gbc_Nombre.insets = new Insets(0, 0, 5, 5);
@@ -225,7 +258,8 @@ public class VentanaPagina {
 		gbc_Nombre.gridy = 1;
 		panel_1.add(Nombre, gbc_Nombre);
 		
-		lblUltimaConexion = new JLabel("Ultima Conexión");
+		lblUltimaConexion = new JLabel();
+		lblUltimaConexion.setText(MessagesPrincipal.getString("VentanaPagina.lblUltimaConexion.text")); //$NON-NLS-1$
 		GridBagConstraints gbc_lblUltimaConexion = new GridBagConstraints();
 		gbc_lblUltimaConexion.anchor = GridBagConstraints.EAST;
 		gbc_lblUltimaConexion.insets = new Insets(0, 0, 5, 5);
@@ -242,13 +276,18 @@ public class VentanaPagina {
 		gbc_spinner.gridy = 2;
 		panel_1.add(spinner, gbc_spinner);
 		
-		btnCerrarSesion = new JButton("Cerrar Sesión");
+		btnCerrarSesion = new JButton();
+		btnCerrarSesion.setText(MessagesPrincipal.getString("VentanaPagina.btnCerrarSesion.text")); //$NON-NLS-1$
 		btnCerrarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				VentanaLogin frame = new VentanaLogin();
-				Icon icono = new ImageIcon(getClass().getResource("/presentacion/Guia1.jpg"));
-				
-				int i =JOptionPane.showConfirmDialog(null, "Realmente quieres cerrar sesión", "Confirmar salida", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,lblFoto.getIcon());
+				Icon icono = new ImageIcon(getClass().getResource("/presentacion/Guia1.jpg")); //$NON-NLS-1$
+				Object[] botones= {MessagesPrincipal.getString("VentanaPagina.BotonYes"),MessagesPrincipal.getString("VentanaPagina.BotonNo")};
+				//int i =JOptionPane.showConfirmDialog(null, MessagesPrincipal.getString("VentanaPagina.20"), MessagesPrincipal.getString("VentanaPagina.21"), JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE,lblFoto.getIcon()); //$NON-NLS-1$ //$NON-NLS-2$
+				int i= JOptionPane.showOptionDialog(frmAplicacion, MessagesPrincipal.getString("VentanaPagina.20"),
+						MessagesPrincipal.getString("VentanaPagina.21"), 
+						JOptionPane.PLAIN_MESSAGE,JOptionPane.PLAIN_MESSAGE, null,botones, 0);
+
 				if(i==0) {
 					frame.Login.setVisible(true);
 					frmAplicacion.dispose();
@@ -272,33 +311,7 @@ public class VentanaPagina {
 	public void setFrame(JFrame frame) {
 		this.frmAplicacion = frame;
 	}
-//	public void UserConectado() {
-//		  URL archivo = null;
-//	      InputStreamReader fr = null;
-//	      BufferedReader br = null;
-//
-//	      try {
-//	         
-//	         archivo = VentanaPagina.class.getResource("/presentacion/Usuario.txt");
-//	         fr =  new InputStreamReader(archivo.openStream());
-//	         br = new BufferedReader(fr);
-//	         String linea;
-//	         while((linea=br.readLine())!=null)
-//	        	 Nombre.setText(linea);
-//	      }
-//	      catch(Exception e){
-//	         e.printStackTrace();
-//	      }finally{
-//	        
-//	         try{                    
-//	            if( null != fr ){   
-//	               fr.close();     
-//	            }                  
-//	         }catch (Exception e2){ 
-//	            e2.printStackTrace();
-//	         }
-//	      }
-//	   }
+	
 	public void SetNombre(Usuario n) {
 		Nombre.setText(n.getUsuario());
 	}
@@ -307,12 +320,30 @@ public class VentanaPagina {
 	}
 	
 	public void SetUltimaConexion(String ultimaconexion) throws ParseException {
-		String pattern = "dd-MM-yyyy HH:mm:ss";
+		String pattern = "dd-MM-yyyy HH:mm:ss"; //$NON-NLS-1$
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
 		Date date = simpleDateFormat.parse(ultimaconexion);
 		spinner.setValue(date);
 	}
 	
-		
+	public void texto() {
+		menu.setText(MessagesPrincipal.getString("VentanaPagina.menu.text")); //$NON-NLS-1$
+		menu_1.setText(MessagesPrincipal.getString("VentanaPagina.menu_1.text")); //$NON-NLS-1$
+		radioButtonMenuItem.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem.text")); //$NON-NLS-1$
+		radioButtonMenuItem_1.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem_1.text")); //$NON-NLS-1$
+		radioButtonMenuItem_2.setText(MessagesPrincipal.getString("VentanaPagina.radioButtonMenuItem_2.text")); //$NON-NLS-1$
+		menu_3.setText(MessagesPrincipal.getString("VentanaPagina.menu_3.text")); //$NON-NLS-1$
+		menuItem.setText(MessagesPrincipal.getString("VentanaPagina.menuItem.text")); //$NON-NLS-1$
+		lblAplicacionDeRutas.setText(MessagesPrincipal.getString("VentanaPagina.lblAplicacionDeRutas.text")); //$NON-NLS-1$
+		//Nombre.setText(MessagesPrincipal.getString("VentanaPagina.Nombre.text")); //$NON-NLS-1$
+		lblUltimaConexion.setText(MessagesPrincipal.getString("VentanaPagina.lblUltimaConexion.text")); //$NON-NLS-1$
+		btnCerrarSesion.setText(MessagesPrincipal.getString("VentanaPagina.btnCerrarSesion.text")); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.6"), null, pnlHistorial, null); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.7"), null, pnlCircuitosDisponibles, null); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.8"), null, pnlCreaTuRuta, null); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.9"), null, pnlGuias, null); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.10"), null, pnlOfertas, null); //$NON-NLS-1$
+		tabbedPane.addTab(MessagesPrincipal.getString("VentanaPagina.11"), null, pnlGrupos, null); //$NON-NLS-1$
 	}
+}
 
