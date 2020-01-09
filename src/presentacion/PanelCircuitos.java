@@ -862,7 +862,7 @@ public class PanelCircuitos extends JPanel {
 		public void mouseClicked(MouseEvent e) {
 			CardLayout cl = (CardLayout) (Formulario.getLayout());
 			cl.show(Formulario, "Monumentos");
-			textNombreM.setText(monumentos.get(Mo.getSelectedIndex()).getNombre());
+		
 		}
 	}
 	private class RMouseListener extends MouseAdapter {
@@ -875,8 +875,10 @@ public class PanelCircuitos extends JPanel {
 	private class TMouseListener extends MouseAdapter {
 		@Override
 		public void mouseClicked(MouseEvent e) {
+		
 			CardLayout cl = (CardLayout) (Formulario.getLayout());
 			cl.show(Formulario, "Tiendas");
+			
 		}
 	}
 
