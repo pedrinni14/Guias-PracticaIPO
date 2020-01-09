@@ -207,6 +207,7 @@ public class PanelCircuitos extends JPanel {
 		panel.add(scrollPane_1, gbc_scrollPane_1);
 
 		Mo = new JList();
+		Mo.addMouseListener(new MoMouseListener());
 		Mo.addListSelectionListener(new MoListSelectionListener());
 		Mo.setBorder(new TitledBorder(null, "Monumentos", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		scrollPane_1.setViewportView(Mo);
@@ -222,6 +223,7 @@ public class PanelCircuitos extends JPanel {
 		panel.add(scrollPane_2, gbc_scrollPane_2);
 
 		R = new JList();
+		R.addMouseListener(new RMouseListener());
 		R.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		R.addListSelectionListener(new List_2ListSelectionListener());
 
@@ -250,6 +252,7 @@ public class PanelCircuitos extends JPanel {
 		panel.add(scrollPane_3, gbc_scrollPane_3);
 
 		T = new JList();
+		T.addMouseListener(new TMouseListener());
 		T.addListSelectionListener(new TListSelectionListener());
 		T.setModel(new AbstractListModel() {
 			String[] values = new String[] {};
@@ -653,7 +656,7 @@ public class PanelCircuitos extends JPanel {
 			}
 			Mo.setModel(modelo2);
 			
-		}catch (ArrayIndexOutOfBoundsException x) {
+		}catch (Exception x) {
 			
 		}
 			}
@@ -852,6 +855,28 @@ public class PanelCircuitos extends JPanel {
 			}
 			T.setModel(modelo2);
 
+		}
+	}
+	private class MoMouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			CardLayout cl = (CardLayout) (Formulario.getLayout());
+			cl.show(Formulario, "Monumentos");
+			textNombreM.setText(monumentos.get(Mo.getSelectedIndex()).getNombre());
+		}
+	}
+	private class RMouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			CardLayout cl = (CardLayout) (Formulario.getLayout());
+			cl.show(Formulario, "Restaurantes");
+		}
+	}
+	private class TMouseListener extends MouseAdapter {
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			CardLayout cl = (CardLayout) (Formulario.getLayout());
+			cl.show(Formulario, "Tiendas");
 		}
 	}
 
